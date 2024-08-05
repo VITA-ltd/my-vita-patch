@@ -6,10 +6,75 @@
   --header-height: 60px;
   --color-dark: #000;
   --color-light: #fff;
+  --button-color: #2DCB89;
 }
 
 img {
   border-radius: 4px;
+}
+
+/*
+* --------------------------------------------------
+* components/Home/Landing
+* --------------------------------------------------
+*/
+.home-landing {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-image: url("/homeLanding2.gif");
+  background-size: cover;
+  color: white;
+}
+
+.home-landing-content {
+  width: calc(50% - 32px);
+  height: 100%;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: url("/homeLanding1.gif");
+  background-size: cover;
+}
+
+.home-landing-content > .new-formula {
+  padding: 8px 10px 8px 10px;
+  border-radius: 35px;
+  border: 1px solid #FFFFFF;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 14.19px;
+  text-align: left;
+
+}
+
+.home-landing-content > h1 {
+  font-size: 88.67px;
+  font-weight: 500;
+  line-height: 78.62px;
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+.home-landing-content > p {
+  margin-bottom: 2rem;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+}
+
+.home-landing-content > a {
+  padding: 16px 52px 16px 52px;
+  border-radius: 69px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  text-align: center;
+  color: white;
+  background-color: var(--button-color);
 }
 
 /*
@@ -148,19 +213,21 @@ button.reset:hover:not(:has(> *)) {
 * --------------------------------------------------
 */
 .header {
+  width: calc(100vw - 64px);
   align-items: center;
-  background: #000000E0;
+  background: #000000e0;
   display: flex;
   justify-content: space-between;
   height: var(--header-height);
   padding: 0 32px;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.2px;
   text-align: left;
+  backdrop-filter: blur(64px);
 }
 
 .header-menu-mobile-toggle {
@@ -197,14 +264,14 @@ button.reset:hover:not(:has(> *)) {
   grid-gap: 45px;
 }
 
-.header-ctas > button, .header-ctas > a {
+.header-ctas > button,
+.header-ctas > a {
   color: white;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.2px;
   text-align: left;
 }
-
 
 .header-logo {
   height: 56.66666%;
