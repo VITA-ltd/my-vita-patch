@@ -162,7 +162,7 @@ function CartBadge({ count }: { count: number | null }) {
         } as CartViewPayload);
       }}
     >
-      Bag {count === null ? <span>&nbsp;</span> : count}
+      Bag <span className='cart-count'>{count === null ? <span>&nbsp;</span> : count}</span>
     </a>
   );
 }
