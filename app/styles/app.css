@@ -479,6 +479,7 @@ button.reset:hover:not(:has(> *)) {
 * --------------------------------------------------
 */
 .featured-collection {
+  width: 100vw;
   display: block;
   margin-bottom: 2rem;
   position: relative;
@@ -498,12 +499,91 @@ button.reset:hover:not(:has(> *)) {
 }
 
 .recommended-products-grid {
-  display: grid;
-  grid-gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr);
-  @media (min-width: 45em) {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recommended-products {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recommended-products > h2 {
+  margin: 0;
+  margin-top: 5rem;
+  font-size: 67.78px;
+  font-weight: 500;
+  line-height: 81.33px;
+  text-align: left;
+}
+
+.recommended-products > h3 {
+  margin: 0;
+  margin-bottom: 5rem;
+  font-size: 25.89px;
+  font-weight: 400;
+  line-height: 31.07px;
+  text-align: left;
+}
+
+.recommended-product {
+  width: 23%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 18px;
+  border: 1px solid #ffffff;
+  color: white;
+}
+
+.recommended-product > h4 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 15.96px;
+  text-align: center;
+}
+
+.recommended-product > .price {
+  display: flex;
+  font-size: 29.12px;
+  font-weight: 400;
+  line-height: 25.82px;
+  text-align: center;
+}
+
+.recommended-product > .price > .default-price {
+  margin-left: 0.25em;
+  color: #717171;
+  text-decoration: line-through;
+}
+
+.recommended-product > .product-description {
+  margin-top: 1.25em;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  text-align: center;
+}
+
+.recommended-product > .start-now-button {
+  padding: 20px 58px 20px 58px;
+  border-radius: 104px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 14.19px;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: white;
+  background-color: var(--button-color);
 }
 
 .recommended-product img {
