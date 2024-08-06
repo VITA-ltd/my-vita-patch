@@ -70,28 +70,6 @@ export default function Homepage() {
   );
 }
 
-function FeaturedCollection({
-  collection,
-}: {
-  collection: FeaturedCollectionFragment;
-}) {
-  if (!collection) return null;
-  const image = collection?.image;
-  return (
-    <Link
-      className="featured-collection"
-      to={`/collections/${collection.handle}`}
-    >
-      {image && (
-        <div className="featured-collection-image">
-          <Image data={image} sizes="100vw" />
-        </div>
-      )}
-      <h1>{collection.title}</h1>
-    </Link>
-  );
-}
-
 function RecommendedProducts({
   products,
 }: {
@@ -107,39 +85,58 @@ function RecommendedProducts({
           {(response) => (
             <div className="recommended-products-grid">
               {response && response.collection
-                ? response.collection.products.nodes.map((product) => (
-                  <Link
-                    key={product.id}
-                    className="recommended-product"
-                    to={`/products/${product.handle}`}
-                  >
-                    <h4>{product.title}</h4>
-                    <span className='price'>
-                      <Money data={product.priceRange.minVariantPrice} />
+                ? response.collection.products.nodes.map((product) => {
+                  /* @ts-ignore */
+                  const pricePerPatch = JSON.parse(product.pricePerPatch.value);
+
+                  return (
+                    <Link
+                      key={product.id}
+                      className="recommended-product"
+                      to={`/products/${product.handle}`}
+                    >
                       {/* @ts-ignore */}
-                      {!product.compareAtPriceRange.minVariantPrice.amount.startsWith("0") &&
-                        /* @ts-ignore */
-                        <Money className='default-price' data={product.compareAtPriceRange.minVariantPrice} />
+                      {product.tags.includes("New") &&
+                        <div className='new-tag'>New</div>
                       }
-                    </span>
 
-                    {product.featuredImage &&
-                      <Image
-                        data={product.featuredImage}
-                        aspectRatio="1/1"
-                        sizes="(min-width: 45em) 20vw, 50vw"
-                      />
-                    }
+                      <h4>{product.title}</h4>
+                      <span className='price'>
+                        <Money data={product.priceRange.minVariantPrice} />
+                        {/* @ts-ignore */}
+                        {!product.compareAtPriceRange.minVariantPrice.amount.startsWith("0") &&
+                          /* @ts-ignore */
+                          <Money className='default-price' withoutCurrency data={product.compareAtPriceRange.minVariantPrice} />
+                        }
+                      </span>
 
-                    <button className='start-now-button'>Start Now</button>
+                      <span className='price'>
+                        {/* @ts-ignore */}
+                        <Money withoutCurrency data={{ amount: pricePerPatch.amount, currencyCode: pricePerPatch.currency_code }} />/patch
+                      </span>
 
-                    <p className='product-description'>
-                      60-day Money Back Guarantee<br />
-                      Pause or Cancel Anytime<br />
-                      Free Welcome Kit
-                    </p>
-                  </Link>
-                ))
+                      {product.featuredImage &&
+                        <Image
+                          data={product.featuredImage}
+                          aspectRatio="1/1"
+                          sizes="(min-width: 45em) 20vw, 50vw"
+                        />
+                      }
+
+                      {/* @ts-ignore */}
+                      <button disabled={product.totalInventory <= 0} className={`purchase-button ${product.totalInventory <= 0 && 'disabled'}`}>
+                        {/* @ts-ignore */}
+                        {product.tags.includes("Coming Soon") ? "Coming Soon" : product.totalInventory > 0 ? "Start Now" : "Email When Availabe"}
+                      </button>
+
+                      <p className='product-description'>
+                        60-day Money Back Guarantee<br />
+                        Pause or Cancel Anytime<br />
+                        Free Welcome Kit
+                      </p>
+                    </Link>
+                  )
+                })
                 : null}
             </div>
           )}
@@ -213,6 +210,14 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
     id
     handle
     title
+    totalInventory
+    tags
+    pricePerPatch: metafield(
+      key: "price_per_patch"
+      namespace: "custom"
+    ) {
+      value
+    }
     featuredImage {
       id
       altText

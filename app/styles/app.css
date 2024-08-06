@@ -289,7 +289,7 @@ button.reset:hover:not(:has(> *)) {
   font-weight: 500;
   line-height: 19.2px;
   text-align: left;
-  backdrop-filter: blur(64px);
+  backdrop-filter: blur(24px);
 }
 
 .header-menu-mobile-toggle {
@@ -502,7 +502,7 @@ button.reset:hover:not(:has(> *)) {
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 .recommended-products {
@@ -534,14 +534,27 @@ button.reset:hover:not(:has(> *)) {
   width: 23%;
   margin-left: 2.5%;
   margin-right: 2.5%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border-radius: 18px;
   border: 1px solid #ffffff;
   color: white;
+}
+
+.recommended-product > .new-tag {
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 14.19px;
+  text-align: center;
+  padding: 8px 10px 8px 10px;
+  border-radius: 31px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
 }
 
 .recommended-product > h4 {
@@ -552,6 +565,8 @@ button.reset:hover:not(:has(> *)) {
 }
 
 .recommended-product > .price {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   display: flex;
   font-size: 29.12px;
   font-weight: 400;
@@ -573,7 +588,7 @@ button.reset:hover:not(:has(> *)) {
   text-align: center;
 }
 
-.recommended-product > .start-now-button {
+.recommended-product > .purchase-button {
   padding: 20px 58px 20px 58px;
   border-radius: 104px;
   font-size: 16px;
@@ -586,8 +601,14 @@ button.reset:hover:not(:has(> *)) {
   background-color: var(--button-color);
 }
 
-.recommended-product img {
+.recommended-product > .disabled {
+  background-color: transparent;
+  border: 1px solid #FFFFFF
+}
+
+.recommended-product > img {
   height: auto;
+  margin-top: -0.5rem;
 }
 
 /*
