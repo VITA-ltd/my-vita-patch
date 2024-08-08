@@ -9,6 +9,7 @@ import type {
 } from 'storefrontapi.generated';
 import { Landing } from '~/components/HomePage/Landing';
 import { Intro } from '~/components/HomePage/Intro';
+import { Ingredients } from '~/components/HomePage/Ingredients';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Hydrogen | Home' }];
@@ -66,6 +67,7 @@ export default function Homepage() {
       <Intro />
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
+      <Ingredients />
     </div>
   );
 }
