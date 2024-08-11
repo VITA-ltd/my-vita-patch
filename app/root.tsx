@@ -1,5 +1,5 @@
-import {useNonce, getShopAnalytics, Analytics} from '@shopify/hydrogen';
-import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import { useNonce, getShopAnalytics, Analytics } from '@shopify/hydrogen';
+import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
@@ -14,8 +14,10 @@ import {
 import favicon from '~/assets/favicon.svg';
 import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
-import {PageLayout} from '~/components/PageLayout';
-import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
+import '@gfazioli/mantine-marquee/styles.css'
+import { PageLayout } from '~/components/PageLayout';
+import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments';
+import { MantineProvider } from '@mantine/core';
 
 export type RootLoader = typeof loader;
 
@@ -42,8 +44,8 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 
 export function links() {
   return [
-    {rel: 'stylesheet', href: resetStyles},
-    {rel: 'stylesheet', href: appStyles},
+    { rel: 'stylesheet', href: resetStyles },
+    { rel: 'stylesheet', href: appStyles },
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -52,7 +54,7 @@ export function links() {
       rel: 'preconnect',
       href: 'https://shop.app',
     },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    { rel: 'icon', type: 'image/svg+xml', href: favicon },
   ];
 }
 
@@ -63,7 +65,7 @@ export async function loader(args: LoaderFunctionArgs) {
   // Await the critical data required to render initial state of the page
   const criticalData = await loadCriticalData(args);
 
-  const {storefront, env} = args.context;
+  const { storefront, env } = args.context;
 
   return defer({
     ...deferredData,
@@ -84,8 +86,8 @@ export async function loader(args: LoaderFunctionArgs) {
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
-async function loadCriticalData({context}: LoaderFunctionArgs) {
-  const {storefront} = context;
+async function loadCriticalData({ context }: LoaderFunctionArgs) {
+  const { storefront } = context;
 
   const [header] = await Promise.all([
     storefront.query(HEADER_QUERY, {
@@ -107,8 +109,8 @@ async function loadCriticalData({context}: LoaderFunctionArgs) {
  * fetched after the initial page load. If it's unavailable, the page should still 200.
  * Make sure to not throw any errors here, as it will cause the page to 500.
  */
-function loadDeferredData({context}: LoaderFunctionArgs) {
-  const {storefront, customerAccount, cart} = context;
+function loadDeferredData({ context }: LoaderFunctionArgs) {
+  const { storefront, customerAccount, cart } = context;
 
   // defer the footer query (below the fold)
   const footer = storefront
@@ -130,7 +132,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
   };
 }
 
-export function Layout({children}: {children?: React.ReactNode}) {
+export function Layout({ children }: { children?: React.ReactNode }) {
   const nonce = useNonce();
   const data = useRouteLoaderData<RootLoader>('root');
 
@@ -149,7 +151,9 @@ export function Layout({children}: {children?: React.ReactNode}) {
             shop={data.shop}
             consent={data.consent}
           >
-            <PageLayout {...data}>{children}</PageLayout>
+            <MantineProvider>
+              <PageLayout {...data}>{children}</PageLayout>
+            </MantineProvider>
           </Analytics.Provider>
         ) : (
           children

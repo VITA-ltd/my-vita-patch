@@ -7,6 +7,10 @@ body {
   color: white;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 h1,
 h2,
 p {

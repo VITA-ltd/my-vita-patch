@@ -10,6 +10,7 @@ import type {
 import { Landing } from '~/components/HomePage/Landing';
 import { Intro } from '~/components/HomePage/Intro';
 import { Ingredients } from '~/components/HomePage/Ingredients';
+import { Testimonials } from '~/components/HomePage/Testimonials';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Hydrogen | Home' }];
@@ -64,6 +65,7 @@ export default function Homepage() {
   return (
     <div className="home">
       <Landing />
+      <Testimonials />
       <Intro />
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
