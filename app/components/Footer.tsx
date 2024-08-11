@@ -1,6 +1,6 @@
-import {Suspense} from 'react';
-import {Await, NavLink} from '@remix-run/react';
-import type {FooterQuery, HeaderQuery} from 'storefrontapi.generated';
+import { Suspense } from 'react';
+import { Await, NavLink } from '@remix-run/react';
+import type { FooterQuery, HeaderQuery } from 'storefrontapi.generated';
 
 interface FooterProps {
   footer: Promise<FooterQuery | null>;
@@ -18,12 +18,50 @@ export function Footer({
       <Await resolve={footerPromise}>
         {(footer) => (
           <footer className="footer">
+            <div className='footer-top'>
+              <div className='footer-top-links'>
+                <div className='footer-links-column'>
+                  <strong>Quick Links</strong>
+                  <a>Store</a>
+                  <a>Routine</a>
+                  <a>Subscribe & Save</a>
+                </div>
+                <div className='footer-links-column'>
+                  <strong>About</strong>
+                  <a>About Us</a>
+                  <a>Philosophy</a>
+                  <a>Refill & Sustainability</a>
+                  <a>VITA® Chief Nutritionist</a>
+                </div>
+                <div className='footer-links-column'>
+                  <strong>Support & Contact</strong>
+                  <a>FAQs</a>
+                  <a>Track Your Order</a>
+                  <a>Shipping & Returns</a>
+                  <a>Consumer Perception Studies</a>
+                  <a>Contacts</a>
+                </div>
+
+                <div className='footer-email-column'>
+                  <strong>Join the Party</strong>
+                  <span>Be the first to receive VITA® announcements and product updates.</span>
+
+                  <span className='footer-form-label'>Email Address</span>
+                  <form>
+                    <input id="email-address" placeholder='Email Address' />
+                    <button>Sign Up</button>
+                  </form>
+                </div>
+              </div>
+
+              <div className='footer-logo'>
+                <img src='/vita.svg' />
+                <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
+              </div>
+            </div>
+
             {footer?.menu && header.shop.primaryDomain?.url && (
-              <FooterMenu
-                menu={footer.menu}
-                primaryDomainUrl={header.shop.primaryDomain.url}
-                publicStoreDomain={publicStoreDomain}
-              />
+              <FooterMenuBottom />
             )}
           </footer>
         )}
@@ -32,98 +70,24 @@ export function Footer({
   );
 }
 
-function FooterMenu({
-  menu,
-  primaryDomainUrl,
-  publicStoreDomain,
-}: {
-  menu: FooterQuery['menu'];
-  primaryDomainUrl: FooterProps['header']['shop']['primaryDomain']['url'];
-  publicStoreDomain: string;
-}) {
+function FooterMenuBottom() {
   return (
     <nav className="footer-menu" role="navigation">
-      {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
-        if (!item.url) return null;
-        // if the url is internal, we strip the domain
-        const url =
-          item.url.includes('myshopify.com') ||
-          item.url.includes(publicStoreDomain) ||
-          item.url.includes(primaryDomainUrl)
-            ? new URL(item.url).pathname
-            : item.url;
-        const isExternal = !url.startsWith('/');
-        return isExternal ? (
-          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
-            {item.title}
-          </a>
-        ) : (
-          <NavLink
-            end
-            key={item.id}
-            prefetch="intent"
-            style={activeLinkStyle}
-            to={url}
-          >
-            {item.title}
-          </NavLink>
-        );
-      })}
+      <a className='footer-link-bottom'>
+        Terms & Conditions
+      </a>
+      <a className='footer-link-bottom'>
+        Privacy Policy
+      </a>
+      <a className='footer-link-bottom'>
+        Accessibility
+      </a>
+      <a className='footer-link-bottom'>
+        Consent Preferences
+      </a>
+      <span className='footer-copywrite'>
+        © 2024 Vita, All Rights Reserved.
+      </span>
     </nav>
   );
-}
-
-const FALLBACK_FOOTER_MENU = {
-  id: 'gid://shopify/Menu/199655620664',
-  items: [
-    {
-      id: 'gid://shopify/MenuItem/461633060920',
-      resourceId: 'gid://shopify/ShopPolicy/23358046264',
-      tags: [],
-      title: 'Privacy Policy',
-      type: 'SHOP_POLICY',
-      url: '/policies/privacy-policy',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461633093688',
-      resourceId: 'gid://shopify/ShopPolicy/23358013496',
-      tags: [],
-      title: 'Refund Policy',
-      type: 'SHOP_POLICY',
-      url: '/policies/refund-policy',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461633126456',
-      resourceId: 'gid://shopify/ShopPolicy/23358111800',
-      tags: [],
-      title: 'Shipping Policy',
-      type: 'SHOP_POLICY',
-      url: '/policies/shipping-policy',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461633159224',
-      resourceId: 'gid://shopify/ShopPolicy/23358079032',
-      tags: [],
-      title: 'Terms of Service',
-      type: 'SHOP_POLICY',
-      url: '/policies/terms-of-service',
-      items: [],
-    },
-  ],
-};
-
-function activeLinkStyle({
-  isActive,
-  isPending,
-}: {
-  isActive: boolean;
-  isPending: boolean;
-}) {
-  return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'white',
-  };
 }
