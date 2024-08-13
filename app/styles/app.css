@@ -184,7 +184,7 @@ img {
 
 /*
 * --------------------------------------------------
-* components/Home/Ingredients
+* components/Home/Testimonials
 * --------------------------------------------------
 */
 .home-testimonials {
@@ -221,6 +221,77 @@ img {
 
 .home-testimonial > span::after {
   content: "”";
+}
+
+/*
+* --------------------------------------------------
+* components/Home/Gallery
+* --------------------------------------------------
+*/
+.home-gallery {
+  width: calc(100vw - 64px);
+  margin-left: 32px;
+}
+
+.home-gallery-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25.89px;
+  font-weight: 400;
+  line-height: 31.07px;
+}
+
+.home-gallery-top > a {
+  color: white;
+}
+
+.home-gallery-hashtag {
+  margin: 0;
+  font-size: 67.78px;
+  font-weight: 400;
+  line-height: 80.86px;
+}
+
+.home-image-gallery-top {
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-between;
+  height: calc(50vw - 44px);
+  margin-bottom: 12px;
+}
+
+.home-image-gallery-top > img {
+  width: calc(50% - 6px);
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.home-image-gallery-bottom {
+  display: flex;
+  justify-content: space-between;
+  height: calc(33.3333vw - 44px);
+}
+
+.home-image-gallery-bottom > img {
+  width: calc(33.3333% - 8px);
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.home-gallery-upload-button {
+  width: 35vw;
+  margin-left: calc(32.5vw - 32px);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  height: 4rem;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 137px;
+  background-color: white;
 }
 
 /*
@@ -537,7 +608,7 @@ button.reset:hover:not(:has(> *)) {
   outline: none;
   margin: 0;
   padding: 16px 0px 16px 24px;
-  border: 1px solid #2ED38D;
+  border: 1px solid #2ed38d;
   border-right: none;
   border-radius: 200px 0px 0px 200px;
   font-size: 18px;
