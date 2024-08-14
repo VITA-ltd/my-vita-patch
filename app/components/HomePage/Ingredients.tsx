@@ -4,6 +4,7 @@ export function Ingredients() {
   return (
     <section className="home-ingredients">
       <div className="ingredients-gradient" />
+      <div className="ingredients-gradient-hover" />
 
       <div className="ingredients-backgound">
         <img src="/ingredients 1.jpeg" />
