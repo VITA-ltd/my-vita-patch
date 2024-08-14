@@ -23,8 +23,9 @@ export async function loader(args: LoaderFunctionArgs) {
 
   // Await the critical data required to render initial state of the page
   const criticalData = await loadCriticalData(args);
+  const testimonials = await loadTestimonials(args);
 
-  return defer({ ...deferredData, ...criticalData });
+  return defer({ ...deferredData, ...criticalData, ...testimonials });
 }
 
 /**
@@ -61,6 +62,20 @@ function loadDeferredData({ context }: LoaderFunctionArgs) {
   };
 }
 
+function loadTestimonials({ context }: LoaderFunctionArgs) {
+  const testimonials = context.storefront
+    .query(TESTIMONIALS_QUERY, { variables: { first: 10 } })
+    .catch((error) => {
+      // Log query errors, but don't throw them so the page can still render
+      console.error(error);
+      return null;
+    });
+
+  return {
+    testimonials,
+  };
+}
+
 export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
@@ -68,7 +83,6 @@ export default function Homepage() {
       <Landing />
       <Testimonials />
       <Intro />
-      {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
       <Ingredients />
       <Gallery />
@@ -176,37 +190,6 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   }
 ` as const;
 
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-  fragment RecommendedProduct on Product {
-    id
-    title
-    handle
-    priceRange {
-      minVariantPrice {
-        amount
-        currencyCode
-      }
-    }
-    images(first: 1) {
-      nodes {
-        id
-        url
-        altText
-        width
-        height
-      }
-    }
-  }
-  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...RecommendedProduct
-      }
-    }
-  }
-` as const;
-
 const PRODUCT_ITEM_FRAGMENT = `#graphql
   fragment MoneyProductItem on MoneyV2 {
     amount
@@ -290,6 +273,33 @@ const COLLECTION_QUERY = `#graphql
           endCursor
           startCursor
         }
+      }
+    }
+  }
+` as const;
+
+const TESTIMONIALS_QUERY = `#graphql
+  fragment Testimonial on Metaobject {
+    id
+    handle
+    fields {
+      key
+      value
+      reference {
+        ... on MediaImage {
+          image {
+            url
+          }
+        }
+      }
+    }
+  }
+  query Metaobject(
+    $first: Int
+  ) {
+    metaobjects(type: "testimonial", first: $first, reverse: true) {
+      nodes {
+        ...Testimonial
       }
     }
   }
