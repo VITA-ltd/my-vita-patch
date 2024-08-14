@@ -24,8 +24,9 @@ export async function loader(args: LoaderFunctionArgs) {
   // Await the critical data required to render initial state of the page
   const criticalData = await loadCriticalData(args);
   const testimonials = await loadTestimonials(args);
+  const galleryImages = await loadGalleryImages(args);
 
-  return defer({ ...deferredData, ...criticalData, ...testimonials });
+  return defer({ ...deferredData, ...criticalData, ...testimonials, ...galleryImages });
 }
 
 /**
@@ -73,6 +74,20 @@ function loadTestimonials({ context }: LoaderFunctionArgs) {
 
   return {
     testimonials,
+  };
+}
+
+function loadGalleryImages({ context }: LoaderFunctionArgs) {
+  const galleryImages = context.storefront
+    .query(GALLERY_QUERY, { variables: { first: 5 } })
+    .catch((error) => {
+      // Log query errors, but don't throw them so the page can still render
+      console.error(error);
+      return null;
+    });
+
+  return {
+    galleryImages,
   };
 }
 
@@ -300,6 +315,31 @@ const TESTIMONIALS_QUERY = `#graphql
     metaobjects(type: "testimonial", first: $first, reverse: true) {
       nodes {
         ...Testimonial
+      }
+    }
+  }
+` as const;
+
+const GALLERY_QUERY = `#graphql
+  fragment GalleryImage on Metaobject {
+    id
+    handle
+    fields {
+      reference {
+        ... on MediaImage {
+          image {
+            url
+          }
+        }
+      }
+    }
+  }
+  query Metaobject(
+    $first: Int
+  ) {
+    metaobjects(type: "vita_gallery_image", first: $first, sortKey: "UPDATED_AT", reverse: true) {
+      nodes {
+        ...GalleryImage
       }
     }
   }
