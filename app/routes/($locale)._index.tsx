@@ -12,6 +12,7 @@ import { Intro } from '~/components/HomePage/Intro';
 import { Ingredients } from '~/components/HomePage/Ingredients';
 import { Testimonials } from '~/components/HomePage/Testimonials';
 import { Gallery } from '~/components/HomePage/Gallery';
+import { CustomerTestimonials } from '~/components/HomePage/CustomerTestimonials';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Hydrogen | Home' }];
@@ -96,8 +97,9 @@ export default function Homepage() {
   return (
     <div className="home">
       <Landing />
-      <Testimonials />
+      <CustomerTestimonials />
       <Intro />
+      <Testimonials />
       <RecommendedProducts products={data.recommendedProducts} />
       <Ingredients />
       <Gallery />
