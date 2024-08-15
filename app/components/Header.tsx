@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Await, NavLink } from '@remix-run/react';
 import { type CartViewPayload, useAnalytics } from '@shopify/hydrogen';
 import type { HeaderQuery, CartApiQueryFragment } from 'storefrontapi.generated';
@@ -20,8 +20,20 @@ export function Header({
   publicStoreDomain,
 }: HeaderProps) {
   const { shop, menu } = header;
+  const [backgroundActive, setBackgroundActive] = useState<boolean>(false);
+
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        setBackgroundActive(true);
+      } else {
+        setBackgroundActive(false);
+      }
+    })
+  }, [])
+
   return (
-    <header className="header">
+    <header className={`header ${backgroundActive ? 'header-active' : ''}`}>
       <HeaderMenu
         menu={menu}
         viewport="desktop"

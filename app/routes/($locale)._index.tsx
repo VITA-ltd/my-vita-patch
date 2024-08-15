@@ -127,10 +127,14 @@ function RecommendedProducts({
                   const pricePerPatch = JSON.parse(product.pricePerPatch.value);
 
                   return (
-                    <Link
+                    // <Link
+                    //   key={product.id}
+                    //   className="recommended-product"
+                    //   to={`/products/${product.handle}`}
+                    // >
+                    <div
                       key={product.id}
                       className="recommended-product"
-                      to={`/products/${product.handle}`}
                     >
                       {/* @ts-ignore */}
                       {product.tags.includes("New") &&
@@ -160,18 +164,23 @@ function RecommendedProducts({
                         />
                       }
 
-                      {/* @ts-ignore */}
-                      <button disabled={product.totalInventory <= 0} className={`purchase-button ${product.totalInventory <= 0 && 'disabled'}`}>
+                      <Link
+                        key={product.id}
+                        /* @ts-ignore */
+                        className={`purchase-button ${product.totalInventory <= 0 && 'disabled'}`}
+                        /* @ts-ignore */
+                        to={product.totalInventory <= 0 ? '' : `/products/${product.handle}`}
+                      >
                         {/* @ts-ignore */}
                         {product.tags.includes("Coming Soon") ? "Coming Soon" : product.totalInventory > 0 ? "Start Now" : "Email When Availabe"}
-                      </button>
+                      </Link>
 
                       <p className='product-description'>
                         60-day Money Back Guarantee<br />
                         Pause or Cancel Anytime<br />
                         Free Welcome Kit
                       </p>
-                    </Link>
+                    </div>
                   )
                 })
                 : null}

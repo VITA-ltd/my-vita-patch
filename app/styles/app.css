@@ -7,6 +7,8 @@
   --color-dark: #000;
   --color-light: #fff;
   --button-color: #2dcb89;
+  --button-color-hover: #229967;
+  --link-active: #DEDEDE;
 }
 
 img {
@@ -71,6 +73,13 @@ img {
   text-align: center;
   color: white;
   background-color: var(--button-color);
+  transition: background-color 0.3s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+}
+
+.home-landing-content > a:hover {
+  text-decoration: none;
+  background-color: var(--button-color-hover);
 }
 
 /*
@@ -215,6 +224,10 @@ img {
   background-color: white;
 }
 
+.home-ingredients:hover > .ingredients-button:active {
+  background: #EEEEEE;
+}
+
 /*
 * --------------------------------------------------
 * components/Home/Testimonials
@@ -274,10 +287,6 @@ img {
   font-size: 25.89px;
   font-weight: 400;
   line-height: 31.07px;
-}
-
-.home-gallery-top > a {
-  color: white;
 }
 
 .home-gallery-hashtag {
@@ -341,6 +350,7 @@ img {
   align-items: center;
   justify-content: center;
   background-color: white;
+  color: black;
   white-space: nowrap;
   transition:
     width 0.3s,
@@ -441,7 +451,7 @@ img {
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
-  color: #B9B9B9;
+  color: #b9b9b9;
 }
 
 /*
@@ -562,17 +572,23 @@ aside li {
 .header {
   width: calc(100vw - 64px);
   align-items: center;
-  background: #000000e0;
+  background-color: #00000000;
   display: flex;
   justify-content: space-between;
   height: var(--header-height);
   padding: 0 32px;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.2px;
+  backdrop-filter: blur(0px);
+  transition: background-color 0.3s, backdrop-filter 0.3s;
+}
+
+.header-active {
+  background-color: #000000e0;
   backdrop-filter: blur(24px);
 }
 
@@ -614,7 +630,6 @@ aside li {
 .header-ctas > a {
   font-family: inherit;
   height: 19.2px;
-  color: white;
   font-size: 16px;
   font-weight: 500;
   line-height: 19.2px;
@@ -639,6 +654,7 @@ aside li {
 */
 .footer {
   width: calc(100vw - 64px);
+  height: calc(100vh - var(--header-height) - 32px);
   background: var(--color-dark);
   margin-top: auto;
   margin-bottom: 32px;
@@ -647,7 +663,7 @@ aside li {
 
 .footer-menu {
   border-top: 1px solid #555555;
-  padding-top: 32px;
+  padding-top: 40px;
   align-items: center;
   display: flex;
 }
@@ -688,6 +704,7 @@ aside li {
 }
 
 .footer-top {
+  height: calc(100% - var(--header-height) - 32px);
   background-image: url("/footerLogo.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -707,7 +724,6 @@ aside li {
 }
 
 .footer-links-column > a {
-  color: white;
   margin-top: 1em;
 }
 
@@ -742,13 +758,20 @@ aside li {
   outline: none;
   margin: 0;
   padding: 16px 0px 16px 24px;
-  border: 1px solid #2ed38d;
+  border: 1px solid #2ed38d90;
   border-right: none;
   border-radius: 200px 0px 0px 200px;
   font-size: 18px;
   font-weight: 400;
   line-height: 21.6px;
   color: #ffffff80 !important;
+  transition: border 0.3s, margin 0.3s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+}
+
+.footer-email-column > form > input:focus {
+  border: 2px solid #2ed38d;
+  margin-top: -1px;
 }
 
 .footer-email-column > form > button {
@@ -763,6 +786,15 @@ aside li {
   outline: none;
   white-space: nowrap;
   border-radius: 200px;
+  transition: background-color 0.3s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+  z-index: 1;
+}
+
+.footer-email-column > form > button:hover {
+  text-decoration: none;
+  background-color: var(--button-color-hover);
+  cursor: pointer;
 }
 
 /*
@@ -996,11 +1028,19 @@ aside li {
   text-align: center;
   color: white;
   background-color: var(--button-color);
+  transition: background-color 0.3s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+}
+
+.recommended-product > .purchase-button:hover {
+  text-decoration: none;
+  background-color: var(--button-color-hover);
 }
 
 .recommended-product > .disabled {
-  background-color: transparent;
+  background-color: transparent !important;
   border: 1px solid #ffffff;
+  cursor: default;
 }
 
 .recommended-product > img {
