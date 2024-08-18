@@ -8,7 +8,7 @@
   --color-light: #fff;
   --button-color: #2dcb89;
   --button-color-hover: #229967;
-  --link-active: #DEDEDE;
+  --link-active: #dedede;
 }
 
 img {
@@ -45,7 +45,7 @@ img {
   padding: 8px 10px 8px 10px;
   border-radius: 35px;
   border: 1px solid #ffffff;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 14.19px;
 }
@@ -59,15 +59,15 @@ img {
 
 .home-landing-content > p {
   margin-bottom: 2rem;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 19.2px;
 }
 
 .home-landing-content > a {
-  padding: 16px 52px 16px 52px;
+  padding: 1rem 3.25rem 1rem 3.25rem;
   border-radius: 69px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 19.2px;
   text-align: center;
@@ -134,15 +134,15 @@ img {
   font-weight: 400;
   line-height: 41.89px;
   margin: 0;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .home-intro-description > p {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
   line-height: 24px;
   margin: 0;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 /*
@@ -200,9 +200,9 @@ img {
   padding: 10px 20px 10px 20px;
   border-radius: 710px;
   border: 1px solid #ffffff;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 21.6px;
+  line-height: 1.35rem;
   color: white;
   background-color: transparent;
   transition:
@@ -225,7 +225,7 @@ img {
 }
 
 .home-ingredients:hover > .ingredients-button:active {
-  background: #EEEEEE;
+  background: #eeeeee;
 }
 
 /*
@@ -247,7 +247,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 19.09px;
   text-align: center;
@@ -331,9 +331,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 21.6px;
+  line-height: 1.35rem;
   text-align: center;
   border: none;
   outline: none;
@@ -404,7 +404,7 @@ img {
 
 /*
 * --------------------------------------------------
-* components/Home/Gallery
+* components/Home/Testimonials
 * --------------------------------------------------
 */
 .home-customer-testimonials {
@@ -418,9 +418,9 @@ img {
 .customer-testimonial-stars {
   display: flex;
   flex-direction: column;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 21.6px;
+  line-height: 1.35rem;
 }
 
 .customer-testimonial-stars > svg {
@@ -448,10 +448,100 @@ img {
 }
 
 .customer-testimonial > span {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 19.2px;
   color: #b9b9b9;
+}
+
+/*
+* --------------------------------------------------
+* components/Home/Benefits
+* --------------------------------------------------
+*/
+.home-benefits {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  perspective: 0;
+}
+
+.benefits-header {
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.benefits-header > img {
+  width: 100%;
+  height: 35rem;
+  position: absolute;
+  object-fit: cover;
+  object-position: center 20%;
+  z-index: -1;
+}
+
+.benefits-gradient {
+  width: 100%;
+  height: 35rem;
+  position: absolute;
+  object-fit: cover;
+  z-index: -1;
+  background: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 92.94%);
+}
+
+.benefits-header > h1 {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 2.945rem;
+  font-weight: 900;
+  line-height: 3.53375rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.benefits-header > p {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.35rem;
+  text-align: center;
+}
+
+.benefits-descriptions {
+  display: flex;
+  padding: 6rem 0px 6rem 0px;
+}
+
+.benefits-descriptions > div {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.benefits-descriptions > div > img {
+  margin-bottom: 2rem;
+}
+
+.benefits-descriptions > div > h3 {
+  margin: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.35rem;
+  letter-spacing: 0.02em;
+}
+
+.benefits-descriptions > div > p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 /*
@@ -580,11 +670,13 @@ aside li {
   position: fixed;
   top: 0;
   z-index: 2;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 19.2px;
   backdrop-filter: blur(0px);
-  transition: background-color 0.3s, backdrop-filter 0.3s;
+  transition:
+    background-color 0.3s,
+    backdrop-filter 0.3s;
 }
 
 .header-active {
@@ -630,7 +722,7 @@ aside li {
 .header-ctas > a {
   font-family: inherit;
   height: 19.2px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 19.2px;
   background-color: transparent;
@@ -657,7 +749,7 @@ aside li {
   height: calc(100vh - var(--header-height) - 32px);
   background: var(--color-dark);
   margin-top: auto;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   padding-left: 32px;
 }
 
@@ -670,7 +762,7 @@ aside li {
 
 .footer-link-bottom,
 .footer-copywrite {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 19.2px;
   margin-right: 1em;
@@ -683,7 +775,7 @@ aside li {
 }
 
 .footer-logo {
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -760,15 +852,17 @@ aside li {
   border: none;
   outline: none;
   margin: 0;
-  padding: 16px 0px 16px 24px;
+  padding: 1rem 0px 1rem 1.5rem;
   border: 1px solid #2ed38d90;
   border-right: none;
   border-radius: 200px 0px 0px 200px;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 21.6px;
+  line-height: 1.35rem;
   color: #ffffff80 !important;
-  transition: border 0.3s, margin 0.3s;
+  transition:
+    border 0.3s,
+    margin 0.3s;
   transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 }
 
@@ -778,11 +872,11 @@ aside li {
 }
 
 .footer-email-column > form > button {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
-  line-height: 21.6px;
+  line-height: 1.35rem;
   margin-left: -3em;
-  padding: 16px 24px 16px 24px;
+  padding: 1rem 1.5rem 1rem 1.5rem;
   background: #2ed38d;
   color: white;
   border: none;
@@ -979,7 +1073,7 @@ aside li {
 
 .recommended-product > .new-tag {
   margin-bottom: 0.5rem;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 14.19px;
   text-align: center;
@@ -990,7 +1084,7 @@ aside li {
 }
 
 .recommended-product > h4 {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
   line-height: 15.96px;
   text-align: center;
@@ -1014,16 +1108,16 @@ aside li {
 
 .recommended-product > .product-description {
   margin-top: 1.25em;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 21.6px;
+  line-height: 1.35rem;
   text-align: center;
 }
 
 .recommended-product > .purchase-button {
   padding: 20px 58px 20px 58px;
   border-radius: 104px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 14.19px;
   border: none;
