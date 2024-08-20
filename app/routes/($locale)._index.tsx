@@ -102,8 +102,8 @@ export default function Homepage() {
       <Intro />
       <Testimonials />
       <RecommendedProducts products={data.recommendedProducts} />
-      {/* <Ingredients /> */}
       <Benefits />
+      <Ingredients />
       <Gallery />
     </div>
   );

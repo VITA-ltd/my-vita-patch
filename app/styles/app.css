@@ -151,8 +151,34 @@ img {
 * --------------------------------------------------
 */
 .home-ingredients {
-  margin-top: 10rem;
   width: 100vw;
+  perspective: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredients-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.75rem 2rem 3.75rem 2rem;
+}
+
+.ingredients-description > h2 {
+  font-size: 2.618125rem;
+  font-weight: 400;
+  line-height: 3.141875rem;
+}
+
+.ingredients-description > p {
+  width: 30vw;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.35rem;
+}
+
+.ingredients-showcase {
+  width: 100%;
   height: 45vh;
   perspective: 0;
   display: flex;
@@ -211,20 +237,20 @@ img {
   transition-timing-function: cubic-bezier(0.75, 0.01, 0.25, 1);
 }
 
-.home-ingredients:hover > .ingredients-gradient {
+.ingredients-showcase:hover > .ingredients-gradient {
   opacity: 0;
 }
 
-.home-ingredients:hover > .ingredients-gradient-hover {
+.ingredients-showcase:hover > .ingredients-gradient-hover {
   opacity: 1;
 }
 
-.home-ingredients:hover > .ingredients-button {
+.ingredients-showcase:hover > .ingredients-button {
   color: black;
   background-color: white;
 }
 
-.home-ingredients:hover > .ingredients-button:active {
+.ingredients-showcase:hover > .ingredients-button:active {
   background: #eeeeee;
 }
 
