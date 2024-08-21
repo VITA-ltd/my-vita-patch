@@ -811,8 +811,25 @@ aside li {
   width: 24%;
 }
 
-.footer-logo > p {
-  width: 24%;
+.footer-disclaimer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footer-payments-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.footer-payments-container > img {
+  width: 4rem;
+  margin-left: 1rem;
+}
+
+.footer-disclaimer-container > p {
+  width: 45%;
   padding: 10px;
   border: 1px solid #555555;
   font-size: 14px;

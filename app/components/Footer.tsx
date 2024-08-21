@@ -56,7 +56,17 @@ export function Footer({
 
               <div className='footer-logo'>
                 <img src='/vita.svg' />
-                <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
+
+                <div className='footer-disclaimer-container'>
+                  <div className='footer-payments-container'>
+                    <img src='/visa.png' />
+                    <img src='/mastercard.png' />
+                    <img src='/paypal.png' />
+                    <img src='/applepay.png' />
+                    <img src='/shoppay.png' />
+                  </div>
+                  <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
+                </div>
               </div>
             </div>
 
