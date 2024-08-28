@@ -8,7 +8,7 @@ export function Gallery() {
   return (<section className="home-gallery">
     <div className="home-gallery-top">
       <span>Join The Movement</span>
-      <a>View Full Gallery</a>
+      <a>View Full Gallery <img src="/arrow.svg" /></a>
     </div>
     <h3 className="home-gallery-hashtag">#VITApatch</h3>
 

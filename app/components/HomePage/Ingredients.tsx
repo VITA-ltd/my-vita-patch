@@ -5,8 +5,8 @@ export function Ingredients() {
     <section className="home-ingredients">
       <div className="ingredients-description">
         <h2>
-          <strong>HODAF Blend</strong><br />
-          A Synergy of Nature’s Best
+          <strong>Formulated to Heal.</strong><br />
+          A Synergy of Nature’s Best*
         </h2>
         <p>
           Discover how we developed a transdermal formulation<br/>

@@ -4,8 +4,8 @@ export function Intro() {
   return (
     <section className="home-intro">
       <div className="home-intro-banner">
-        <div className="home-intro-banner-gradient" />
-        <img src="/intro.png" />
+        {/* <div className="home-intro-banner-gradient" /> */}
+        <img src="/intro.jpeg" />
       </div>
       <div className="home-intro-description">
         <h2>

@@ -10,6 +10,18 @@
   --button-color-hover: #229967;
   --link-active: #dedede;
   --green-background: #051512;
+  --green-text: #A0E2C7;
+}
+
+@font-face {
+  font-family: "Cardinal Fruit";
+  src: url("../fonts/cardinal-fruit.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Geigy";
+  src: url("../fonts/GeigyLLTrialTT-Regular.woff2") format("woff2");
+  unicode-range: U+20-21, U+3F, U+41-5A, U+61-7A;
 }
 
 /*
@@ -85,11 +97,12 @@
 * --------------------------------------------------
 */
 .home-intro {
-  padding-top: 0;
+  padding: 0;
   width: 100vw;
   height: fit-content;
   display: flex;
   align-items: stretch;
+  background-color: var(--green-background);
 }
 
 .home-intro-banner {
@@ -127,11 +140,13 @@
 }
 
 .home-intro-description > h2 {
-  font-size: 2.618125rem;
-  font-weight: 400;
-  line-height: 2.618125rem;
+  font-family: "Cardinal Fruit";
+  font-size: 2.945rem;
+  font-weight: 500;
+  line-height: 2.945rem;
   margin: 0;
   margin-bottom: 2rem;
+  color: var(--green-text);
 }
 
 .home-intro-description > p {
@@ -152,6 +167,8 @@
   perspective: 0;
   display: flex;
   flex-direction: column;
+  padding: 0;
+  background-color: var(--green-background);
 }
 
 .ingredients-description {
@@ -162,9 +179,20 @@
 }
 
 .ingredients-description > h2 {
+  font-family: "Cardinal Fruit";
   font-size: 2.618125rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 3.141875rem;
+  color: var(--green-text);
+}
+
+.ingredients-description > h2 > strong {
+  font-family: "Geigy";
+  font-size: 2.618125rem;
+  font-weight: 700;
+  line-height: 3.141875rem;
+  color: white;
+  letter-spacing: -1%;
 }
 
 .ingredients-description > p {
@@ -172,6 +200,10 @@
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.35rem;
+}
+
+.ingredients-description > p > strong {
+  color: var(--green-text);
 }
 
 .ingredients-showcase {
@@ -257,7 +289,7 @@
 * --------------------------------------------------
 */
 .home-testimonials {
-  height: 20vh !important;
+  height: 30vh !important;
 }
 
 .home-testimonial {
@@ -265,7 +297,7 @@
   max-width: 12vw;
   margin-left: 1vw;
   margin-right: 1vw;
-  height: 20vh;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -301,7 +333,10 @@
 */
 .home-gallery {
   width: calc(100vw - 4rem);
-  margin-left: 2rem;
+  padding-top: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-image: linear-gradient(0deg, transparent 0%, var(--green-background) 100%);
 }
 
 .home-gallery-top {
@@ -312,10 +347,14 @@
   line-height: 1.941875rem;
 }
 
+.home-gallery-top > a > img {
+  margin-left: 0.5em;
+}
+
 .home-gallery-hashtag {
   margin: 0;
   font-size: 4.23625rem;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 5.05375rem;
 }
 
@@ -483,6 +522,7 @@
 * --------------------------------------------------
 */
 .home-benefits {
+  padding: 0;
   height: fit-content;
   display: flex;
   flex-direction: column;

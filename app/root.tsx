@@ -14,6 +14,8 @@ import {
 import favicon from '~/assets/favicon.svg';
 import resetStyles from '~/styles/reset.css?url';
 import appStyles from '~/styles/app.css?url';
+import "./fonts/cardinal-fruit.woff2";
+import "./fonts/GeigyLLTrialTT-Regular.woff2";
 import 'swiper/css'
 import '@gfazioli/mantine-marquee/styles.css'
 import { PageLayout } from '~/components/PageLayout';
