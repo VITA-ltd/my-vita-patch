@@ -9,6 +9,7 @@
   --button-color: #2dcb89;
   --button-color-hover: #229967;
   --link-active: #dedede;
+  --green-background: #051512;
 }
 
 /*
@@ -464,7 +465,7 @@
   width: 75%;
   font-size: 1.618125rem;
   font-weight: 400;
-  line-height: 30.80.5rem;
+  line-height: 30.8.5rem;
   margin-bottom: 0.4em;
   margin-top: 1em;
 }
@@ -564,6 +565,65 @@
   line-height: 1.2rem;
   letter-spacing: 0.02em;
   margin: 0;
+}
+
+/*
+* --------------------------------------------------
+* components/Home/Benefits
+* --------------------------------------------------
+*/
+.home-featured {
+  background-color: var(--green-background);
+  padding: 4rem 0px 4rem 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.home-featured > img {
+  width: 50vw !important;
+  height: 50vw !important;
+  margin-top: -7.5vw;
+  margin-bottom: -7.5vw;
+  mix-blend-mode: screen;
+  transform: rotate(90deg);
+  object-fit: contain;
+}
+
+.featured-info {
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+.featured-info > h1 {
+  font-size: 4.23625rem;
+  font-weight: 400;
+  line-height: 5.083125rem;
+  letter-spacing: -0.035em;
+}
+
+.featured-info > h1 > img {
+  display: inline;
+  line-height: 5.083125rem;
+}
+
+.featured-info > h1 > img:first-of-type {
+  margin-left: 0.25em;
+}
+
+.featured-info > .details, .featured-info > .details > span {
+  display: flex;
+  font-size: 1.125rem;
+}
+
+.featured-info > .details > span > .default-price {
+  text-decoration: line-through;
+  margin-left: 0.5em;
+  color: #717171;
+}
+
+.featured-info > .details > * {
+  margin-right: 3.6875rem;
 }
 
 /*
@@ -755,10 +815,9 @@ aside li {
   height: 56.66666%;
 }
 
-.header-logo> img {
+.header-logo > img {
   height: 100%;
 }
-
 
 .cart-count {
   padding: 0.1em 0.5em 0.1em 0.5em;

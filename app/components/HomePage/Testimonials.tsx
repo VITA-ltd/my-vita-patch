@@ -18,7 +18,7 @@ export function Testimonials() {
                     <div className="home-testimonial" key={i}>
                       {testimonial.fields.map((field, i: number) => {
                         if (field.key === 'logo' && field.reference) {
-                          return <img src={field.reference.image.url} key={i}/>
+                          return <img src={field.reference.image.url} key={i} />
                         } else if (field.key === 'quote') {
                           return <span key={i}>{field.value}</span>
                         }

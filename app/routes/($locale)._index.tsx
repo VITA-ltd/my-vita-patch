@@ -10,6 +10,7 @@ import { Gallery } from '~/components/HomePage/Gallery';
 import { CustomerTestimonials } from '~/components/HomePage/CustomerTestimonials';
 import { Benefits } from '~/components/HomePage/Benefits';
 import { FeaturedProduct, GalleryImage, pricePerPatch, Testimonial } from 'types';
+import { Featured } from '~/components/HomePage/Featured';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Hydrogen | Home' }];
@@ -71,7 +72,8 @@ export default function Homepage() {
       <CustomerTestimonials />
       <Intro />
       <Testimonials />
-      <RecommendedProducts products={data.featuredProducts} />
+      <Featured />
+      {/* <RecommendedProducts products={data.featuredProducts} /> */}
       <Benefits />
       <Ingredients />
       <Gallery />
