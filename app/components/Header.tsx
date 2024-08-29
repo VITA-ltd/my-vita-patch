@@ -23,13 +23,16 @@ export function Header({
   const [backgroundActive, setBackgroundActive] = useState<boolean>(false);
 
   useEffect(() => {
-    document.addEventListener('scroll', () => {
+    const scrollListener = () => {
       if (window.scrollY > 60) {
         setBackgroundActive(true);
       } else {
         setBackgroundActive(false);
       }
-    })
+    }
+
+    document.addEventListener('scroll', scrollListener)
+    scrollListener();
   }, [])
 
   return (
