@@ -10,7 +10,7 @@
   --button-color-hover: #229967;
   --link-active: #dedede;
   --green-background: #051512;
-  --green-text: #A0E2C7;
+  --green-text: #a0e2c7;
 }
 
 @font-face {
@@ -651,7 +651,8 @@
   margin-left: 0.25em;
 }
 
-.featured-info > .details, .featured-info > .details > span {
+.featured-info > .details,
+.featured-info > .details > span {
   display: flex;
   font-size: 1.125rem;
 }
@@ -664,6 +665,299 @@
 
 .featured-info > .details > * {
   margin-right: 3.6875rem;
+}
+
+/*
+* --------------------------------------------------
+* components/Home/Benefits
+* --------------------------------------------------
+*/
+.shop-main {
+  width: 100vw;
+  display: flex;
+}
+
+.shop-main > img {
+  width: 50vw;
+  height: calc(100vh - var(--header-height));
+  object-fit: contain;
+  position: sticky;
+  top: var(--header-height);
+}
+
+.main-info {
+  width: calc(37.5vw - 12rem);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 6rem 2rem 6rem;
+}
+
+.main-info > h1 {
+  font-size: 2.945rem;
+  font-weight: 500;
+  line-height: 3.53375rem;
+  letter-spacing: -1.5px;
+  margin-bottom: 1rem;
+}
+
+.main-info > strong {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35rem;
+}
+
+.main-info > p {
+  width: 80%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+}
+
+.main-info > form {
+  width: 100%;
+  margin-top: 2rem;
+  border: 1px solid white;
+  border-radius: 6px;
+}
+
+.main-info > form > .purchase-option {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+.main-info > form > .purchase-option:first-of-type {
+  border-bottom: 1px solid white;
+}
+
+.main-info > form > .purchase-option > input {
+  width: 1.2rem;
+  height: 1.2rem;
+  appearance: none;
+  background-color: var(--button-color);
+  mask-image: url("/checkbox.svg");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.main-info > form > .purchase-option > input:checked {
+  mask-image: url("/checkboxChecked.svg");
+}
+
+.main-info > form > .purchase-option > p {
+  font-size: 1.125rem;
+  line-height: 1.35rem;
+}
+
+.main-info > form > .purchase-option > p > span {
+  color: #b9b9b9;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+}
+
+.main-info > form > .selection-container {
+  width: calc(100% - 7rem);
+  padding: 0 1.5rem 0 1.5rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+}
+
+.main-info > form > .selection-container > select {
+  width: 100%;
+  padding: 1rem 0 1rem 0;
+  background-color: transparent;
+  color: white;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  border: none;
+  outline: none;
+}
+
+.main-info > form > .selection-container > select > option {
+  color: white;
+  background-color: black;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  border: none;
+}
+
+.main-info > form > ul {
+  padding: 0 2rem 0 3.6rem;
+}
+
+.main-info > form > ul > li {
+  list-style: none;
+  font-size: 0.875rem;
+  perspective: 0;
+}
+
+.main-info > form > ul > li::before {
+  height: 100%;
+  position: absolute;
+  margin-left: -1.6rem;
+  content: url("/checkCircle.svg");
+  align-content: center;
+}
+
+.main-info > form > ul > li > strong {
+  color: var(--green-text);
+}
+
+.main-info > form > ul > li > a {
+  text-decoration: underline;
+}
+
+.main-info > .add-to-cart {
+  padding: 1rem 3.25rem 1rem 3.25rem;
+  margin-top: 2rem;
+  border-radius: 69px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2rem;
+  text-align: center;
+  color: white;
+  border: none;
+  background-color: var(--button-color);
+  transition: background-color 0.3s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+  cursor: pointer;
+}
+
+.main-info > .add-to-cart:hover {
+  background-color: var(--button-color-hover);
+}
+
+.main-info > .shipping-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-info > .shipping-info > div {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.main-info > .shipping-info > div > img {
+  width: 2.375rem;
+  height: 2.375rem;
+  margin-bottom: 1rem;
+}
+
+.main-info > .shipping-info > div > p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 0.875rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.why-were-special {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: calc(100% - 4rem);
+  background-color: var(--green-background);
+  border-radius: 6px;
+  padding: 2rem;
+}
+
+.why-were-special > h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35rem;
+}
+
+.why-were-special > h3 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  margin-left: 1.6rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35rem;
+  perspective: 0;
+}
+
+.why-were-special > h3::before {
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-left: -0.8rem;
+  position: absolute;
+  background-color: white;
+  border-radius: 100%;
+  content: "";
+}
+
+.why-were-special > p {
+  margin-left: 0.625rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+}
+
+.main-info > .expandable-info {
+  max-height: 3.5rem;
+  border-top: 1px solid white;
+  overflow: hidden;
+  transition: max-height 0.6s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
+}
+
+.expandable-info.expanded {
+  max-height: 100%;
+}
+
+.main-info > .expandable-info:last-of-type {
+  border-bottom: 1px solid white;
+}
+
+.main-info > .expandable-info > h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  margin: 0;
+  height: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1rem;
+  perspective: 0;
+}
+
+.main-info > .expandable-info > h2 > button {
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+.main-info > .expandable-info > p {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.main-info > .expandable-info > p > ul {
+  margin: 0;
+}
+
+.main-info > .expandable-info > p > ul > li {
+  margin: 0;
 }
 
 /*

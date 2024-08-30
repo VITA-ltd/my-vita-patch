@@ -108,7 +108,7 @@ export function HeaderMenu({
             onClick={closeAside}
             prefetch="intent"
             style={activeLinkStyle}
-            to={url}
+            to={item.title === "Shop" ? "/shop" : url}
           >
             {item.title}
           </NavLink>
