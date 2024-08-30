@@ -10,6 +10,7 @@
   --button-color-hover: #229967;
   --link-active: #dedede;
   --green-background: #051512;
+  --green-background2: #0C2B25;
   --green-text: #a0e2c7;
 }
 
@@ -669,7 +670,7 @@
 
 /*
 * --------------------------------------------------
-* components/Home/Benefits
+* components/Shop/MainProduct
 * --------------------------------------------------
 */
 .shop-main {
@@ -944,7 +945,6 @@
   cursor: pointer;
 }
 
-
 .main-info > .expandable-info > p {
   font-size: 1rem;
   line-height: 1.2rem;
@@ -958,6 +958,92 @@
 
 .main-info > .expandable-info > p > ul > li {
   margin: 0;
+}
+
+/*
+* --------------------------------------------------
+* components/Shop/Ratings
+* --------------------------------------------------
+*/
+.shop-ratings {
+  width: 100vw;
+  padding: 2rem;
+  display: flex;
+  background-color: var(--green-background);
+}
+
+.shop-ratings > .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  margin-right: 2rem;
+}
+
+.shop-ratings > .title > h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35rem;
+  color: var(--green-text);
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.shop-ratings > .title > h1 {
+  font-family: "Cardinal Fruit";
+  font-size: 2.945rem;
+  font-weight: 500;
+  line-height: 2.945rem;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.shop-ratings > .title > img {
+  height: 3rem;
+}
+
+.shop-ratings > .rating {
+  width: calc(20% - 4.5rem);
+  height: fit-content;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: var(--green-background2);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.shop-ratings > .rating > img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.shop-ratings > .rating > .stars {
+  width: 50%;
+  aspect-ratio: unset;
+  object-fit: unset;
+}
+
+.shop-ratings > .rating > p {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.shop-ratings > .rating > .customer-name {
+  display: flex;
+  align-items: center;
+  font-size: 0.94375rem;
+  line-height: 1.125rem;
+}
+
+.shop-ratings > .rating > .customer-name > img {
+  margin-left: 0.75rem;
 }
 
 /*

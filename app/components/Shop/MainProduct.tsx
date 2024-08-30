@@ -99,7 +99,7 @@ export function MainProduct() {
               <div className={`expandable-info ${openInfo === 1 ? 'expanded' : ''}`}>
                 <h2>
                   HOW TO USE
-                  <button onClick={() => { setOpenInfo(openInfo === null ? 1 : null) }}>
+                  <button onClick={() => { setOpenInfo(openInfo === 1 ? null : 1) }}>
                     <img src={openInfo === 1 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
                   </button>
                 </h2>
@@ -117,7 +117,7 @@ export function MainProduct() {
               <div className={`expandable-info ${openInfo === 2 ? 'expanded' : ''}`}>
                 <h2>I
                   NGREDIENTS
-                  <button onClick={() => { setOpenInfo(openInfo === null ? 2 : null) }}>
+                  <button onClick={() => { setOpenInfo(openInfo === 2 ? null : 2) }}>
                     <img src={openInfo === 2 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
                   </button>
                 </h2>
@@ -146,7 +146,7 @@ export function MainProduct() {
               <div className={`expandable-info ${openInfo === 3 ? 'expanded' : ''}`}>
                 <h2>
                   CAUTION
-                  <button onClick={() => { setOpenInfo(openInfo === null ? 3 : null) }}>
+                  <button onClick={() => { setOpenInfo(openInfo === 3 ? null : 3) }}>
                     <img src={openInfo === 3 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
                   </button>
                 </h2>

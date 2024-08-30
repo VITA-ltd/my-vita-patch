@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { Image, Money } from '@shopify/hydrogen';
 import { FeaturedProduct, GalleryImage, pricePerPatch, Testimonial } from 'types';
 import { MainProduct } from '~/components/Shop/MainProduct';
+import { Ratings } from '~/components/Shop/Ratings';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Hydrogen | Shop' }];
@@ -34,6 +35,7 @@ export default function Shop() {
   return (
     <div className="shop">
       <MainProduct />
+      <Ratings />
     </div>
   );
 }
