@@ -10,7 +10,7 @@ export function Gallery() {
       <span>Join The Movement</span>
       <a>View Full Gallery <img src="/arrow.svg" /></a>
     </div>
-    <h3 className="home-gallery-hashtag">#VITApatch</h3>
+    <h3 className="home-gallery-hashtag"><i>#</i>VITApatch</h3>
 
     <Suspense fallback={<div>Loading...</div>}>
       <Await resolve={data.galleryImages}>
