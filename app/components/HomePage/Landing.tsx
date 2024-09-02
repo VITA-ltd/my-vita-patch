@@ -23,7 +23,7 @@ export function Landing() {
           Shop Now
         </NavLink>
       </div>
-      <img src="/homeLanding2.gif" />
+      <img src="/homeLanding2.webp" />
     </header>
   );
 }
