@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-@media only screen and (max-device-width: 3440px) {
+/* @media only screen and (max-device-width: 3440px) {
   html {
     font-size: 21px;
   }
@@ -33,7 +33,7 @@ body::-webkit-scrollbar {
   html {
     font-size: 17px;
   }
-}
+} */
 
 @media only screen and (max-device-width: 1920px) {
   html {
@@ -41,7 +41,7 @@ body::-webkit-scrollbar {
   }
 }
 
-@media only screen and (max-device-width: 1440px) {
+/* @media only screen and (max-device-width: 1440px) {
   html {
     font-size: 13px;
   }
@@ -51,7 +51,7 @@ body::-webkit-scrollbar {
   html {
     font-size: 9px;
   }
-}
+} */
 
 h1,
 h2,
