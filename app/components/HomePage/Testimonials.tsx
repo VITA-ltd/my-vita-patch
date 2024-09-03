@@ -11,7 +11,7 @@ export function Testimonials() {
       <Await resolve={data.testimonials}>
         {(response) => {
           return (
-            <Marquee className="home-testimonials" w={480} duration={45}>
+            <Marquee className="home-testimonials" w={window.innerWidth} duration={45}>
               {
                 response.metaobjects.nodes.map((testimonial, i: number) => {
                   return (
@@ -20,7 +20,7 @@ export function Testimonials() {
                         if (field.key === 'logo' && field.reference) {
                           return <img src={field.reference.image.url} key={i} />
                         } else if (field.key === 'quote') {
-                          return <span key={i}>{field.value}</span>
+                          return <span key={i}>“{field.value}”</span>
                         }
                       })}
                     </div>

@@ -41,6 +41,7 @@
   width: 50vw;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 
 
@@ -295,15 +296,14 @@
 * --------------------------------------------------
 */
 .home-testimonials {
-  height: 30vh !important;
+  height: calc(261px - 64px) !important;
+  padding: 32px 0px 32px 0px;
 }
 
 .home-testimonial {
-  min-width: 12vw;
-  max-width: 12vw;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  height: 30vh;
+  width: calc(271px - 68px);
+  height: calc(181px - 38px);
+  padding: 0px 34px 38px 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -312,6 +312,7 @@
   font-weight: 400;
   line-height: 1.193125rem;
   text-align: center;
+  gap: 16px;
 }
 
 .home-testimonial > img {
@@ -320,16 +321,9 @@
 }
 
 .home-testimonial > span {
-  height: calc(50% - 0.5em);
-  margin-top: 1em;
-}
-
-.home-testimonial > span::before {
-  content: "“";
-}
-
-.home-testimonial > span::after {
-  content: "”";
+  width: 217px;
+  height: 40px;
+  line-height: 19.09px;
 }
 
 /*
@@ -1243,7 +1237,7 @@ aside li {
     backdrop-filter 0.3s;
 }
 
-.header-active {
+.header-active, .header:hover {
   background-color: #000000e0;
   backdrop-filter: blur(1.5rem);
 }
@@ -1284,6 +1278,8 @@ aside li {
 
 .header-ctas > button,
 .header-ctas > a {
+  padding: 0;
+  width: fit-content;
   font-family: inherit;
   height: 1.2rem;
   font-size: 1rem;
@@ -1291,6 +1287,11 @@ aside li {
   line-height: 1.2rem;
   background-color: transparent;
   border: none;
+}
+
+.header-ctas > button:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .header-logo {

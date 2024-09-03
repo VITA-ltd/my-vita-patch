@@ -6,7 +6,7 @@ export function Ingredients() {
       <div className="ingredients-description">
         <h2>
           <strong>Formulated to Heal.</strong><br />
-          A Synergy of Nature’s Best*
+          A Synergy of Nature’s Best.*
         </h2>
         <p>
           Discover how we developed a transdermal formulation<br/>
