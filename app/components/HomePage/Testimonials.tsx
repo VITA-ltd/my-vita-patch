@@ -11,7 +11,7 @@ export function Testimonials() {
       <Await resolve={data.testimonials}>
         {(response) => {
           return (
-            <Marquee className="home-testimonials" w={window.innerWidth} duration={45}>
+            <Marquee className="home-testimonials" duration={45}>
               {
                 response.metaobjects.nodes.map((testimonial, i: number) => {
                   return (
