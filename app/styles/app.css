@@ -10,7 +10,7 @@
   --button-color-hover: #229967;
   --link-active: #dedede;
   --green-background: #051512;
-  --green-background2: #0C2B25;
+  --green-background2: #0c2b25;
   --green-text: #a0e2c7;
 }
 
@@ -101,7 +101,6 @@
   object-fit: cover;
   pointer-events: none;
 }
-
 
 .home-landing-content {
   width: calc(50% - 32px);
@@ -672,62 +671,141 @@
 
 /*
 * --------------------------------------------------
-* components/Home/Benefits
+* components/Home/Featured
 * --------------------------------------------------
 */
 .home-featured {
-  background-color: var(--green-background);
-  padding: 4rem 0px 4rem 0px;
+  width: 100vw;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .home-featured > img {
-  width: 50vw !important;
-  height: 50vw !important;
-  margin-top: -7.5vw;
-  margin-bottom: -7.5vw;
-  mix-blend-mode: screen;
-  transform: rotate(90deg);
-  object-fit: contain;
+  width: 628px;
+  height: 860.72px;
+  object-fit: cover;
 }
 
 .featured-info {
-  margin-left: 32px;
-  margin-top: 1.5rem;
+  padding: 96px;
 }
 
 .featured-info > h1 {
   font-size: 4.23625rem;
   font-weight: 400;
   line-height: 5.083125rem;
-  letter-spacing: -3.5%;
+  letter-spacing: -3.5% !important;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .featured-info > h1 > img {
-  display: inline;
+  display: inline-block;
+  height: 48px;
   line-height: 5.083125rem;
 }
 
 .featured-info > h1 > img:first-of-type {
-  margin-left: 0.25em;
+  margin-left: 16px;
 }
 
-.featured-info > .details,
-.featured-info > .details > span {
+.featured-info > .featured-benefits {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+}
+
+.featured-info > .featured-benefits > img {
+  height: 64.7px;
+}
+
+.featured-info > .details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  gap: 32px;
+}
+
+.featured-info > .details > button {
+  height: 60px;
+  padding: 19px 0px 19px 0px;
+  border-radius: 71px;
+  background-color: var(--button-color);
+  border: none;
+  outline: none;
   font-size: 1.125rem;
+  line-height: 1.35rem;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 }
 
-.featured-info > .details > span > .default-price {
-  text-decoration: line-through;
-  margin-left: 0.5em;
-  color: #717171;
+.featured-info > .details > button:hover {
+  background-color: var(--button-color-hover);
+  cursor: pointer;
 }
 
-.featured-info > .details > * {
-  margin-right: 3.6875rem;
+.main-info > .add-to-cart:hover {
+  background-color: var(--button-color-hover);
+}
+
+.featured-info > .details > .order-gurantees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.featured-info > .details > .order-gurantees > span {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
+  gap: 8px;
+}
+
+.featured-info > .details > .order-gurantees > span > img {
+  display: inline;
+  height: 1rem;
+}
+
+.featured-info > .details > .main-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0px 0px 16px 0px;
+  border-bottom: 1px solid white;
+}
+
+.featured-info > .details > .main-details > strong {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.125rem;
+  line-height: 1.35rem;
+}
+
+.featured-info > .details > .main-details > .patch-details {
+  display: flex;
+  gap: 32px;
+  color: var(--green-text);
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+}
+
+.featured-info > .details > .main-details > p {
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+}
+
+.featured-info > .details > .main-details > strong > div {
+  width: fit-content;
+  display: inline;
 }
 
 /*
@@ -1118,7 +1196,7 @@
   padding: 4.5rem 3rem 4.5rem 3rem;
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(360deg, #000000 0%, #0D0E0E 45.5%, #000000 94%);
+  background-image: linear-gradient(360deg, #000000 0%, #0d0e0e 45.5%, #000000 94%);
 }
 
 .shop-difference > .title {
@@ -1295,7 +1373,8 @@ aside li {
     backdrop-filter 0.3s;
 }
 
-.header-active, .header:hover {
+.header-active,
+.header:hover {
   background-color: #000000e0;
   backdrop-filter: blur(1.5rem);
 }

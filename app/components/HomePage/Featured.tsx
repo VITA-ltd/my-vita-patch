@@ -16,25 +16,35 @@ export function Featured() {
             <div className="featured-info">
               <h1>
                 Get started with your<br />
-                {featuredProduct.title} Patch <img src="/featuredHashtag.svg" /><img src="/featuredSmile.svg" />
+                {featuredProduct.title} Patch<img src="/featuredHashtag.svg" /><img src="/featuredSmile.svg" />
               </h1>
               <div className="details">
-                <strong>{featuredProduct.title}</strong>
-                <span>
-                  <Money data={featuredProduct.priceRange.minVariantPrice} />
-                  {!featuredProduct.compareAtPriceRange.minVariantPrice.amount.startsWith("0") &&
-                    <Money className='default-price' data={featuredProduct.compareAtPriceRange.minVariantPrice} />
-                  }
-                </span>
+                <div className="main-details">
+                  <strong>The {featuredProduct.title} Patch <Money data={featuredProduct.priceRange.minVariantPrice} /></strong>
+                  <div className="patch-details">
+                    <strong>24 patches</strong>
+                    <strong>$0.50/patch</strong>
+                  </div>
+                  <p>Hangover relief with a nutrient boost, in a simple patch.</p>
+                </div>
 
-                <span>60-day Money Back Guarantee</span>
+                <button>Add to Cart</button>
+
+                <div className="order-gurantees">
+                  <span><img src="/checkCircle.svg" />60-day money back guarantee</span>
+                  <span><img src="/checkCircle.svg" />Update or Cancel Anythime</span>
+                </div>
+              </div>
+              <div className="featured-benefits">
+                <img src="/home/benefitsSustainable.svg" />
+                <img src="/home/benefitsPesticide.svg" />
+                <img src="/home/benefitsAntioxidant.svg" />
+                <img src="/home/benefitsOrganic.svg" />
+                <img src="/home/benefitsGmo.svg" />
+                <img src="/home/benefitsGluten.svg" />
               </div>
             </div>
-            <Image
-              // @ts-ignore
-              data={featuredProduct.featuredImage}
-              aspectRatio="1/1"
-            />
+            <img src="/home/featuredProduct.jpeg" />
           </>
         }}
       </Await>
