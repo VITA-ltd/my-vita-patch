@@ -730,7 +730,13 @@
   gap: 32px;
 }
 
-.featured-info > .details > button {
+.featured-info > .details > form {
+  padding: 0;
+  margin: 0;
+}
+
+.featured-info > .details > form > button {
+  width: 100%;
   height: 60px;
   padding: 19px 0px 19px 0px;
   border-radius: 71px;
@@ -744,7 +750,7 @@
   transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
 }
 
-.featured-info > .details > button:hover {
+.featured-info > .details > form > button:hover {
   background-color: var(--button-color-hover);
   cursor: pointer;
 }
@@ -855,24 +861,24 @@
   line-height: 1.2rem;
 }
 
-.main-info > form {
+.main-info > .main-selection {
   width: 100%;
   margin-top: 2rem;
   border: 1px solid white;
   border-radius: 6px;
 }
 
-.main-info > form > .purchase-option {
+.main-info > .main-selection > .purchase-option {
   display: flex;
   align-items: center;
   padding: 1rem 2rem 1rem 2rem;
 }
 
-.main-info > form > .purchase-option:first-of-type {
+.main-info > .main-selection > .purchase-option:first-of-type {
   border-bottom: 1px solid white;
 }
 
-.main-info > form > .purchase-option > input {
+.main-info > .main-selection > .purchase-option > input {
   width: 1.2rem;
   height: 1.2rem;
   appearance: none;
@@ -885,22 +891,22 @@
   cursor: pointer;
 }
 
-.main-info > form > .purchase-option > input:checked {
+.main-info > .main-selection > .purchase-option > input:checked {
   mask-image: url("/checkboxChecked.svg");
 }
 
-.main-info > form > .purchase-option > p {
+.main-info > .main-selection > .purchase-option > p {
   font-size: 1.125rem;
   line-height: 1.35rem;
 }
 
-.main-info > form > .purchase-option > p > span {
+.main-info > .main-selection > .purchase-option > p > span {
   color: #b9b9b9;
   font-size: 0.875rem;
   line-height: 1.05rem;
 }
 
-.main-info > form > .selection-container {
+.main-info > .main-selection > .selection-container {
   width: calc(100% - 7rem);
   padding: 0 1.5rem 0 1.5rem;
   margin-left: 32px;
@@ -909,7 +915,7 @@
   border-radius: 1rem;
 }
 
-.main-info > form > .selection-container > select {
+.main-info > .main-selection > .selection-container > select {
   width: 100%;
   padding: 1rem 0 1rem 0;
   background-color: transparent;
@@ -920,7 +926,12 @@
   outline: none;
 }
 
-.main-info > form > .selection-container > select > option {
+.main-info > .main-selection > .selection-container > select:disabled {
+  color: white;
+  opacity: 0.5;
+}
+
+.main-info > .main-selection > .selection-container > select > option {
   color: white;
   background-color: black;
   font-size: 0.875rem;
@@ -928,17 +939,20 @@
   border: none;
 }
 
-.main-info > form > ul {
+.main-info > .main-selection > ul {
   padding: 0 2rem 0 3.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.main-info > form > ul > li {
+.main-info > .main-selection > ul > li {
   list-style: none;
   font-size: 0.875rem;
   perspective: 0;
 }
 
-.main-info > form > ul > li::before {
+.main-info > .main-selection > ul > li::before {
   height: 100%;
   position: absolute;
   margin-left: -1.6rem;
@@ -946,15 +960,22 @@
   align-content: center;
 }
 
-.main-info > form > ul > li > strong {
+.main-info > .main-selection > ul > li > strong {
   color: var(--green-text);
 }
 
-.main-info > form > ul > li > a {
+.main-info > .main-selection > ul > li > a {
   text-decoration: underline;
 }
 
-.main-info > .add-to-cart {
+.main-info > form:not(.main-selection) {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.main-info > form:not(.main-selection) > .add-to-cart {
+  width: 100%;
   padding: 1rem 3.25rem 1rem 3.25rem;
   margin-top: 2rem;
   border-radius: 69px;
@@ -970,7 +991,7 @@
   cursor: pointer;
 }
 
-.main-info > .add-to-cart:hover {
+.main-info > form:not(.main-selection) > .add-to-cart:hover {
   background-color: var(--button-color-hover);
 }
 

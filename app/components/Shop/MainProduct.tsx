@@ -2,10 +2,12 @@ import { Await, NavLink, useLoaderData } from "@remix-run/react";
 import { Image, Money } from "@shopify/hydrogen";
 import { Suspense, useState } from "react";
 import { loader } from "~/routes/($locale).shop._index";
+import { AddToCartButton } from "../AddToCartButton";
 
 export function MainProduct() {
   const data = useLoaderData<typeof loader>();
   const [openInfo, setOpenInfo] = useState<number | null>(null);
+  const [subscribe, setSubscribe] = useState<boolean>(true);
 
   return (<section className="shop-main">
     <Suspense fallback={<div>Loading...</div>}>
@@ -19,9 +21,10 @@ export function MainProduct() {
               <h1>The {featuredProduct.title} Patch</h1>
               <strong>24 patches</strong>
               <p>{featuredProduct.description}</p>
-              <form>
+
+              <form className="main-selection">
                 <div className="purchase-option">
-                  <input type="checkbox" checked={false} />
+                  <input type="checkbox" checked={!subscribe} onClick={() => { setSubscribe(false) }} />
                   <p>
                     Regular Price | $12<br />
                     <span>One-Time Purchase</span>
@@ -29,7 +32,7 @@ export function MainProduct() {
                 </div>
 
                 <div className="purchase-option">
-                  <input type="checkbox" checked />
+                  <input type="checkbox" checked={subscribe} onClick={() => { setSubscribe(true) }} />
                   <p>
                     Subscribe & Save | $10.50 now<br />
                     <span>(Regular Price = $12)</span>
@@ -37,7 +40,7 @@ export function MainProduct() {
                 </div>
 
                 <div className="selection-container">
-                  <select>
+                  <select disabled={!subscribe}>
                     <option>every 1 month</option>
                     <option>every 3 months</option>
                     <option>every 6 months</option>
@@ -55,7 +58,20 @@ export function MainProduct() {
 
               </form>
 
-              <button className="add-to-cart">Add to Cart</button>
+              <AddToCartButton
+                className="add-to-cart"
+                lines={
+                  [
+                    {
+                      merchandiseId: featuredProduct.variants.nodes[0].id,
+                      quantity: 1,
+                      selectedVariant: featuredProduct.variants.nodes[0],
+                    },
+                  ]
+                }
+              >
+                Add to Cart
+              </AddToCartButton>
 
               <div className="shipping-info">
                 <div>

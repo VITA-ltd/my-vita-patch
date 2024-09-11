@@ -2,6 +2,7 @@ import { Await, NavLink, useLoaderData } from "@remix-run/react";
 import { Image, Money } from "@shopify/hydrogen";
 import { Suspense } from "react";
 import { loader } from "~/routes/($locale)._index";
+import { AddToCartButton } from "../AddToCartButton";
 
 export function Featured() {
   const data = useLoaderData<typeof loader>();
@@ -28,7 +29,21 @@ export function Featured() {
                   <p>Hangover relief with a nutrient boost, in a simple patch.</p>
                 </div>
 
-                <button>Add to Cart</button>
+                {/* <button>Add to Cart</button> */}
+                <AddToCartButton
+                  className="add-to-cart"
+                  lines={
+                    [
+                      {
+                        merchandiseId: featuredProduct.variants.nodes[0].id,
+                        quantity: 1,
+                        selectedVariant: featuredProduct.variants.nodes[0],
+                      },
+                    ]
+                  }
+                >
+                  Add to Cart
+                </AddToCartButton>
 
                 <div className="order-gurantees">
                   <span><img src="/checkCircle.svg" />60-day money back guarantee</span>
