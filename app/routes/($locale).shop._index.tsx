@@ -6,6 +6,7 @@ import { FeaturedProduct, GalleryImage, pricePerPatch, Testimonial } from 'types
 import { MainProduct } from '~/components/Shop/MainProduct';
 import { Ratings } from '~/components/Shop/Ratings';
 import { Difference } from '~/components/Shop/Difference';
+import { Faq } from '~/components/Shop/Faq';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'Hydrogen | Shop' }];
@@ -38,6 +39,7 @@ export default function Shop() {
       <MainProduct />
       <Ratings />
       <Difference />
+      <Faq />
     </div>
   );
 }
