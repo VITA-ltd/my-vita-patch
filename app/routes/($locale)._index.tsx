@@ -1,6 +1,6 @@
 import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import { Await, useLoaderData, Link, type MetaFunction } from '@remix-run/react';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Image, Money } from '@shopify/hydrogen';
 import { Landing } from '~/components/HomePage/Landing';
 import { Intro } from '~/components/HomePage/Intro';
@@ -66,90 +66,31 @@ function loadGalleryImages({ context }: LoaderFunctionArgs) {
 
 export default function Homepage() {
   const data = useLoaderData<typeof loader>();
+
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 430) {
+      setIsMobile(true)
+    }
+  })
+
   return (
     <div className="home">
       <Landing />
-      <CustomerTestimonials />
+      {isMobile ?
+        <Testimonials />
+        :
+        <CustomerTestimonials />
+      }
       <Intro />
-      <Testimonials />
+      {!isMobile &&
+        <Testimonials />
+      }
       <Featured />
-      {/* <RecommendedProducts products={data.featuredProducts} /> */}
       <Benefits />
       <Ingredients />
       <Gallery />
-    </div>
-  );
-}
-
-function RecommendedProducts({
-  products,
-}: {
-  products: Promise<FeaturedProduct | null>;
-}) {
-  return (
-    <div className="recommended-products">
-      <h2>Get Your VITA® Patch</h2>
-      <h3>Choose your patch</h3>
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <Await resolve={products}>
-          {(response) => (
-            <div className="recommended-products-grid">
-              {response && response.collection
-                ? response.collection.products.nodes.map((product) => {
-                  const pricePerPatch = JSON.parse(product.pricePerPatch.value) as pricePerPatch;
-
-                  return (
-                    <div
-                      key={product.id}
-                      className="recommended-product"
-                    >
-                      {product.tags.includes("New") &&
-                        <div className='new-tag'>New</div>
-                      }
-
-                      <h4>{product.title}</h4>
-                      <span className='price'>
-                        <Money data={product.priceRange.minVariantPrice} />
-                        {!product.compareAtPriceRange.minVariantPrice.amount.startsWith("0") &&
-                          <Money className='default-price' withoutCurrency data={product.compareAtPriceRange.minVariantPrice} />
-                        }
-                      </span>
-
-                      <span className='price'>
-                        <Money withoutCurrency data={{ amount: pricePerPatch.amount, currencyCode: pricePerPatch.currency_code }} />/patch
-                      </span>
-
-                      {product.featuredImage &&
-                        <Image
-                          data={product.featuredImage}
-                          aspectRatio="1/1"
-                          sizes="(min-width: 45em) 20vw, 50vw"
-                        />
-                      }
-
-                      <Link
-                        key={product.id}
-                        className={`purchase-button ${!product.totalInventory || product.totalInventory <= 0 && 'disabled'}`}
-                        to={!product.totalInventory || product.totalInventory <= 0 ? '' : `/products/${product.handle}`}
-                      >
-                        {product.tags.includes("Coming Soon") ? "Coming Soon" : product.totalInventory && product.totalInventory > 0 ? "Start Now" : "Email When Availabe"}
-                      </Link>
-
-                      <p className='product-description'>
-                        60-day Money Back Guarantee<br />
-                        Pause or Cancel Anytime<br />
-                        Free Welcome Kit
-                      </p>
-                    </div>
-                  )
-                })
-                : null}
-            </div>
-          )}
-        </Await>
-      </Suspense>
-      <br />
     </div>
   );
 }

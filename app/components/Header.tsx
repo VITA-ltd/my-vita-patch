@@ -21,10 +21,21 @@ export function Header({
 }: HeaderProps) {
   const { shop, menu } = header;
   const [backgroundActive, setBackgroundActive] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
+    if (window.innerWidth <= 430) {
+      setIsMobile(true)
+    }
+
     const scrollListener = () => {
-      if (window.scrollY > 60) {
+      let scrollActivation: number = 60;
+
+      if (window.innerWidth <= 430) {
+        scrollActivation = (window.innerHeight / 2) - 60;
+      }
+
+      if (window.scrollY > scrollActivation) {
         setBackgroundActive(true);
       } else {
         setBackgroundActive(false);
@@ -43,6 +54,9 @@ export function Header({
         primaryDomainUrl={header.shop.primaryDomain.url}
         publicStoreDomain={publicStoreDomain}
       />
+      <div className='mobile-menu'>
+        <button>Menu</button>
+      </div>
       <NavLink
         className="header-logo"
         end
@@ -50,7 +64,7 @@ export function Header({
         style={activeLinkStyle}
         to="/"
       >
-        <img src='/vitaLogo.svg' />
+        <img src={isMobile ? '/vita.svg' : '/vitaLogo.svg'} />
       </NavLink>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
     </header>
@@ -122,17 +136,28 @@ function HeaderCtas({
   isLoggedIn,
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 430) {
+      setIsMobile(true)
+    }
+  })
+
   return (
     <nav className="header-ctas" role="navigation">
-      <HeaderMenuMobileToggle />
-      <SearchToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
-        <Suspense fallback="Log In">
-          <Await resolve={isLoggedIn} errorElement="Log In">
-            {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Log In')}
-          </Await>
-        </Suspense>
-      </NavLink>
+      {!isMobile &&
+        <>
+          <SearchToggle />
+          <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+            <Suspense fallback="Log In">
+              <Await resolve={isLoggedIn} errorElement="Log In">
+                {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Log In')}
+              </Await>
+            </Suspense>
+          </NavLink>
+        </>
+      }
       <CartToggle cart={cart} />
     </nav>
   );

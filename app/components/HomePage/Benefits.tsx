@@ -8,14 +8,10 @@ export function Benefits() {
         <div className="benefits-gradient" />
 
         <h1>
-          How does VITA help
-          <br />
-          prevent hangovers?
+          How does VITA help <br />prevent hangovers?
         </h1>
         <p>
-          Glutathione: The master antioxidant fighting toxins
-          <br />
-          and sustaining your alcohol consumption.
+          Glutathione: The master antioxidant fighting toxins <br />and sustaining your alcohol consumption.
         </p>
       </div>
 
