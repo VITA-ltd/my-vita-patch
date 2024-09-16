@@ -354,7 +354,7 @@
 }
 
 .ingredients-description > h2 > strong {
-  font-family: "Geigy";
+  font-family: "Geigy", "Helvetica Neue", "Helvetica";
   font-size: 2.618125rem;
   font-weight: 700;
   line-height: 3.141875rem;
@@ -981,11 +981,9 @@
     width: 100%;
     padding: 0px 0px 32px 0px;
     border-bottom: 1px solid white;
-    display: grid;
-    grid-column: 2;
-    grid-row: 2;
-    grid-template-columns: 64px calc(100% - 64px);
-    grid-template-rows: 22px auto;
+    display: flex;
+    align-items: flex-start;
+    perspective: 0;
   }
 
   .benefits-descriptions > div > img {
@@ -993,10 +991,9 @@
     height: 100%;
     object-fit: contain;
     object-position: top center;
+    position: absolute;
     margin: 0;
     display: block;
-    position: relative;
-    grid-row: span 2;
   }
 
   .benefits-descriptions > div > h3 {
@@ -1006,6 +1003,7 @@
     letter-spacing: 0.02em;
     text-align: left;
     margin: 0;
+    margin-left: 64px;
   }
 
   .benefits-descriptions > div > p {
@@ -1013,8 +1011,8 @@
     font-weight: 400;
     line-height: 19.2px;
     text-align: left;
-    grid-column: 2;
     margin-top: 8px;
+    margin-left: 64px;
   }
 }
 
@@ -1949,8 +1947,12 @@ aside li {
   border-radius: 0.75rem;
 }
 
-.cart-count:hover {
-  text-decoration: underline !important;
+.bag-url:hover > .cart-count {
+  text-decoration: none !important;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 @media only screen and (max-width: 430px) {
@@ -1968,6 +1970,7 @@ aside li {
   }
 
   .mobile-menu {
+    display: block;
     width: 25%;
   }
 
@@ -1991,16 +1994,16 @@ aside li {
 */
 .footer {
   width: calc(100vw - 4rem);
-  height: calc(100vh - var(--header-height) - 2rem);
+  min-height: calc(100vh - var(--header-height) - 32px);
   background: var(--color-dark);
   margin-top: auto;
-  margin-bottom: 32px;
   padding-left: 32px;
 }
 
 .footer-menu {
   border-top: 1px solid #555555;
-  padding-top: 2.5rem;
+  padding-top: 32px;
+  padding-bottom: 32px;
   align-items: center;
   display: flex;
 }

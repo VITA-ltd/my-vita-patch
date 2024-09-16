@@ -190,6 +190,7 @@ function CartBadge({ count }: { count: number | null }) {
 
   return (
     <a
+      className='bag-url'
       href="/cart"
       onClick={(e) => {
         e.preventDefault();
