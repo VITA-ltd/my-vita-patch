@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { Await, NavLink } from '@remix-run/react';
 import type { FooterQuery, HeaderQuery } from 'storefrontapi.generated';
 
@@ -10,9 +10,10 @@ interface FooterProps {
 
 export function Footer({
   footer: footerPromise,
-  header,
-  publicStoreDomain,
+  header
 }: FooterProps) {
+  const [openInfo, setOpenInfo] = useState<number | null>(null);
+
   return (
     <Suspense>
       <Await resolve={footerPromise}>
@@ -54,7 +55,70 @@ export function Footer({
                 </div>
               </div>
 
+              <div className='mobile-groups'>
+                <div className={`mobile-group-container ${openInfo === 1 ? 'expanded' : ''}`}>
+                  <h2 onClick={() => { setOpenInfo(openInfo === 1 ? null : 1) }}>
+                    Quick Links
+                    <img src={openInfo === 1 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
+                  </h2>
+                  <p>
+                    <a>Store</a>
+                    <a>Routine</a>
+                    <a>Subscribe & Save</a>
+                  </p>
+                </div>
+
+                <div className={`mobile-group-container ${openInfo === 2 ? 'expanded' : ''}`}>
+                  <h2 onClick={() => { setOpenInfo(openInfo === 2 ? null : 2) }}>
+                    About
+                    <img src={openInfo === 2 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
+                  </h2>
+                  <p>
+                    <a>About Us</a>
+                    <a>Philosophy</a>
+                    <a>Refill & Sustainability</a>
+                    <a>VITA® Chief Nutritionist</a>
+                  </p>
+                </div>
+
+                <div className={`mobile-group-container ${openInfo === 3 ? 'expanded' : ''}`}>
+                  <h2 onClick={() => { setOpenInfo(openInfo === 3 ? null : 3) }}>
+                    Support & Contact
+                    <img src={openInfo === 3 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
+                  </h2>
+                  <p>
+                    <a>FAQs</a>
+                    <a>Track Your Order</a>
+                    <a>Shipping & Returns</a>
+                    <a>Consumer Perception Studies</a>
+                    <a>Contacts</a>
+                  </p>
+                </div>
+              </div>
+
               <div className='footer-logo'>
+                <div className='mobile-links-container'>
+                  <div className='mobile-payments-container'>
+                    <img src='/visa.png' />
+                    <img src='/mastercard.png' />
+                    <img src='/paypal.png' />
+                    <img src='/applepay.png' />
+                    <img src='/shoppay.png' />
+                  </div>
+
+                  <div className='mobile-social-links'>
+                    <a>
+                      <img src='/instagram.svg' />
+                    </a>
+                    <a>
+                      <img src='/facebook.svg' />
+                    </a>
+                    <a>
+                      <img src='/tiktok.svg' />
+                    </a>
+                  </div>
+                </div>
+
                 <img src='/vita.svg' />
 
                 <div className='footer-disclaimer-container'>
@@ -70,9 +134,7 @@ export function Footer({
               </div>
             </div>
 
-            {footer?.menu && header.shop.primaryDomain?.url && (
-              <FooterMenuBottom />
-            )}
+            <FooterMenuBottom />
           </footer>
         )}
       </Await>
@@ -95,9 +157,20 @@ function FooterMenuBottom() {
       <a className='footer-link-bottom'>
         Consent Preferences
       </a>
+
       <span className='footer-copywrite'>
         © 2024 Vita, All Rights Reserved.
       </span>
+
+      <a className='footer-link-bottom-mobile'>
+        Terms & Conditions
+      </a>
+      <a className='footer-link-bottom-mobile'>
+        Accessibility
+      </a>
+      <a className='footer-link-bottom-mobile'>
+        Consent Preferences
+      </a>
     </nav>
   );
 }

@@ -15,21 +15,44 @@ export function Gallery() {
     <Suspense fallback={<div>Loading...</div>}>
       <Await resolve={data.galleryImages}>
         {(response) => {
-          return <>
-            <div className="home-image-gallery-top">
-              {response.metaobjects.nodes.slice(0, 2).map((image: any, i: number) => {
-                return <img src={image.fields[0].reference.image.url} key={i} />
-              })}
-            </div>
-            <div className="home-image-gallery-bottom">
-              {response.metaobjects.nodes.slice(2, 5).map((image: any, i: number) => {
-                return <img src={image.fields[0].reference.image.url} key={i} />
-              })}
-            </div>
-          </>
+          if (window.innerWidth > 430) {
+            return <>
+              <div className="home-image-gallery-top">
+                {response.metaobjects.nodes.slice(0, 2).map((image: any, i: number) => {
+                  return <img src={image.fields[0].reference.image.url} key={i} />
+                })}
+              </div>
+              <div className="home-image-gallery-bottom">
+                {response.metaobjects.nodes.slice(2, 5).map((image: any, i: number) => {
+                  return <img src={image.fields[0].reference.image.url} key={i} />
+                })}
+              </div>
+            </>
+          } else {
+            return <>
+              <div className="home-image-gallery-top">
+                {response.metaobjects.nodes.slice(0, 1).map((image: any, i: number) => {
+                  return <img src={image.fields[0].reference.image.url} key={i} />
+                })}
+              </div>
+              <div className="home-image-gallery-middle">
+                {response.metaobjects.nodes.slice(1, 3).map((image: any, i: number) => {
+                  return <img src={image.fields[0].reference.image.url} key={i} />
+                })}
+              </div>
+              <div className="home-image-gallery-bottom">
+                {response.metaobjects.nodes.slice(3, 4).map((image: any, i: number) => {
+                  return <img src={image.fields[0].reference.image.url} key={i} />
+                })}
+              </div>
+            </>
+          }
         }}
       </Await>
     </Suspense>
+
+    <a className="mobile-gallery-link">View Full Gallery <img src="/arrow.svg" /></a>
+
     <button className="home-gallery-upload-button">
       <p>
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
