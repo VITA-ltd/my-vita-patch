@@ -16,9 +16,10 @@ export function MainProduct() {
           const featuredProduct = response.collection.products.nodes[0];
 
           return <>
+            <div className="mobile-image-cover" />
             <img src={featuredProduct.featuredImage ? featuredProduct.featuredImage.url : ''} />
             <div className="main-info">
-              <h1>The {featuredProduct.title} Patch</h1>
+              <h1>The <span className="product-title">{featuredProduct.title}</span> Patch.</h1>
               <strong>24 patches</strong>
               <p>{featuredProduct.description}</p>
 
@@ -113,9 +114,9 @@ export function MainProduct() {
               </div>
 
               <div className={`expandable-info ${openInfo === 1 ? 'expanded' : ''}`}>
-                <h2>
+                <h2 onClick={() => { setOpenInfo(openInfo === 1 ? null : 1) }}>
                   HOW TO USE
-                  <button onClick={() => { setOpenInfo(openInfo === 1 ? null : 1) }}>
+                  <button>
                     <img src={openInfo === 1 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
                   </button>
                 </h2>
@@ -131,9 +132,9 @@ export function MainProduct() {
               </div>
 
               <div className={`expandable-info ${openInfo === 2 ? 'expanded' : ''}`}>
-                <h2>I
-                  NGREDIENTS
-                  <button onClick={() => { setOpenInfo(openInfo === 2 ? null : 2) }}>
+                <h2 onClick={() => { setOpenInfo(openInfo === 2 ? null : 2) }}>
+                  INGREDIENTS
+                  <button>
                     <img src={openInfo === 2 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
                   </button>
                 </h2>
@@ -160,9 +161,9 @@ export function MainProduct() {
               </div>
 
               <div className={`expandable-info ${openInfo === 3 ? 'expanded' : ''}`}>
-                <h2>
+                <h2 onClick={() => { setOpenInfo(openInfo === 3 ? null : 3) }}>
                   CAUTION
-                  <button onClick={() => { setOpenInfo(openInfo === 3 ? null : 3) }}>
+                  <button>
                     <img src={openInfo === 3 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
                   </button>
                 </h2>

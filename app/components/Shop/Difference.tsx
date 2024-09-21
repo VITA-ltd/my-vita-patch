@@ -9,26 +9,21 @@ export function Difference() {
         <div>
           <h2>85%</h2>
           <p>
-            of members experienced<br />
-            reduced hangover symptoms<br />
-            with just one patch.
+            of members experienced<br /> reduced hangover symptoms<br /> with just one patch.
           </p>
         </div>
 
         <div>
           <h2>92%</h2>
           <p>
-            of members would recommend<br />
-            VITA® to a friend.
+            of members would recommend<br /> VITA® to a friend.
           </p>
         </div>
 
         <div>
           <h2>78%</h2>
           <p>
-            Of members saw improved<br />
-            cognitive function by mid-<br />
-            morning after using VITA®.
+            Of members saw improved<br /> cognitive function by mid-<br /> morning after using VITA®.
           </p>
         </div>
       </div>

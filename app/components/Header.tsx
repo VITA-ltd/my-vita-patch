@@ -35,7 +35,7 @@ export function Header({
         scrollActivation = (window.innerHeight / 2) - 60;
       }
 
-      if (window.scrollY > scrollActivation) {
+      if (window.scrollY > scrollActivation || window.location.href !== '/') {
         setBackgroundActive(true);
       } else {
         setBackgroundActive(false);

@@ -1634,6 +1634,111 @@
   margin: 0;
 }
 
+.mobile-image-cover {
+  display: none;
+}
+
+@media only screen and (max-width: 430px) {
+  .shop-main {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .mobile-image-cover {
+    width: 100%;
+    height: 493px;
+    display: block;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 38.52%, #000000 100%);
+    z-index: 1;
+  }
+
+  .shop-main > img {
+    width: 100%;
+    height: 492px;
+    position: relative;
+    top: 0;
+    object-fit: cover;
+  }
+
+  .shop-main > .main-info {
+    width: calc(100vw - 32px);
+    padding: 32px 16px 32px 16px;
+    gap: 16px;
+  }
+
+  .main-info > h1 {
+    font-size: 64px;
+    line-height: 56px;
+    margin: 0;
+  }
+
+  .main-info > h1 > .product-title {
+    display: block;
+  }
+
+  .main-info > strong,
+  .main-info > p {
+    margin: 0;
+    width: 100%;
+  }
+
+  .main-info > .main-selection {
+    margin-top: 16px;
+  }
+
+  .main-info > form > .add-to-cart {
+    height: 60px;
+    margin-top: 16px !important;
+    padding: 19px 0px 19px 0px;
+  }
+
+  .main-info > .shipping-info {
+    gap: 32px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .main-info > .shipping-info > div {
+    max-width: 90px;
+    margin: 0;
+  }
+
+  .main-info > .why-were-special {
+    margin-top: 16px;
+  }
+
+  .main-info > .why-were-special > h3 {
+    font-size: 16px;
+    line-height: 21.6px;
+    margin-top: 32px;
+  }
+
+  .main-info > .why-were-special > h2 {
+    margin-bottom: -16px;
+  }
+
+  .main-info > .why-were-special > p {
+    margin-top: 10px;
+  }
+
+  .main-info > .expandable-info {
+    max-height: 54px;
+    margin-top: -16px;
+    transition: max-height 0.3s;
+    transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
+  }
+
+  .expandable-info.expanded {
+    max-height: 100%;
+  }
+
+  .main-info > .expandable-info > h2 {
+    height: 22px;
+    padding: 16px 0px 16px 0px;
+  }
+}
+
 /*
 * --------------------------------------------------
 * components/Shop/Ratings
@@ -1676,7 +1781,8 @@
   height: 3rem;
 }
 
-.shop-ratings > .rating {
+.shop-ratings > .rating,
+.shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating {
   width: calc(20% - 4.5rem);
   height: fit-content;
   margin-left: 1rem;
@@ -1689,35 +1795,105 @@
   align-items: flex-start;
 }
 
-.shop-ratings > .rating > img {
+.shop-ratings > .rating > img,
+.shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > img {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   margin-bottom: 2rem;
 }
 
-.shop-ratings > .rating > .stars {
+.shop-ratings > .rating > .stars,
+.shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > .stars {
   width: 50%;
   aspect-ratio: unset;
   object-fit: unset;
 }
 
-.shop-ratings > .rating > p {
+.shop-ratings > .rating > p,
+.shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > p {
   font-size: 1.125rem;
   line-height: 1.5rem;
   margin: 0;
   margin-bottom: 2rem;
 }
 
-.shop-ratings > .rating > .customer-name {
+.shop-ratings > .rating > .customer-name,
+.shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > .customer-name {
   display: flex;
   align-items: center;
   font-size: 0.94375rem;
   line-height: 1.125rem;
 }
 
-.shop-ratings > .rating > .customer-name > img {
+.shop-ratings > .rating > .customer-name > img,
+.shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > .customer-name > img {
   margin-left: 0.75rem;
+}
+
+.mobile-read-button {
+  display: none;
+}
+
+@media only screen and (max-width: 430px) {
+  .shop-ratings {
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .shop-ratings > .title {
+    padding: 64px 16px 64px 16px;
+    margin: 0;
+    gap: 16px;
+  }
+
+  .shop-ratings > .title > h2 {
+    margin: 0;
+  }
+
+  .shop-ratings > .title > h1 {
+    margin: 0;
+  }
+
+  .shop-ratings > .rating:not(.mobile) {
+    display: none;
+  }
+
+  .shop-ratings  > .swiper {
+    height: fit-content;
+    background-color: transparent;
+  }
+
+  .shop-ratings > .swiper > .swiper-wrapper {
+    align-items: stretch;
+  }
+  
+  .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide > .rating {
+    width: 100%;
+    height: 100%;
+  }
+
+  .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide > .rating > img,
+  .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide > .rating > p {
+    margin-bottom: 16px;
+  }
+
+  .mobile-read-button {
+    width: calc(100% - 32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #FFFFFF;
+    padding: 19px 0 19px 0;
+    margin-left: 16px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    font-family: "Helvetica Neue", "Helvetica";
+  }
 }
 
 /*
@@ -1770,6 +1946,42 @@
 .shop-difference > .data > div > p {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+@media only screen and (max-width: 430px) {
+  .shop-difference {
+    width: calc(100vw - 32px);
+    padding: 48px 16px 48px 16px;
+    margin-top: -1px;
+    background-color: var(--green-background);
+    background-image: none;
+    gap: 32px;
+  }
+
+  .shop-difference > .data {
+    width: calc(100% - 64px);
+    flex-direction: column;
+    background-color: var(--green-background2);
+    border-radius: 11px;
+    padding: 32px;
+    gap: 32px;
+  }
+
+  .shop-difference > .data > div {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none !important;
+  }
+
+  .shop-difference > .data > div > h2 {
+    font-size: 60px;
+    line-height: 64px;
+  }
+
+  .shop-difference > .data > div > p > br {
+    display: none;
+  }
 }
 
 /*
@@ -1836,6 +2048,25 @@
 
 .shop-faq > .questions > .question.expanded > p {
   opacity: 1;
+}
+
+@media only screen and (max-width: 430px) {
+  .shop-faq {
+    padding: 48px 16px 48px 16px;
+    flex-direction: column;
+  }
+
+  .shop-faq > h1 {
+    padding: 0;
+  }
+
+  .shop-faq > .questions {
+    padding: 0;
+  }
+
+  .shop-faq > .questions > .question > h2 > img {
+    padding-left: 100px;
+  }
 }
 
 /*
@@ -2285,6 +2516,7 @@ aside li {
 
   .footer-top {
     background-image: none;
+    padding: 32px 0px 32px 0px;
   }
 
   .footer-top-links {
