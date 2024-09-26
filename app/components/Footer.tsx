@@ -145,13 +145,13 @@ export function Footer({
 function FooterMenuBottom() {
   return (
     <nav className="footer-menu" role="navigation">
-      <a className='footer-link-bottom'>
+      <a href='/policies/terms-of-service' className='footer-link-bottom'>
         Terms & Conditions
       </a>
-      <a className='footer-link-bottom'>
+      <a href='/policies/privacy-policy' className='footer-link-bottom'>
         Privacy Policy
       </a>
-      <a className='footer-link-bottom'>
+      <a href='/policies/accessibility' className='footer-link-bottom'>
         Accessibility
       </a>
       <a className='footer-link-bottom'>
@@ -162,13 +162,13 @@ function FooterMenuBottom() {
         © 2024 Vita, All Rights Reserved.
       </span>
 
-      <a className='footer-link-bottom-mobile'>
+      <a href='/policies/terms-of-service' className='footer-link-bottom-mobile'>
         Terms & Conditions
       </a>
-      <a className='footer-link-bottom-mobile'>
+      <a href='/policies/accessibility' className='footer-link-bottom-mobile'>
         Accessibility
       </a>
-      <a className='footer-link-bottom-mobile'>
+      <a href='/policies/' className='footer-link-bottom-mobile'>
         Consent Preferences
       </a>
     </nav>

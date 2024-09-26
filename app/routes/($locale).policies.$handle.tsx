@@ -1,19 +1,19 @@
-import {json, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Link, useLoaderData, type MetaFunction} from '@remix-run/react';
-import {type Shop} from '@shopify/hydrogen/storefront-api-types';
+import { json, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
+import { Link, useLoaderData, type MetaFunction } from '@remix-run/react';
+import { type Shop } from '@shopify/hydrogen/storefront-api-types';
 
 type SelectedPolicies = keyof Pick<
   Shop,
   'privacyPolicy' | 'shippingPolicy' | 'termsOfService' | 'refundPolicy'
 >;
 
-export const meta: MetaFunction<typeof loader> = ({data}) => {
-  return [{title: `Hydrogen | ${data?.policy.title ?? ''}`}];
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  return [{ title: `Hydrogen | ${data?.policy.title ?? ''}` }];
 };
 
-export async function loader({params, context}: LoaderFunctionArgs) {
+export async function loader({ params, context }: LoaderFunctionArgs) {
   if (!params.handle) {
-    throw new Response('No handle was passed in', {status: 404});
+    throw new Response('No handle was passed in', { status: 404 });
   }
 
   const policyName = params.handle.replace(
@@ -35,25 +35,24 @@ export async function loader({params, context}: LoaderFunctionArgs) {
   const policy = data.shop?.[policyName];
 
   if (!policy) {
-    throw new Response('Could not find the policy', {status: 404});
+    throw new Response('Could not find the policy', { status: 404 });
   }
 
-  return json({policy});
+  return json({ policy });
 }
 
 export default function Policy() {
-  const {policy} = useLoaderData<typeof loader>();
+  const { policy } = useLoaderData<typeof loader>();
 
   return (
     <div className="policy">
-      <br />
-      <br />
-      <div>
-        <Link to="/policies">← Back to Policies</Link>
+      <div className='policies-list'>
+        <h1>Legal</h1>
+        <a href='/policies/terms-of-service'>Terms & Conditions</a>
+        <a href='/policies/privacy-policy'>Privacy Policy</a>
+        <a href='/policies/accessibility'>Accessibility</a>
       </div>
-      <br />
-      <h1>{policy.title}</h1>
-      <div dangerouslySetInnerHTML={{__html: policy.body}} />
+      <div className='policy-content' dangerouslySetInnerHTML={{ __html: policy.body }} />
     </div>
   );
 }
