@@ -40,9 +40,11 @@ export function Aside({
         <header>
           <h3>{heading}</h3>
           <button className="close reset" onClick={close}>
-            &times;
+            <img src="/shop/expandPlus.svg" />
           </button>
         </header>
+        <p>Start shopping to qualify for free shipping!</p>
+        <div className='shipping-progress' />
         <main>{children}</main>
       </aside>
     </div>
