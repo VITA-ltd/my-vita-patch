@@ -8,6 +8,7 @@ export function MainProduct() {
   const data = useLoaderData<typeof loader>();
   const [openInfo, setOpenInfo] = useState<number | null>(null);
   const [subscribe, setSubscribe] = useState<boolean>(true);
+  const [selectedPlan, setSelectedPlan] = useState<number>(0);
 
   return (<section className="shop-main">
     <Suspense fallback={<div>Loading...</div>}>
@@ -41,11 +42,12 @@ export function MainProduct() {
                 </div>
 
                 <div className="selection-container">
-                  <select disabled={!subscribe}>
-                    <option>every 1 month</option>
-                    <option>every 3 months</option>
-                    <option>every 6 months</option>
-                    <option>every 12 months</option>
+                  <select disabled={!subscribe} value={selectedPlan} onChange={(e) => { setSelectedPlan(Number(e.target.value)) }}>
+                    {
+                      featuredProduct.sellingPlanGroups.nodes[0].options[0].values.map((option, i) => {
+                        return <option value={i}>{option}</option>
+                      })
+                    }
                   </select>
                 </div>
 
@@ -65,6 +67,7 @@ export function MainProduct() {
                   [
                     {
                       merchandiseId: featuredProduct.variants.nodes[0].id,
+                      sellingPlanId: subscribe ? featuredProduct.sellingPlanGroups.nodes[0].sellingPlans.nodes[selectedPlan].id : undefined,
                       quantity: 1,
                       selectedVariant: featuredProduct.variants.nodes[0],
                     },

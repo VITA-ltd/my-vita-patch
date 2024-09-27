@@ -1346,7 +1346,7 @@
 }
 
 .main-info {
-  width: calc(37.5vw - 12rem);
+  width: 453px;
   display: flex;
   flex-direction: column;
   padding: 2rem 6rem 2rem 6rem;
@@ -1368,7 +1368,7 @@
 }
 
 .main-info > p {
-  width: 80%;
+  width: 90%;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.2rem;

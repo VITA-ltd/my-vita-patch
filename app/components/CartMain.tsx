@@ -34,9 +34,13 @@ export function CartMain({ layout, cart: originalCart }: CartMainProps) {
       <div className="cart-details">
         <div aria-labelledby="cart-lines">
           <ul>
-            {(cart?.lines?.nodes ?? []).map((line: OptimisticCartLine) => (
-              <CartLineItem key={line.id} line={line} layout={layout} />
-            ))}
+            {(cart?.lines?.nodes ?? []).map((line: OptimisticCartLine) => {
+              if (!line.id.startsWith("__h_pending_")) {
+                return <CartLineItem key={line.id} line={line} layout={layout} />
+              } else {
+                return <></>
+              }
+            })}
           </ul>
         </div>
         {cartHasItems && <CartSummary cart={cart} layout={layout} />}

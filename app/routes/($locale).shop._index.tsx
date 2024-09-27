@@ -43,8 +43,75 @@ export default function Shop() {
     </div>
   );
 }
+const SELLING_PLAN_FRAGMENT = `#graphql
+fragment SellingPlanMoney on MoneyV2 {
+  amount
+  currencyCode
+}
+fragment SellingPlan on SellingPlan {
+  id
+  options {
+    name
+    value
+  }
+ priceAdjustments {
+   adjustmentValue {
+     ... on SellingPlanFixedAmountPriceAdjustment {
+       __typename
+       adjustmentAmount {
+         ... on MoneyV2 {
+            ...SellingPlanMoney
+         }
+       }
+     }
+     ... on SellingPlanFixedPriceAdjustment {
+       __typename
+       price {
+         ... on MoneyV2 {
+           ...SellingPlanMoney
+         }
+       }
+     }
+     ... on SellingPlanPercentagePriceAdjustment {
+       __typename
+       adjustmentPercentage
+     }
+   }
+   orderCount
+ }
+ recurringDeliveries
+ checkoutCharge {
+   type
+   value {
+     ... on MoneyV2 {
+       ...SellingPlanMoney
+     }
+     ... on SellingPlanCheckoutChargePercentageValue {
+       percentage
+     }
+   }
+ }
+}
+` as const;
+
+const SELLING_PLAN_GROUP_FRAGMENT = `#graphql
+  ${SELLING_PLAN_FRAGMENT}
+  fragment SellingPlanGroup on SellingPlanGroup {
+    name
+    options {
+      name
+      values
+    }
+    sellingPlans(first:10) {
+      nodes {
+        ...SellingPlan
+      }
+    }
+  }
+` as const;
 
 const PRODUCT_ITEM_FRAGMENT = `#graphql
+  ${SELLING_PLAN_GROUP_FRAGMENT}
   fragment MoneyProductItem on MoneyV2 {
     amount
     currencyCode
@@ -92,6 +159,11 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
           name
           value
         }
+      }
+    }
+    sellingPlanGroups(first:10) {
+      nodes {
+        ...SellingPlanGroup
       }
     }
   }

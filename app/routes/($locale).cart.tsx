@@ -26,7 +26,6 @@ export async function action({request, context}: ActionFunctionArgs) {
 
   switch (action) {
     case CartForm.ACTIONS.LinesAdd:
-      console.log('lines: ', JSON.stringify(inputs.lines))
       result = await cart.addLines(inputs.lines);
       break;
     case CartForm.ACTIONS.LinesUpdate:
