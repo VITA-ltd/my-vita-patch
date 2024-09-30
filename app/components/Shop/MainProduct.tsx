@@ -15,7 +15,15 @@ export function MainProduct() {
       <Await resolve={data.featuredProducts}>
         {(response) => {
           const featuredProduct = response.collection.products.nodes[0];
-          const hasSubscriptionPlan = featuredProduct.sellingPlanGroups.nodes[0];
+
+          let subscriptionPrice = featuredProduct.priceRange.minVariantPrice.amount;
+          const subscriptionPrice2 = `${Number(featuredProduct.priceRange.minVariantPrice.amount) * 0.75}`;
+          let subscriptionPercent = 0;
+
+          if (featuredProduct.sellingPlanGroups.nodes[0].sellingPlans.nodes[selectedPlan].priceAdjustments[0].adjustmentValue.__typename === 'SellingPlanPercentagePriceAdjustment') {
+            subscriptionPercent = featuredProduct.sellingPlanGroups.nodes[0].sellingPlans.nodes[selectedPlan].priceAdjustments[0].adjustmentValue.adjustmentPercentage;
+            subscriptionPrice = `${Number(featuredProduct.priceRange.minVariantPrice.amount) * ((100 - subscriptionPercent) / 100)}`;
+          }
 
           return <>
             <div className="mobile-image-cover" />
@@ -29,7 +37,7 @@ export function MainProduct() {
                 <div className="purchase-option">
                   <input type="checkbox" checked={!subscribe} onClick={() => { setSubscribe(false) }} />
                   <p>
-                    Regular Price | $12<br />
+                    Regular Price | <Money data={featuredProduct.priceRange.minVariantPrice} /><br />
                     <span>One-Time Purchase</span>
                   </p>
                 </div>
@@ -37,8 +45,8 @@ export function MainProduct() {
                 <div className="purchase-option">
                   <input type="checkbox" checked={subscribe} onClick={() => { setSubscribe(true) }} />
                   <p>
-                    Subscribe & Save | $10.50 now<br />
-                    <span>(Regular Price = $12)</span>
+                    Subscribe & Save | <Money data={{ amount: subscriptionPrice, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }} /> now<br />
+                    <span>(Regular Price = <Money data={featuredProduct.priceRange.minVariantPrice} />)</span>
                   </p>
                 </div>
 
@@ -53,8 +61,8 @@ export function MainProduct() {
                 </div>
 
                 <ul>
-                  <li>Instant 15% savings <strong>($10.50 <del>$12</del> now)</strong></li>
-                  <li><strong>25% OFF</strong> future deliveries <strong>($9 <del>$12</del> per 1 month)</strong></li>
+                  <li>Instant {subscriptionPercent}% savings <strong>(<Money data={{ amount: subscriptionPrice, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }} /> <del><Money data={featuredProduct.priceRange.minVariantPrice} /></del> now)</strong></li>
+                  <li><strong>25% OFF</strong> future deliveries <strong>(<Money data={{ amount: subscriptionPrice2, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }}/> <del><Money data={featuredProduct.priceRange.minVariantPrice} /></del> per 1 month)</strong></li>
                   <li>Free shipping on your current and future deliveries</li>
                   <li><strong>Cancel/pause</strong> your monthly delivery <strong>anytime</strong>. <a>Learn more</a></li>
                   <li>Your auto-refill is automatically canceled if you decide to <a>return</a> your first order</li>

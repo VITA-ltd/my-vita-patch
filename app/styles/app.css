@@ -841,14 +841,16 @@
 * --------------------------------------------------
 */
 .home-customer-testimonials {
-  width: calc(100vw - 15.5rem);
-  padding: 4rem 11.5rem 4rem 11.5rem;
+  width: calc(100vw - 11.5rem);
+  padding: 4rem 0 4rem 11.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 181px;
 }
 
 .customer-testimonial-stars {
+  width: 362px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -863,14 +865,16 @@
 }
 
 .customer-testimonial-carousel {
-  width: 55%;
-  height: 9em;
+  width: 70%;
+  height: 91px;
   margin: 0 !important;
 }
 
 .customer-testimonial {
+  height: 91px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .customer-testimonial > p {
@@ -878,8 +882,6 @@
   font-size: 1.618125rem;
   font-weight: 400;
   line-height: 30.8.5rem;
-  margin-bottom: 0.4em;
-  margin-top: 1em;
 }
 
 .customer-testimonial > span {
@@ -1375,7 +1377,6 @@
   font-weight: 400;
   line-height: 1.2rem;
 }
-
 .main-info > .main-selection {
   width: 100%;
   margin-top: 2rem;
@@ -1387,6 +1388,11 @@
   display: flex;
   align-items: center;
   padding: 1rem 2rem 1rem 2rem;
+}
+
+.main-info > .main-selection > .purchase-option > p > div,
+.main-info > .main-selection > .purchase-option > p > span > div {
+  display: inline;
 }
 
 .main-info > .main-selection > .purchase-option:first-of-type {
@@ -1481,6 +1487,11 @@
 
 .main-info > .main-selection > ul > li > a {
   text-decoration: underline;
+}
+
+.main-info > .main-selection > ul > li > strong > del > div,
+.main-info > .main-selection > ul > li > strong > div {
+  display: inline;
 }
 
 .main-info > form:not(.main-selection) {
