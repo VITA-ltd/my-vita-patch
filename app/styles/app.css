@@ -851,13 +851,15 @@
 .customer-testimonial-stars {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.35rem;
+  gap: 6px;
 }
 
 .customer-testimonial-stars > img {
-  margin-bottom: 0.3em;
+  height: 18px;
 }
 
 .customer-testimonial-carousel {

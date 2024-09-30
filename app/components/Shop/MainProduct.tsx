@@ -15,6 +15,7 @@ export function MainProduct() {
       <Await resolve={data.featuredProducts}>
         {(response) => {
           const featuredProduct = response.collection.products.nodes[0];
+          const hasSubscriptionPlan = featuredProduct.sellingPlanGroups.nodes[0];
 
           return <>
             <div className="mobile-image-cover" />
