@@ -177,3 +177,30 @@ export const FOOTER_QUERY = `#graphql
   }
   ${MENU_FRAGMENT}
 ` as const;
+
+export const SHOP_QUERY = `#graphql
+  query Shop
+  {
+    shop {
+      name,
+      description
+      brand {
+        coverImage {
+          image {
+            url
+          }
+        }
+        logo {
+          image {
+            url
+          }
+        }
+        colors {
+          primary {
+            background
+          }
+        }
+      }
+    }
+  }
+` as const;

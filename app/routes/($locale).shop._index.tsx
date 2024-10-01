@@ -1,34 +1,50 @@
 import { defer, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import { Await, useLoaderData, Link, type MetaFunction } from '@remix-run/react';
 import { Suspense } from 'react';
-import { Image, Money } from '@shopify/hydrogen';
+import { getSeoMeta, Image, Money } from '@shopify/hydrogen';
 import { FeaturedProduct, GalleryImage, pricePerPatch, Testimonial } from 'types';
 import { MainProduct } from '~/components/Shop/MainProduct';
 import { Ratings } from '~/components/Shop/Ratings';
 import { Difference } from '~/components/Shop/Difference';
 import { Faq } from '~/components/Shop/Faq';
+import { SHOP_QUERY } from '~/lib/fragments';
 
-export const meta: MetaFunction = () => {
-  return [{ title: 'Hydrogen | Shop' }];
+export const meta: MetaFunction = ({ data }: any) => {
+  const seo = data.seo.shop;
+
+  return getSeoMeta({
+    title: `${seo.name} | Shop`,
+    description: data.featuredProducts.collection.products.nodes[0].description,
+    media: seo.logo ? seo.logo.image.url : undefined
+  })
 };
 
 export async function loader(args: LoaderFunctionArgs) {
   // Start fetching non-critical data without blocking time to first byte
-  const featuredProducts = loadFeaturedProducts(args);
+  const seo = await loadShopSeo(args);
+  const featuredProducts = await loadFeaturedProducts(args);
 
-  return defer({ ...featuredProducts });
+  return defer({ ...seo, ...featuredProducts });
 }
 
-function loadFeaturedProducts({ context }: LoaderFunctionArgs) {
-  const featuredProducts: Promise<FeaturedProduct> = context.storefront
+async function loadFeaturedProducts({ context }: LoaderFunctionArgs) {
+  const featuredProducts: FeaturedProduct = await context.storefront
     .query(FEATURED_PRODUCTS_QUERY, { variables: { handle: 'featured', first: 3 } })
-    .catch((error) => {
-      console.error(error);
-      return null;
-    });
+  // .catch((error) => {
+  //   console.error(error);
+  //   return null;
+  // });
 
   return {
     featuredProducts,
+  };
+}
+
+async function loadShopSeo({ context }: LoaderFunctionArgs) {
+  const seo = await context.storefront.query(SHOP_QUERY)
+
+  return {
+    seo,
   };
 }
 
