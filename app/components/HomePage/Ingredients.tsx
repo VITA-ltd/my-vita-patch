@@ -4,18 +4,33 @@ import { useEffect, useState } from "react";
 
 export function Ingredients() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [activePhrase, setActivePhrase] = useState<number>(0);
 
   useEffect(() => {
     if (window.innerWidth <= 430) {
       setIsMobile(true)
     }
+
+    setTimeout(() => {
+      if (activePhrase < 4) {
+        setActivePhrase(activePhrase + 1);
+      } else {
+        setActivePhrase(0);
+      }
+    }, 2500)
   })
 
   return (
     <section className="home-ingredients">
       <div className="ingredients-description">
         <h2>
-          <strong>Formulated to Heal.</strong><br />
+          <strong>Formulated to
+            <span className={activePhrase === 0 ? "active" : ""}> Heal.</span>
+            <span className={activePhrase === 1 ? "active" : ""}> Refresh.</span>
+            <span className={activePhrase === 2 ? "active" : ""}> Protect.</span>
+            <span className={activePhrase === 3 ? "active" : ""}> Energize.</span>
+            <span className={activePhrase === 4 ? "active" : ""}> Last.</span>
+          </strong><br />
           A Synergy of Nature’s Best.*
         </h2>
         {isMobile ?

@@ -17,7 +17,7 @@ export function Benefits() {
 
       <div className="benefits-descriptions">
         <div>
-          <img src="/benefits1.svg" />
+          <div className="benefits-logo" style={{ mask: `url(/benefits1.svg)` }} />
           <h3>MASTER ANTIOXODIANT</h3>
           <p>
             Helps to neutralize harmful free radicals<br />
@@ -27,7 +27,7 @@ export function Benefits() {
         </div>
 
         <div>
-          <img src="/benefits2.svg" />
+          <div className="benefits-logo" style={{ mask: `url(/benefits2.svg)` }} />
           <h3>SUPPORTS LIVER</h3>
           <p>
             Accelerates liver detoxification,<br />
@@ -36,7 +36,7 @@ export function Benefits() {
         </div>
 
         <div>
-          <img src="/benefits3.svg" />
+          <div className="benefits-logo" style={{ mask: `url(/benefits3.svg)` }} />
           <h3>BOOSTS IMMUNE FUNCTION</h3>
           <p>
             Fortifies your immune system,<br />
@@ -46,7 +46,7 @@ export function Benefits() {
         </div>
 
         <div>
-          <img src="/benefits4.svg" />
+          <div className="benefits-logo" style={{ mask: `url(/benefits4.svg)` }} />
           <h3>RESTORES ENERGY</h3>
           <p>
             Packs in a signature blend

@@ -16,7 +16,8 @@ export function CustomerTestimonials() {
         loop={true}
         direction="vertical"
         autoplay={{
-          delay: 5000
+          delay: 5000,
+          pauseOnMouseEnter: true
         }}
       >
         <SwiperSlide className="customer-testimonial">
