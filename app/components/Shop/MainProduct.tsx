@@ -135,7 +135,7 @@ export function MainProduct() {
                 <p>
                   Applying VITA is simple and quick
                   <ol>
-                    <li>Clean and dry the area where you’ll apply the patch.</li>
+                    <li>Before you start drinking, clean and dry the area where you’ll apply the patch.</li>
                     <li>Peel off the backing and apply the patch to your skin—ideally on a smooth, hairless area like your upper arm or thigh.</li>
                     <li>Wear the patch throughout your night out and keep it on while you sleep.</li>
                     <li>Remove the patch in the morning and start your day feeling refreshed and rejuvenated.</li>

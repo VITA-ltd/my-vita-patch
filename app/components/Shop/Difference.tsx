@@ -7,14 +7,14 @@ export function Difference() {
 
       <div className="data">
         <div>
-          <h2>85%</h2>
+          <h2>92%</h2>
           <p>
             of members experienced<br /> reduced hangover symptoms<br /> with just one patch.
           </p>
         </div>
 
         <div>
-          <h2>92%</h2>
+          <h2>85%</h2>
           <p>
             of members would recommend<br /> VITA® to a friend.
           </p>
