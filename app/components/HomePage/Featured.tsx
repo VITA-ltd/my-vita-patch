@@ -60,7 +60,7 @@ export function Featured() {
                 <img src="/home/benefitsGluten.svg" />
               </div>
             </div>
-            <img src="/home/featuredProduct.png" />
+            <img src="/home/featuredProduct.webp" />
           </>
         }}
       </Await>
