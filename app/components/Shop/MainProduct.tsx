@@ -1,14 +1,34 @@
 import { Await, NavLink, useLoaderData } from "@remix-run/react";
 import { Image, Money } from "@shopify/hydrogen";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { loader } from "~/routes/($locale).shop._index";
 import { AddToCartButton } from "../AddToCartButton";
+import gsap from "gsap";
+import { CustomEase } from 'gsap/all';
 
 export function MainProduct() {
   const data = useLoaderData<typeof loader>();
   const [openInfo, setOpenInfo] = useState<number | null>(null);
   const [subscribe, setSubscribe] = useState<boolean>(true);
   const [selectedPlan, setSelectedPlan] = useState<number>(0);
+
+  useEffect(() => {
+    gsap.timeline()
+      .to(`.expandable-info`, {
+        height: '3.5rem',
+        color: 'transparent',
+        duration: 0.3,
+        ease: CustomEase.create("", "0.77, 0, 0, 0.77")
+      }).play()
+
+    gsap.timeline()
+      .to(`#expandable-info-${openInfo}`, {
+        height: 'auto',
+        duration: 0.3,
+        color: 'white',
+        ease: CustomEase.create("", "0.77, 0, 0, 0.77")
+      }).play()
+  }, [openInfo])
 
   return (<section className="shop-main">
     <Suspense fallback={<div>Loading...</div>}>
@@ -63,7 +83,7 @@ export function MainProduct() {
 
                 <ul>
                   <li>Instant {subscriptionPercent}% savings <strong>(<Money data={{ amount: subscriptionPrice, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }} /> <del><Money data={featuredProduct.priceRange.minVariantPrice} /></del> now)</strong></li>
-                  <li><strong>25% OFF</strong> future deliveries <strong>(<Money data={{ amount: subscriptionPrice2, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }}/> <del><Money data={featuredProduct.priceRange.minVariantPrice} /></del> per 1 month)</strong></li>
+                  <li><strong>25% OFF</strong> future deliveries <strong>(<Money data={{ amount: subscriptionPrice2, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }} /> <del><Money data={featuredProduct.priceRange.minVariantPrice} /></del> per 1 month)</strong></li>
                   <li>Free shipping on your current and future deliveries</li>
                   <li><strong>Cancel/pause</strong> your monthly delivery <strong>anytime</strong>. <a>Learn more</a></li>
                   <li>Your auto-refill is automatically canceled if you decide to <a>return</a> your first order</li>
@@ -126,7 +146,7 @@ export function MainProduct() {
                 <p>VITA supports your body in multiple ways, from reducing inflammation to boosting energy, so you feel better all around, not just hangover-free.</p>
               </div>
 
-              <div className={`expandable-info ${openInfo === 1 ? 'expanded' : ''}`}>
+              <div id="expandable-info-1" className="expandable-info">
                 <h2 onClick={() => { setOpenInfo(openInfo === 1 ? null : 1) }}>
                   HOW TO USE
                   <button>
@@ -144,7 +164,7 @@ export function MainProduct() {
                 </p>
               </div>
 
-              <div className={`expandable-info ${openInfo === 2 ? 'expanded' : ''}`}>
+              <div id="expandable-info-2" className="expandable-info">
                 <h2 onClick={() => { setOpenInfo(openInfo === 2 ? null : 2) }}>
                   INGREDIENTS
                   <button>
@@ -173,7 +193,7 @@ export function MainProduct() {
                 </p>
               </div>
 
-              <div className={`expandable-info ${openInfo === 3 ? 'expanded' : ''}`}>
+              <div id="expandable-info-3" className="expandable-info">
                 <h2 onClick={() => { setOpenInfo(openInfo === 3 ? null : 3) }}>
                   CAUTION
                   <button>

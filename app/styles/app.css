@@ -489,14 +489,24 @@
     margin: 0;
   }
 
+  .ingredients-description > h2 > br {
+    display: none;
+  }
+
   .ingredients-description > h2 > strong {
+    height: fit-content;
     font-size: 41.89px;
     line-height: 50.27px;
   }
 
   .ingredients-description > h2 > strong > span {
     display: block;
-    margin-left: 0
+    margin-left: 0;
+  }
+
+  .ingredients-description > h2 > strong > span:last-child {
+    position: relative;
+    margin-left: 0;
   }
 
   .ingredients-description > p {
@@ -926,6 +936,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 0;
+    pointer-events: none;
   }
 
   .customer-testimonial-stars {
@@ -1129,16 +1140,19 @@
 
   .benefits-descriptions > div {
     width: 100%;
+    height: fit-content;
     padding: 0px 0px 32px 0px;
     border-bottom: 1px solid white;
     display: flex;
     align-items: flex-start;
     perspective: 0;
+    pointer-events: none;
   }
 
-  .benefits-descriptions > div > img {
+  .benefits-descriptions > div > .benefits-logo {
     width: 48px;
-    height: 100%;
+    height: 48px;
+    top: 0;
     object-fit: contain;
     object-position: top center;
     position: absolute;
@@ -1157,6 +1171,7 @@
   }
 
   .benefits-descriptions > div > p {
+    height: fit-content;
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
@@ -1304,7 +1319,6 @@
 .featured-info > .details > .main-details > .patch-details > strong > div {
   display: inline;
 }
-
 
 .featured-info > .details > .main-details > p {
   font-size: 0.875rem;
@@ -1641,15 +1655,11 @@
 }
 
 .main-info > .expandable-info {
-  max-height: 3.5rem;
+  height: 3.5rem;
   border-top: 1px solid white;
   overflow: hidden;
   transition: max-height 0.3s;
   transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
-}
-
-.expandable-info.expanded {
-  max-height: 100%;
 }
 
 .main-info > .expandable-info:last-of-type {
@@ -1669,6 +1679,8 @@
   font-weight: 700;
   line-height: 1rem;
   perspective: 0;
+  color: white;
+  cursor: pointer;
 }
 
 .main-info > .expandable-info > h2 > button {
@@ -1785,14 +1797,9 @@
   }
 
   .main-info > .expandable-info {
-    max-height: 54px;
     margin-top: -16px;
     transition: max-height 0.3s;
     transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
-  }
-
-  .expandable-info.expanded {
-    max-height: 100%;
   }
 
   .main-info > .expandable-info > h2 {
@@ -2076,20 +2083,15 @@
 }
 
 .shop-faq > .questions > .question {
-  max-height: 22px;
+  height: 22px;
   padding: 16px 0px 16px 0px;
   border-top: 1px solid #ffffff;
   gap: 32px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: max-height 0.3s;
-  transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
 }
 
-.shop-faq > .questions > .question.expanded {
-  max-height: 200px;
-}
 
 .shop-faq > .questions > .question > h2 {
   font-size: 18px;
@@ -2098,19 +2100,14 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
+  color: white;
+  cursor: pointer;
 }
 
 .shop-faq > .questions > .question > p {
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
-}
-
-.shop-faq > .questions > .question.expanded > p {
-  opacity: 1;
 }
 
 @media only screen and (max-width: 430px) {
@@ -2774,15 +2771,9 @@ aside li {
   }
 
   .mobile-group-container {
-    max-height: 54px;
+    height: 54px;
     border-top: 0.75px solid #ffffff;
-    transition: max-height 0.3s;
-    transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
     overflow: hidden;
-  }
-
-  .mobile-group-container.expanded {
-    max-height: 500px;
   }
 
   .mobile-group-container > h2 {
@@ -2793,6 +2784,8 @@ aside li {
     margin: 0;
     font-size: 18px;
     line-height: 21.6px;
+    color: white;
+    cursor: pointer;
   }
 
   .mobile-group-container > h2 > img {
@@ -2808,13 +2801,6 @@ aside li {
     flex-direction: column;
     padding-bottom: 16px;
     gap: 8px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
-  }
-
-  .mobile-group-container.expanded > p {
-    opacity: 1;
   }
 }
 

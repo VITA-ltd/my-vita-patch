@@ -1,5 +1,7 @@
 import { NavLink } from "@remix-run/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import gsap from "gsap";
+import { CustomEase } from 'gsap/all';
 
 const questionsAndAnswers = [
   {
@@ -51,6 +53,24 @@ const questionsAndAnswers = [
 export function Faq() {
   const [openInfo, setOpenInfo] = useState<number | null>(null);
 
+  useEffect(() => {
+    gsap.timeline()
+      .to(`.question`, {
+        height: '22px',
+        color: 'transparent',
+        duration: 0.3,
+        ease: CustomEase.create("", "0.77, 0, 0, 0.77")
+      }).play()
+
+    gsap.timeline()
+      .to(`#question-${openInfo}`, {
+        height: 'auto',
+        duration: 0.3,
+        color: 'white',
+        ease: CustomEase.create("", "0.77, 0, 0, 0.77")
+      }).play()
+  }, [openInfo])
+
   return (
     <section className="shop-faq">
       <h1>FAQs</h1>
@@ -58,7 +78,7 @@ export function Faq() {
         {
           questionsAndAnswers.map((qa, i) => {
             return (
-              <div className={`question ${openInfo === i ? 'expanded' : ''}`}>
+              <div id={`question-${i}`} className="question">
                 <h2 onClick={() => { setOpenInfo(openInfo === i ? null : i) }}>
                   {qa.question}
                   <img src={openInfo === i ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />

@@ -1,6 +1,8 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Await, NavLink } from '@remix-run/react';
 import type { FooterQuery, HeaderQuery } from 'storefrontapi.generated';
+import gsap from "gsap";
+import { CustomEase } from 'gsap/all';
 
 interface FooterProps {
   footer: Promise<FooterQuery | null>;
@@ -13,6 +15,25 @@ export function Footer({
   header
 }: FooterProps) {
   const [openInfo, setOpenInfo] = useState<number | null>(null);
+
+  useEffect(() => {
+    gsap.timeline()
+      .to(`.mobile-group-container`, {
+        height: '54px',
+        color: 'transparent',
+        duration: 0.2,
+        ease: CustomEase.create("", "0.42, 0, 0.58, 1.0")
+      }).play()
+
+    gsap.timeline()
+      .to(`#mobile-group-container-${openInfo}`, {
+        height: 'auto',
+        duration: 0.2,
+        color: 'white',
+        ease: CustomEase.create("", "0.42, 0, 0.58, 1.0")
+      }).play()
+  }, [openInfo])
+
 
   return (
     <Suspense>
@@ -56,7 +77,7 @@ export function Footer({
               </div>
 
               <div className='mobile-groups'>
-                <div className={`mobile-group-container ${openInfo === 1 ? 'expanded' : ''}`}>
+                <div id='mobile-group-container-1' className="mobile-group-container">
                   <h2 onClick={() => { setOpenInfo(openInfo === 1 ? null : 1) }}>
                     Quick Links
                     <img src={openInfo === 1 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
@@ -68,7 +89,7 @@ export function Footer({
                   </p>
                 </div>
 
-                <div className={`mobile-group-container ${openInfo === 2 ? 'expanded' : ''}`}>
+                <div id='mobile-group-container-2' className="mobile-group-container">
                   <h2 onClick={() => { setOpenInfo(openInfo === 2 ? null : 2) }}>
                     About
                     <img src={openInfo === 2 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
@@ -81,7 +102,7 @@ export function Footer({
                   </p>
                 </div>
 
-                <div className={`mobile-group-container ${openInfo === 3 ? 'expanded' : ''}`}>
+                <div id='mobile-group-container-3' className="mobile-group-container">
                   <h2 onClick={() => { setOpenInfo(openInfo === 3 ? null : 3) }}>
                     Support & Contact
                     <img src={openInfo === 3 ? "/shop/expandMinus.svg" : "/shop/expandPlus.svg"} />
