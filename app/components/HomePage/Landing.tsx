@@ -34,7 +34,7 @@ export function Landing() {
           <CustomerTestimonials />
         }
       </div>
-      <img src={isMobile ? "/home/mobileHeader.gif" : "/homeLanding2.webp"} />
+      <img src={isMobile ? "/home/mobileHeader.webp" : "/homeLanding2.webp"} />
     </header>
   );
 }
