@@ -3,6 +3,7 @@ import { Image, Money } from "@shopify/hydrogen";
 import { Suspense } from "react";
 import { loader } from "~/routes/($locale)._index";
 import { AddToCartButton } from "../AddToCartButton";
+import { pricePerPatch } from "types";
 
 export function Featured() {
   const data = useLoaderData<typeof loader>();
@@ -12,6 +13,7 @@ export function Featured() {
       <Await resolve={data.featuredProducts}>
         {(response) => {
           const featuredProduct = response.collection.products.nodes[0];
+          const pricePerPatch: pricePerPatch = JSON.parse(featuredProduct.pricePerPatch.value) as pricePerPatch;
 
           return <>
             <div className="featured-info">
@@ -24,12 +26,11 @@ export function Featured() {
                   <strong>The {featuredProduct.title} Patch <Money data={featuredProduct.priceRange.minVariantPrice} /></strong>
                   <div className="patch-details">
                     <strong>24 patches</strong>
-                    <strong>$0.50/patch</strong>
+                    <strong><Money data={{amount: pricePerPatch.amount, currencyCode: pricePerPatch.currency_code}} />/patch</strong>
                   </div>
                   <p>Hangover relief with a nutrient boost, in a simple patch.</p>
                 </div>
 
-                {/* <button>Add to Cart</button> */}
                 <AddToCartButton
                   className="add-to-cart"
                   lines={
@@ -59,7 +60,7 @@ export function Featured() {
                 <img src="/home/benefitsGluten.svg" />
               </div>
             </div>
-            <img src="/home/featuredProduct.jpeg" />
+            <img src="/home/featuredProduct.png" />
           </>
         }}
       </Await>

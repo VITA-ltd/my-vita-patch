@@ -23,7 +23,7 @@ export function Difference() {
         <div>
           <h2>78%</h2>
           <p>
-            Of members saw improved<br /> cognitive function by mid-<br /> morning after using VITA®.
+            of members saw improved<br /> cognitive function by mid-<br /> morning after using VITA®.
           </p>
         </div>
       </div>

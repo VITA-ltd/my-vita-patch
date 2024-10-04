@@ -374,6 +374,7 @@
   transition: opacity 200ms;
   transition-timing-function: ease-in-out;
 }
+
 .ingredients-description > h2 > strong > span.active {
   opacity: 1;
   transition-delay: 500ms;
@@ -491,6 +492,11 @@
   .ingredients-description > h2 > strong {
     font-size: 41.89px;
     line-height: 50.27px;
+  }
+
+  .ingredients-description > h2 > strong > span {
+    display: block;
+    margin-left: 0
   }
 
   .ingredients-description > p {
@@ -1043,7 +1049,7 @@
 }
 
 .benefits-descriptions > div:hover > .benefits-logo {
-  background-color: #68EFA2;
+  background-color: #68efa2;
 }
 .benefits-descriptions > div > h3 {
   margin: 0;
@@ -1293,6 +1299,11 @@
   font-size: 0.875rem;
   line-height: 1.05rem;
 }
+
+.featured-info > .details > .main-details > .patch-details > strong > div {
+  display: inline;
+}
+
 
 .featured-info > .details > .main-details > p {
   font-size: 0.875rem;
@@ -1589,7 +1600,7 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   width: calc(100% - 4rem);
-  background-color: #0C2B25;
+  background-color: #0c2b25;
   border-radius: 6px;
   padding: 2rem;
 }
@@ -2426,6 +2437,11 @@ aside li {
     padding: 0px 16px 0px 16px;
   }
 
+  .header:hover {
+    background-color: #00000000;
+    backdrop-filter: none;
+  }
+
   .header-logo {
     height: 26px;
   }
@@ -2449,6 +2465,10 @@ aside li {
 
   .header-ctas {
     width: 25%;
+  }
+
+  .header-ctas > a {
+    text-decoration: none !important;
   }
 }
 
@@ -2646,7 +2666,7 @@ aside li {
 
   .footer-top {
     background-image: none;
-    padding: 32px 0px 32px 0px;
+    padding: 32px 0px 0px 0px;
   }
 
   .footer-top-links {
@@ -2754,7 +2774,7 @@ aside li {
 
   .mobile-group-container {
     max-height: 54px;
-    border-top: 1px solid #ffffff;
+    border-top: 0.75px solid #ffffff;
     transition: max-height 0.3s;
     transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
     overflow: hidden;
