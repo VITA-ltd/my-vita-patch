@@ -48,7 +48,7 @@ export function Featured() {
 
                 <div className="order-gurantees">
                   <span><img src="/checkCircle.svg" />60-day money back guarantee</span>
-                  <span><img src="/checkCircle.svg" />Update or Cancel Anythime</span>
+                  <span><img src="/checkCircle.svg" />Update or Cancel Anytime</span>
                 </div>
               </div>
               <div className="featured-benefits">
