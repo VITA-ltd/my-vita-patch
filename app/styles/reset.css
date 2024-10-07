@@ -18,10 +18,17 @@ body {
   padding: 0;
   background-color: black;
   color: white;
+  /* position: relative;
+  transform: translate3d(0, 0, 0); */
 }
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+html, body {
+  overflow-y: scroll;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 /* @media only screen and (max-device-width: 3440px) {

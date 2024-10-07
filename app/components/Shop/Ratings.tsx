@@ -1,8 +1,10 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink, useLoaderData } from "@remix-run/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
+import { loader } from "~/routes/($locale).products.$handle";
 
 export function Ratings() {
+  const data = useLoaderData<typeof loader>();
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,104 +27,85 @@ export function Ratings() {
       {isMobile ?
         <>
           <Swiper
-            className="ingredients-carousel"
             loop={true}
             slidesPerView={3}
             centeredSlides
           >
-            <SwiperSlide>
-              <div className="rating mobile">
-                <img src="/shop/example1.jpeg" />
-                <img src="/stars.svg" className="stars" />
-                <p>"I felt more hydrated and didn’t struggle to get moving."</p>
-                <div className="customer-name">
-                  <strong>TARA S.</strong>
-                  <img src="/checkCircle.svg" />
-                </div>
-              </div>
-            </SwiperSlide>
+            {
+              data.shopTestimonials.metaobjects.nodes.map((testimonial) => {
+                let imageUrl = "";
+                let quote = "";
+                let customerName = "";
 
-            <SwiperSlide>
-              <div className="rating">
-                <img src="/shop/example2.jpeg" />
-                <img src="/stars.svg" className="stars" />
-                <p>“I noticed I didn’t feel as drained by the end of the night.”</p>
-                <div className="customer-name">
-                  <strong>CESARE E.</strong>
-                  <img src="/checkCircle.svg" />
-                </div>
-              </div>
-            </SwiperSlide>
+                testimonial.fields.map((field) => {
+                  switch (field.key) {
+                    case 'image':
+                      imageUrl = field.reference.image.url;
+                      break;
+                    case 'quote':
+                      quote = field.value;
+                      break;
+                    case 'customer_name':
+                      customerName = field.value;
+                      break;
+                  }
+                })
 
-            <SwiperSlide>
-              <div className="rating">
-                <img src="/shop/example2.jpeg" />
-                <img src="/stars.svg" className="stars" />
-                <p>"I immediately noticed I had no nausea after last night. I just felt ready to start my day."</p>
-                <div className="customer-name">
-                  <strong>ELIZA C.</strong>
-                  <img src="/checkCircle.svg" />
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="rating">
-                <img src="/shop/example2.jpeg" />
-                <img src="/stars.svg" className="stars" />
-                <p>“I always woke up with brain fog until I started using VITA every time I had to prepare for my set."</p>
-                <div className="customer-name">
-                  <strong>HANNA N.</strong>
-                  <img src="/checkCircle.svg" />
-                </div>
-              </div>
-            </SwiperSlide>
+                return (
+                  <SwiperSlide>
+                    <div className="rating">
+                      <img src={imageUrl} />
+                      <img src="/stars.svg" className="stars" />
+                      <p>“{quote}”</p>
+                      <div className="customer-name">
+                        <strong>{customerName}</strong>
+                        <img src="/checkCircle.svg" />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                )
+              })
+            }
           </Swiper>
         </>
         :
-        <>
-          <div className="rating">
-            <img src="/shop/example1.jpeg" />
-            <img src="/stars.svg" className="stars" />
-            <p>"I felt more hydrated and didn’t struggle to get moving."</p>
-            <div className="customer-name">
-              <strong>TARA S.</strong>
-              <img src="/checkCircle.svg" />
-            </div>
-          </div>
+        <div className="cutomer-ratings">
+          {
+            data.shopTestimonials.metaobjects.nodes.map((testimonial) => {
+              let imageUrl = "";
+              let quote = "";
+              let customerName = "";
 
-          <div className="rating">
-            <img src="/shop/example2.jpeg" />
-            <img src="/stars.svg" className="stars" />
-            <p>“I noticed I didn’t feel as drained by the end of the night.”</p>
-            <div className="customer-name">
-              <strong>CESARE E.</strong>
-              <img src="/checkCircle.svg" />
-            </div>
-          </div>
+              testimonial.fields.map((field) => {
+                switch (field.key) {
+                  case 'image':
+                    imageUrl = field.reference.image.url;
+                    break;
+                  case 'quote':
+                    quote = field.value;
+                    break;
+                  case 'customer_name':
+                    customerName = field.value;
+                    break;
+                }
+              })
 
-          <div className="rating">
-            <img src="/shop/example2.jpeg" />
-            <img src="/stars.svg" className="stars" />
-            <p>"I immediately noticed I had no nausea after last night. I just felt ready to start my day."</p>
-            <div className="customer-name">
-              <strong>ELIZA C.</strong>
-              <img src="/checkCircle.svg" />
-            </div>
-          </div>
-
-          <div className="rating">
-            <img src="/shop/example2.jpeg" />
-            <img src="/stars.svg" className="stars" />
-            <p>“I always woke up with brain fog until I started using VITA every time I had to prepare for my set."</p>
-            <div className="customer-name">
-              <strong>HANNA N.</strong>
-              <img src="/checkCircle.svg" />
-            </div>
-          </div>
-        </>
+              return (
+                <div className="rating">
+                  <img src={imageUrl} />
+                  <img src="/stars.svg" className="stars" />
+                  <p>“{quote}”</p>
+                  <div className="customer-name">
+                    <strong>{customerName}</strong>
+                    <img src="/checkCircle.svg" />
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
       }
-      <a className="mobile-read-button">Read</a>
+      <a className="mobile-read-button">Read more reviews </a>
     </section>
   );
 }

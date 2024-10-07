@@ -18,70 +18,79 @@
 @font-face {
   font-family: "Cardinal Fruit";
   src: url("../fonts/cardinal-fruit.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-Regular.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-Black.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-BlackItalic.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: 900;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-Bold.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-BoldItalic.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: bold;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-Italic.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: normal;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-Medium.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Geigy";
   src: url("../fonts/GeigyLLTrialTT-MediumItalic.woff2") format("woff2");
-  unicode-range: U+20-21, U+41-5A, U+61-7A;
+  unicode-range: U+20-21, U+002E, U+002D, U+002C, U+002F, U+00B7, U+2019, U+41-5A, U+61-7A;
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
 /*
@@ -158,6 +167,7 @@
 
 @media only screen and (max-width: 430px) {
   .home-landing {
+    /* position: sticky; */
     flex-direction: column-reverse;
   }
 
@@ -1440,6 +1450,7 @@
   font-weight: 400;
   line-height: 1.2rem;
 }
+
 .main-info > .main-selection {
   width: 100%;
   margin-top: 2rem;
@@ -1716,6 +1727,7 @@
   .shop-main {
     flex-direction: column;
     padding: 0;
+    perspective: 0;
   }
 
   .mobile-image-cover {
@@ -1759,6 +1771,11 @@
 
   .main-info > .main-selection {
     margin-top: 16px;
+    border-width: 0.5px;
+  }
+
+  .main-info > .main-selection > .purchase-option:first-of-type {
+    border-width: 0.5px;
   }
 
   .main-info > form > .add-to-cart {
@@ -1802,6 +1819,10 @@
     transition-timing-function: cubic-bezier(0.77, 0, 0, 0.77);
   }
 
+  .main-info > .expandable-info > h2 > button {
+    padding: 0;
+  }
+
   .main-info > .expandable-info > h2 {
     height: 22px;
     padding: 16px 0px 16px 0px;
@@ -1814,18 +1835,19 @@
 * --------------------------------------------------
 */
 .shop-ratings {
-  width: 100vw;
-  padding: 2rem;
+  width: calc(100vw - 64px);
+  padding: 32px;
   display: flex;
+  justify-content: stretch;
   background-color: var(--green-background);
 }
 
 .shop-ratings > .title {
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1rem;
-  margin-right: 2rem;
+  padding: 16px;
 }
 
 .shop-ratings > .title > h2 {
@@ -1851,21 +1873,25 @@
   height: 3rem;
 }
 
-.shop-ratings > .rating,
+.shop-ratings > .cutomer-ratings {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.shop-ratings > .cutomer-ratings > .rating,
 .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating {
-  width: calc(20% - 4.5rem);
+  flex: 1;
   height: fit-content;
-  margin-left: 1rem;
-  margin-right: 1rem;
   background-color: var(--green-background2);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.shop-ratings > .rating > img,
+.shop-ratings > .cutomer-ratings > .rating > img,
 .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > img {
   width: 100%;
   aspect-ratio: 1/1;
@@ -1873,14 +1899,14 @@
   margin-bottom: 2rem;
 }
 
-.shop-ratings > .rating > .stars,
+.shop-ratings > .cutomer-ratings > .rating > .stars,
 .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > .stars {
   width: 50%;
   aspect-ratio: unset;
   object-fit: unset;
 }
 
-.shop-ratings > .rating > p,
+.shop-ratings > .cutomer-ratings > .rating > p,
 .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > p {
   font-size: 1.125rem;
   line-height: 1.5rem;
@@ -1888,7 +1914,7 @@
   margin-bottom: 2rem;
 }
 
-.shop-ratings > .rating > .customer-name,
+.shop-ratings > .cutomer-ratings > .rating > .customer-name,
 .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > .customer-name {
   display: flex;
   align-items: center;
@@ -1896,7 +1922,7 @@
   line-height: 1.125rem;
 }
 
-.shop-ratings > .rating > .customer-name > img,
+.shop-ratings > .cutomer-ratings > .rating > .customer-name > img,
 .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide .rating > .customer-name > img {
   margin-left: 0.75rem;
 }
@@ -1907,6 +1933,7 @@
 
 @media only screen and (max-width: 430px) {
   .shop-ratings {
+    width: 100vw;
     flex-direction: column;
     padding: 0;
     overflow: hidden;
@@ -1926,11 +1953,13 @@
     margin: 0;
   }
 
-  .shop-ratings > .rating:not(.mobile) {
+  .shop-ratings > .cutomer-ratings > .rating:not(.mobile) {
     display: none;
   }
 
   .shop-ratings > .swiper {
+    width: 200vw;
+    margin-left: calc(-50vw + 16px);
     height: fit-content;
     background-color: transparent;
   }
@@ -1939,8 +1968,13 @@
     align-items: stretch;
   }
 
+  .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .shop-ratings > .swiper > .swiper-wrapper > .swiper-slide > .rating {
-    width: 100%;
+    width: calc(100% - 64px);
     height: 100%;
   }
 
@@ -2092,7 +2126,6 @@
   overflow: hidden;
 }
 
-
 .shop-faq > .questions > .question > h2 {
   font-size: 18px;
   font-weight: 700;
@@ -2190,7 +2223,6 @@
 */
 aside {
   background: black;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
   height: 100vh;
   max-width: var(--aside-width);
   min-width: var(--aside-width);
@@ -2200,7 +2232,7 @@ aside {
   gap: 8px;
   right: calc(-1 * var(--aside-width));
   top: 0;
-  transition: transform 200ms ease-in-out;
+  transition: transform 300ms cubic-bezier(0.82, 0, 0.13, 1);
   padding: 16px;
 }
 
@@ -2274,18 +2306,21 @@ aside li {
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.2);
+  background-color: transparent;
   bottom: 0;
   left: 0;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
   position: fixed;
   right: 0;
   top: 0;
-  transition: opacity 400ms ease-in-out;
-  transition: opacity 400ms;
-  visibility: hidden;
+  transition: background-color 400ms ease-in-out;
+  transition: background-color 400ms;
   z-index: 10;
+}
+
+.overlay > aside {
+  transform: translateX(30px);
 }
 
 .overlay .close-outside {
@@ -2311,6 +2346,7 @@ aside li {
 }
 
 .overlay.expanded {
+  background-color: rgba(0, 0, 0, 0.75);
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
@@ -2425,6 +2461,18 @@ aside li {
   text-decoration: none !important;
 }
 
+.bag-container:hover > a:first-child {
+  text-decoration: underline;
+}
+
+.bag-url.cart {
+  padding-left: 3px;
+}
+
+.bag-url.cart:hover {
+  text-decoration: none !important;
+}
+
 .mobile-menu {
   display: none;
 }
@@ -2436,8 +2484,8 @@ aside li {
   }
 
   .header:hover {
-    background-color: #00000000;
-    backdrop-filter: none;
+    background-color: initial;
+    backdrop-filter: initial;
   }
 
   .header-logo {
@@ -2463,6 +2511,10 @@ aside li {
 
   .header-ctas {
     width: 25%;
+  }
+
+  .header-ctas > *:not(:last-child) {
+    display: none;
   }
 
   .header-ctas > a {
@@ -2658,7 +2710,7 @@ aside li {
     width: calc(100vw - 32px);
     height: fit-content;
     min-height: fit-content;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 48px 16px 48px 16px;
   }
 
@@ -2723,7 +2775,7 @@ aside li {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    padding-bottom: 0;
+    padding-bottom: 32px;
   }
 
   .footer-copywrite {

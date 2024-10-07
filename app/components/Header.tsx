@@ -19,6 +19,7 @@ export function Header({
   cart,
   publicStoreDomain,
 }: HeaderProps) {
+  const { open } = useAside();
   const { shop, menu } = header;
   const [backgroundActive, setBackgroundActive] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -35,14 +36,14 @@ export function Header({
         scrollActivation = (window.innerHeight / 2) - 60;
       }
 
-      if (window.scrollY > scrollActivation || window.location.pathname !== '/') {
+      if (document.body.scrollTop > scrollActivation || window.location.pathname !== '/') {
         setBackgroundActive(true);
       } else {
         setBackgroundActive(false);
       }
     }
 
-    document.addEventListener('scroll', scrollListener)
+    document.body.addEventListener('scroll', scrollListener)
     scrollListener();
   }, [])
 
@@ -55,7 +56,14 @@ export function Header({
         publicStoreDomain={publicStoreDomain}
       />
       <div className='mobile-menu'>
-        <button>Menu</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            open('mobile');
+          }}
+        >
+          Menu
+        </button>
       </div>
       <NavLink
         className="header-logo"
@@ -64,7 +72,7 @@ export function Header({
         style={activeLinkStyle}
         to="/"
       >
-        <img src={isMobile ? '/vita.svg' : '/vitaLogo.svg'} />
+        <img src='/vita.svg' />
       </NavLink>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
     </header>
@@ -100,7 +108,7 @@ export function HeaderMenu({
         onClick={closeAside}
         prefetch="intent"
         style={activeLinkStyle}
-        to={"/shop"}
+        to={"/products/after-party"}
       >
         Shop
       </NavLink>
@@ -142,18 +150,15 @@ function HeaderCtas({
 
   return (
     <nav className="header-ctas" role="navigation">
-      {!isMobile &&
-        <>
-          <SearchToggle />
-          <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
-            <Suspense fallback="Log In">
-              <Await resolve={isLoggedIn} errorElement="Log In">
-                {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Log In')}
-              </Await>
-            </Suspense>
-          </NavLink>
-        </>
-      }
+      <SearchToggle />
+      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+        <Suspense fallback="Log In">
+          <Await resolve={isLoggedIn} errorElement="Log In">
+            {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Log In')}
+          </Await>
+        </Suspense>
+      </NavLink>
+
       <CartToggle cart={cart} />
     </nav>
   );
@@ -173,22 +178,40 @@ function CartBadge({ count }: { count: number | null }) {
   const { publish, shop, cart, prevCart } = useAnalytics();
 
   return (
-    <a
-      className='bag-url'
-      href="/cart"
-      onClick={(e) => {
-        e.preventDefault();
-        open('cart');
-        publish('cart_viewed', {
-          cart,
-          prevCart,
-          shop,
-          url: window.location.href || '',
-        } as CartViewPayload);
-      }}
-    >
-      Bag <span className='cart-count'>{count === null ? <span>&nbsp;</span> : count}</span>
-    </a>
+    <div className='bag-container'>
+      <a
+        className='bag-url'
+        href="/cart"
+        onClick={(e) => {
+          e.preventDefault();
+          open('cart');
+          publish('cart_viewed', {
+            cart,
+            prevCart,
+            shop,
+            url: window.location.href || '',
+          } as CartViewPayload);
+        }}
+      >
+        Bag
+      </a>
+      <a
+        className='bag-url cart'
+        href="/cart"
+        onClick={(e) => {
+          e.preventDefault();
+          open('cart');
+          publish('cart_viewed', {
+            cart,
+            prevCart,
+            shop,
+            url: window.location.href || '',
+          } as CartViewPayload);
+        }}
+      >
+        <span className='cart-count'>{count === null ? <span>&nbsp;</span> : count}</span>
+      </a>
+    </div>
   );
 }
 

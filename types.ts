@@ -52,3 +52,21 @@ export type Testimonial = {
     }[]
   }
 }
+
+export type ShopTestimonial = {
+  metaobjects: {
+    nodes: {
+      id: string;
+      handle: string;
+      fields: {
+        key: 'image' | 'quote' | 'customer_name',
+        value: string,
+        reference: {
+          image: {
+            url: string;
+          }
+        }
+      }[]
+    }[]
+  }
+}

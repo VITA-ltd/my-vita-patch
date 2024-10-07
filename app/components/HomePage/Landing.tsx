@@ -26,7 +26,7 @@ export function Landing() {
         <NavLink
           end
           prefetch="intent"
-          to="/shop"
+          to="/products/after-party"
         >
           Shop Now
         </NavLink>
