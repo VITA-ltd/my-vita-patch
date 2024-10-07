@@ -21,24 +21,24 @@ export function CustomerTestimonials() {
         }}
       >
         <SwiperSlide className="customer-testimonial">
-          <p>“Its greatest benefit is how it keeps my mind clear and focused on the task at hand. 1”</p>
-          <span>Bryce Bennett, USA</span>
+          <p>“The VITA Patch genuinely made me feel like I didn't even go out yesterday.”</p>
+          <span>Maya Desai, Canada</span>
         </SwiperSlide>
         <SwiperSlide className="customer-testimonial">
-          <p>“Its greatest benefit is how it keeps my mind clear and focused on the task at hand. 2”</p>
-          <span>Bryce Bennett, USA</span>
+          <p>“The patch is a lifesaver; I put it on before heading out, and the next morning, I felt like I had my life together again.”</p>
+          <span>Eli Vance, Spain</span>
         </SwiperSlide>
         <SwiperSlide className="customer-testimonial">
-          <p>“Its greatest benefit is how it keeps my mind clear and focused on the task at hand. 3”</p>
-          <span>Bryce Bennett, USA</span>
+          <p>“I honestly didn’t think a patch could make this much difference. I felt like myself again after a busy night out—no sluggishness, just good vibes.”</p>
+          <span>Dustin Lee, USA</span>
         </SwiperSlide>
         <SwiperSlide className="customer-testimonial">
-          <p>“Its greatest benefit is how it keeps my mind clear and focused on the task at hand. 4”</p>
-          <span>Bryce Bennett, USA</span>
+          <p>“After using the Vita  patch, I felt like I could actually live my weekend instead of just recovering.”</p>
+          <span>Asher Cohen, USA</span>
         </SwiperSlide>
         <SwiperSlide className="customer-testimonial">
-          <p>“Its greatest benefit is how it keeps my mind clear and focused on the task at hand. 5”</p>
-          <span>Bryce Bennett, USA</span>
+          <p>“After a long night at a concert, VITA surprised me. I felt awake enough to explore the city instead of crashing.”</p>
+          <span>Malik Richards, Canada</span>
         </SwiperSlide>
       </Swiper>
     </section>

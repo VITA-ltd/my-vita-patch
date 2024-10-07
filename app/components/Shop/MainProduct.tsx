@@ -110,7 +110,7 @@ export function MainProduct() {
               <div className="shipping-info">
                 <div>
                   <img src="/shop/rocket.svg" />
-                  <p>Free US & Canadian<br />shipping over $10</p>
+                  <p>Free US & Canadian<br />shipping over $20</p>
                 </div>
 
                 <div>
