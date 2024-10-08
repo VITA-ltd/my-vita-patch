@@ -36,8 +36,6 @@ export function Header({
     }
   })
 
-  console.log(headerImage, headerScale);
-
   useEffect(() => {
     if (window.innerWidth <= 430) {
       setIsMobile(true)
@@ -50,7 +48,7 @@ export function Header({
         scrollActivation = (window.innerHeight / 2) - 60;
       }
 
-      if (document.body.scrollTop > scrollActivation || window.location.pathname !== '/') {
+      if (document.body.scrollTop > scrollActivation || window.scrollY > scrollActivation || window.location.pathname !== '/') {
         setBackgroundActive(true);
       } else {
         setBackgroundActive(false);
@@ -58,6 +56,7 @@ export function Header({
     }
 
     document.body.addEventListener('scroll', scrollListener)
+    window.addEventListener('scroll', scrollListener)
     scrollListener();
   }, [])
 

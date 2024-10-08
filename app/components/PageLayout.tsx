@@ -1,14 +1,14 @@
-import {Await, NavLink} from '@remix-run/react';
-import {Suspense} from 'react';
+import { Await, NavLink } from '@remix-run/react';
+import { Suspense } from 'react';
 import type {
   CartApiQueryFragment,
   FooterQuery,
   HeaderQuery,
 } from 'storefrontapi.generated';
-import {Aside} from '~/components/Aside';
-import {Footer} from '~/components/Footer';
-import {Header, HeaderMenu} from '~/components/Header';
-import {CartMain} from '~/components/CartMain';
+import { Aside } from '~/components/Aside';
+import { Footer } from '~/components/Footer';
+import { Header, HeaderMenu } from '~/components/Header';
+import { CartMain } from '~/components/CartMain';
 import {
   PredictiveSearchForm,
   PredictiveSearchResults,
@@ -57,7 +57,7 @@ export function PageLayout({
   );
 }
 
-function CartAside({cart}: {cart: PageLayoutProps['cart']}) {
+function CartAside({ cart }: { cart: PageLayoutProps['cart'] }) {
   return (
     <Aside type="cart" heading="My Bag">
       <Suspense fallback={<p>Loading cart ...</p>}>
@@ -77,7 +77,7 @@ function SearchAside() {
       <div className="predictive-search">
         <br />
         <PredictiveSearchForm>
-          {({fetchResults, inputRef}) => (
+          {({ fetchResults, inputRef }) => (
             <div>
               <input
                 name="q"
@@ -117,9 +117,33 @@ function MobileMenuAside({
     header.menu &&
     header.shop.primaryDomain?.url && (
       <Aside type="mobile" heading="MENU">
-        <div className='mobile-menu-links'>
+        <div className='mobile-menu-main'>
+          <div className='mobile-menu-links'>
+            <NavLink style={activeLinkStyle} to='/products/after-party'>Shop</NavLink>
+            <NavLink to=''>Subscribe & Save</NavLink>
+            <NavLink to=''>About Us</NavLink>
+            <NavLink to=''>Ingredients</NavLink>
+            <NavLink to=''>Reviews</NavLink>
+          </div>
+          <input placeholder='Search our store' />
         </div>
+        <footer className='mobile-menu-footer'>
+          <button>Login</button>
+          <a>Contact</a>
+        </footer>
       </Aside>
     )
   );
+}
+
+function activeLinkStyle({
+  isActive,
+  isPending,
+}: {
+  isActive: boolean;
+  isPending: boolean;
+}) {
+  return {
+    fontWeight: isActive ? '900' : undefined,
+  };
 }

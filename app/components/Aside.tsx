@@ -1,3 +1,4 @@
+import { NavLink } from '@remix-run/react';
 import { createContext, type ReactNode, useContext, useState } from 'react';
 
 type AsideType = 'search' | 'cart' | 'mobile' | 'closed';
@@ -32,12 +33,12 @@ export function Aside({
   return (
     <div
       aria-modal
-      className={`overlay ${expanded ? 'expanded' : ''}`}
+      className={`overlay ${type === 'mobile' ? 'mobile' : ''} ${expanded ? 'expanded' : ''}`}
       role="dialog"
     >
       <button className="close-outside" onClick={close} />
       <aside>
-        {type !== 'mobile' &&
+        {type !== 'mobile' ?
           <>
             <header>
               <h3>{heading}</h3>
@@ -47,6 +48,15 @@ export function Aside({
             </header>
             <p>Start shopping to qualify for free shipping!</p>
             <div className='shipping-progress' />
+          </>
+          :
+          <>
+            <header>
+              <NavLink to="/"><img src='/vita.svg' /></NavLink>
+              <button className="close reset" onClick={close}>
+                Close
+              </button>
+            </header>
           </>
         }
         <main>{children}</main>

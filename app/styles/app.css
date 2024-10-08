@@ -1,5 +1,6 @@
 :root {
   --aside-width: 400px;
+  --mobile-menu-width: 361px;
   --cart-aside-summary-height-with-discount: 300px;
   --cart-aside-summary-height: 250px;
   --grid-item-width: 355px;
@@ -2236,6 +2237,77 @@ aside {
   padding: 16px;
 }
 
+.overlay.mobile > aside {
+  padding: 0;
+  background-color: #0d0e0e;
+  max-width: var(--mobile-menu-width);
+  min-width: var(--mobile-menu-width);
+  margin-right: calc(100vw - var(--mobile-menu-width));
+}
+
+.mobile-menu-main {
+  padding: 49px 0px 49px 0px;
+}
+
+.mobile-menu-main > input {
+  width: calc(100% - 32px);
+  margin: 0px 16px 0px 16px;
+  padding: 0;
+  padding-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  border: none;
+  border-bottom: 0.75px solid #FFFFFF;
+}
+
+.mobile-menu-main > input::placeholder {
+  opacity: 1;
+  color: white;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 64px 16px 64px 16px;
+}
+
+.mobile-menu-links > a {
+  font-size: 30px;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.mobile-menu-footer {
+  position: absolute;
+  bottom: 32px;
+  width: calc(100% - 32px);
+  margin-left: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-menu-footer > button {
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  border: 1px solid #FFFFFF;
+  border-radius: 52px;
+  padding: 7px 16px 7px 16px;
+}
+
+.mobile-menu-footer > a {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 7px 16px 7px 16px;
+}
+
 aside header {
   align-items: flex-start;
   display: flex;
@@ -2274,6 +2346,26 @@ aside header button img {
   transform: rotate(45deg);
 }
 
+.overlay.mobile > aside > header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  align-items: center;
+}
+
+.overlay.mobile > aside > header > a > img {
+  height: 26.15px;
+}
+
+.overlay.mobile > aside > header > button {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 700;
+  padding: 10px;
+}
+
 .shipping-progress {
   width: 100%;
   height: 8px;
@@ -2286,6 +2378,10 @@ aside main {
   border-top: 1px solid #ffffff;
   margin-top: 8px;
   padding-top: 16px;
+}
+
+.overlay.mobile > aside > main {
+  border: none;
 }
 
 aside header h2 {
@@ -2317,6 +2413,10 @@ aside li {
   transition: background-color 400ms ease-in-out;
   transition: background-color 400ms;
   z-index: 10;
+}
+
+.overlay.mobile > aside {
+  transform: translateX(-200vw);
 }
 
 .overlay > aside {
@@ -2353,6 +2453,11 @@ aside li {
 }
 /* reveal aside */
 .overlay.expanded aside {
+  transform: translateX(calc(var(--aside-width) * -1));
+}
+
+/* reveal aside */
+.overlay.mobile.expanded aside {
   transform: translateX(calc(var(--aside-width) * -1));
 }
 
