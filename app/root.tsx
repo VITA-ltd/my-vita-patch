@@ -100,7 +100,6 @@ async function loadCriticalData({ context }: LoaderFunctionArgs) {
       },
     }),
     storefront.query(HEADER_LOGO_QUERY, {
-      cache: storefront.CacheLong(),
       variables: {
         first: 1,
       },
