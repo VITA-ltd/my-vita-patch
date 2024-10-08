@@ -53,6 +53,24 @@ export type Testimonial = {
   }
 }
 
+export type HeaderLogo = {
+  metaobjects: {
+    nodes: {
+      id: string;
+      handle: string;
+      fields: {
+        key: 'image' | 'scale',
+        value: string,
+        reference: {
+          image: {
+            url: string;
+          }
+        } | null;
+      }[]
+    }[]
+  }
+}
+
 export type ShopTestimonial = {
   metaobjects: {
     nodes: {

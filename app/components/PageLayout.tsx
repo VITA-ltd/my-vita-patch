@@ -1,4 +1,4 @@
-import {Await} from '@remix-run/react';
+import {Await, NavLink} from '@remix-run/react';
 import {Suspense} from 'react';
 import type {
   CartApiQueryFragment,
@@ -18,6 +18,7 @@ interface PageLayoutProps {
   cart: Promise<CartApiQueryFragment | null>;
   footer: Promise<FooterQuery | null>;
   header: HeaderQuery;
+  headerMenu: any;
   isLoggedIn: Promise<boolean>;
   publicStoreDomain: string;
   children?: React.ReactNode;
@@ -28,6 +29,7 @@ export function PageLayout({
   children = null,
   footer,
   header,
+  headerMenu,
   isLoggedIn,
   publicStoreDomain,
 }: PageLayoutProps) {
@@ -39,6 +41,7 @@ export function PageLayout({
       {header && (
         <Header
           header={header}
+          headerMenu={headerMenu}
           cart={cart}
           isLoggedIn={isLoggedIn}
           publicStoreDomain={publicStoreDomain}
@@ -114,12 +117,8 @@ function MobileMenuAside({
     header.menu &&
     header.shop.primaryDomain?.url && (
       <Aside type="mobile" heading="MENU">
-        <HeaderMenu
-          menu={header.menu}
-          viewport="mobile"
-          primaryDomainUrl={header.shop.primaryDomain.url}
-          publicStoreDomain={publicStoreDomain}
-        />
+        <div className='mobile-menu-links'>
+        </div>
       </Aside>
     )
   );

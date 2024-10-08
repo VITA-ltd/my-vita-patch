@@ -165,6 +165,33 @@ export const HEADER_QUERY = `#graphql
   ${MENU_FRAGMENT}
 ` as const;
 
+export const HEADER_LOGO_QUERY = `#graphql
+  fragment HeaderLogo on Metaobject {
+    id
+    handle
+    fields {
+      key
+      value
+      reference {
+        ... on MediaImage {
+          image {
+            url
+          }
+        }
+      }
+    }
+  }
+  query Metaobject(
+    $first: Int
+  ) {
+    metaobjects(type: "header_logo", first: $first, reverse: true) {
+      nodes {
+        ...HeaderLogo
+      }
+    }
+  }
+` as const;
+
 export const FOOTER_QUERY = `#graphql
   query Footer(
     $country: CountryCode

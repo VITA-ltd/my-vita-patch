@@ -1,4 +1,4 @@
-import {createContext, type ReactNode, useContext, useState} from 'react';
+import { createContext, type ReactNode, useContext, useState } from 'react';
 
 type AsideType = 'search' | 'cart' | 'mobile' | 'closed';
 type AsideContextValue = {
@@ -26,7 +26,7 @@ export function Aside({
   type: AsideType;
   heading: React.ReactNode;
 }) {
-  const {type: activeType, close} = useAside();
+  const { type: activeType, close } = useAside();
   const expanded = type === activeType;
 
   return (
@@ -37,14 +37,18 @@ export function Aside({
     >
       <button className="close-outside" onClick={close} />
       <aside>
-        <header>
-          <h3>{heading}</h3>
-          <button className="close reset" onClick={close}>
-            <img src="/shop/expandPlus.svg" />
-          </button>
-        </header>
-        <p>Start shopping to qualify for free shipping!</p>
-        <div className='shipping-progress' />
+        {type !== 'mobile' &&
+          <>
+            <header>
+              <h3>{heading}</h3>
+              <button className="close reset" onClick={close}>
+                <img src="/shop/expandPlus.svg" />
+              </button>
+            </header>
+            <p>Start shopping to qualify for free shipping!</p>
+            <div className='shipping-progress' />
+          </>
+        }
         <main>{children}</main>
       </aside>
     </div>
@@ -53,7 +57,7 @@ export function Aside({
 
 const AsideContext = createContext<AsideContextValue | null>(null);
 
-Aside.Provider = function AsideProvider({children}: {children: ReactNode}) {
+Aside.Provider = function AsideProvider({ children }: { children: ReactNode }) {
   const [type, setType] = useState<AsideType>('closed');
 
   return (

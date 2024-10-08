@@ -19,7 +19,7 @@ import "./fonts/GeigyLLTrialTT-Regular.woff2";
 import 'swiper/css'
 import '@gfazioli/mantine-marquee/styles.css'
 import { PageLayout } from '~/components/PageLayout';
-import { FOOTER_QUERY, HEADER_QUERY } from '~/lib/fragments';
+import { FOOTER_QUERY, HEADER_QUERY, HEADER_LOGO_QUERY } from '~/lib/fragments';
 import { MantineProvider } from '@mantine/core';
 
 export type RootLoader = typeof loader;
@@ -92,11 +92,17 @@ export async function loader(args: LoaderFunctionArgs) {
 async function loadCriticalData({ context }: LoaderFunctionArgs) {
   const { storefront } = context;
 
-  const [header] = await Promise.all([
+  const [header, headerMenu] = await Promise.all([
     storefront.query(HEADER_QUERY, {
       cache: storefront.CacheLong(),
       variables: {
         headerMenuHandle: 'main-menu', // Adjust to your header menu handle
+      },
+    }),
+    storefront.query(HEADER_LOGO_QUERY, {
+      cache: storefront.CacheLong(),
+      variables: {
+        first: 1,
       },
     }),
     // Add other queries here, so that they are loaded in parallel
@@ -104,6 +110,7 @@ async function loadCriticalData({ context }: LoaderFunctionArgs) {
 
   return {
     header,
+    headerMenu
   };
 }
 

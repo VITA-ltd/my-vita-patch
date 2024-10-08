@@ -6,6 +6,7 @@ import { useAside } from '~/components/Aside';
 
 interface HeaderProps {
   header: HeaderQuery;
+  headerMenu: any;
   cart: Promise<CartApiQueryFragment | null>;
   isLoggedIn: Promise<boolean>;
   publicStoreDomain: string;
@@ -15,6 +16,7 @@ type Viewport = 'desktop' | 'mobile';
 
 export function Header({
   header,
+  headerMenu,
   isLoggedIn,
   cart,
   publicStoreDomain,
@@ -23,6 +25,18 @@ export function Header({
   const { shop, menu } = header;
   const [backgroundActive, setBackgroundActive] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  let headerImage = "";
+  let headerScale = 1;
+
+  headerMenu.metaobjects.nodes[0].fields.map((field: any) => {
+    if (field.key === "image") {
+      headerImage = field.reference.image.url;
+    } else if (field.key === 'scale') {
+      headerScale = Number(field.value);
+    }
+  })
+
+  console.log(headerImage, headerScale);
 
   useEffect(() => {
     if (window.innerWidth <= 430) {
@@ -72,7 +86,7 @@ export function Header({
         style={activeLinkStyle}
         to="/"
       >
-        <img src='/vita.svg' />
+        <img src={headerImage} style={{ height: `${headerScale * 100}%` }} />
       </NavLink>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
     </header>
