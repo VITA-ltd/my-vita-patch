@@ -168,7 +168,7 @@
 
 @media only screen and (max-width: 430px) {
   .home-landing {
-    /* position: sticky; */
+    height: fit-content;
     flex-direction: column-reverse;
   }
 
@@ -184,7 +184,7 @@
 
   .home-landing-content {
     width: calc(100vw - 32px);
-    height: 50vh;
+    height: fit-content;
     padding: 32px 16px 32px 16px;
     display: flex;
     flex-direction: column;
@@ -886,7 +886,8 @@
 */
 .home-customer-testimonials {
   width: calc(100vw - 11.5rem);
-  padding: 4rem 0 4rem 11.5rem;
+  height: 240px;
+  padding: 0 0 0 11.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -910,7 +911,7 @@
 
 .customer-testimonial-carousel {
   width: 70%;
-  height: 91px;
+  height: 240px;
   margin: 0 !important;
 }
 
@@ -919,14 +920,16 @@
 }
 
 .customer-testimonial {
-  height: 91px;
-  display: flex;
+  height: 240px !important;
+  display: flex !important;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
 
 .customer-testimonial > p {
   width: 75%;
+  height: fit-content;
   font-size: 1.618125rem;
   font-weight: 400;
   line-height: 30.8.5rem;
@@ -934,6 +937,7 @@
 
 .customer-testimonial > span {
   font-size: 1rem;
+  height: fit-content;
   font-weight: 400;
   line-height: 1.2rem;
   color: #b9b9b9;
@@ -950,6 +954,10 @@
     pointer-events: none;
   }
 
+  .review-count {
+    text-decoration: underline;
+  }
+
   .customer-testimonial-stars {
     flex-direction: row;
     justify-content: center;
@@ -960,17 +968,19 @@
 
   .customer-testimonial-stars > img {
     width: fit-content;
-    height: 14px;
+    height: 16.19px;
+    margin-bottom: 3px;
   }
 
   .customer-testimonial-carousel {
     width: 100%;
-    height: 6.5em;
+    height: 150px !important;
     margin: 0 !important;
   }
 
   .customer-testimonial {
     display: flex !important;
+    height: 150px !important;
     justify-content: flex-start;
     align-items: center;
     gap: 16px;
@@ -1242,7 +1252,7 @@
 }
 
 .featured-info > .featured-benefits > img {
-  height: 64.7px;
+  height: 94.51px;
 }
 
 .featured-info > .details {
@@ -1369,7 +1379,7 @@
 
   .home-featured > img {
     width: 100vw;
-    height: 492px;
+    height: 4200px;
     mask: linear-gradient(180deg, #000000 38.52%, rgba(0, 0, 0, 0) 100%);
   }
 
@@ -2615,6 +2625,7 @@ aside li {
     border: none;
     font-size: 16px;
     line-height: 24px;
+    padding: 0;
   }
 
   .header-ctas {

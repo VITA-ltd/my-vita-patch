@@ -7,7 +7,7 @@ export function CustomerTestimonials() {
     <section className="home-customer-testimonials">
       <div className="customer-testimonial-stars">
         <img src="/stars.svg" />
-        <span>1000+ 5-star reviews</span>
+        <span><span className="review-count">1000+</span> 5-star reviews</span>
       </div>
 
       <Swiper

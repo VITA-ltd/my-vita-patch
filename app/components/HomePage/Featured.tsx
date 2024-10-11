@@ -52,7 +52,6 @@ export function Featured() {
                 </div>
               </div>
               <div className="featured-benefits">
-                <img src="/home/benefitsSustainable.svg" />
                 <img src="/home/benefitsPesticide.svg" />
                 <img src="/home/benefitsAntioxidant.svg" />
                 <img src="/home/benefitsOrganic.svg" />
