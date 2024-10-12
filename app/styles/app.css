@@ -2247,6 +2247,10 @@ aside {
   padding: 16px;
 }
 
+.close-outside {
+  outline: none;
+}
+
 .overlay.mobile > aside {
   padding: 0;
   background-color: #0d0e0e;
@@ -2469,6 +2473,12 @@ aside li {
 /* reveal aside */
 .overlay.mobile.expanded aside {
   transform: translateX(calc(var(--aside-width) * -1));
+}
+
+@media screen {
+  .overlay.mobile {
+    display: block;
+  }
 }
 
 /*
