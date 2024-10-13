@@ -1522,6 +1522,8 @@
 }
 
 .main-info > .main-selection > .selection-container > select {
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   padding: 1rem 0 1rem 0;
   background-color: transparent;
@@ -1530,6 +1532,10 @@
   line-height: 1.05rem;
   border: none;
   outline: none;
+  background-image: url('/selectArrow.svg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
 }
 
 .main-info > .main-selection > .selection-container > select:disabled {
