@@ -12,6 +12,13 @@ interface FeaturedProductFields extends Product {
   pricePerPatch: {
     value: string;
   };
+  shopFeaturedImage: {
+    reference?: {
+      image: {
+        url: string;
+      }
+    }
+  };
 }
 
 export type pricePerPatch = {

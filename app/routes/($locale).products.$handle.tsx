@@ -149,6 +149,19 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
     ) {
       value
     }
+    shopFeaturedImage: metafield(
+      key: "shop_featured_image"
+      namespace: "custom"
+    ) {
+      value
+      reference {
+        ... on MediaImage {
+          image {
+            url
+          }
+        }
+      }
+    }
     featuredImage {
       id
       altText

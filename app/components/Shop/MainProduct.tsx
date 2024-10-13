@@ -47,8 +47,8 @@ export function MainProduct() {
 
           return <>
             <div className="mobile-image-cover" />
-            {/* <img src={featuredProduct.featuredImage ? featuredProduct.featuredImage.url : ''} /> */}
-            <img src="/shop/featuredProduct.jpeg" />
+            <img src={featuredProduct.shopFeaturedImage.reference ? featuredProduct.shopFeaturedImage.reference.image.url : ''} />
+            {/* <img src="/shop/featuredProduct.jpeg" /> */}
             <div className="main-info">
               <h1>The <span className="product-title">{featuredProduct.title}</span> Patch.</h1>
               <strong>24 patches</strong>

@@ -145,6 +145,12 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
     ) {
       value
     }
+    TEST: metafield(
+      key: "shop_featured_image"
+      namespace: "custom"
+    ) {
+      value
+    }
     featuredImage {
       id
       altText
