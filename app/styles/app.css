@@ -2240,7 +2240,7 @@
 */
 aside {
   background: black;
-  height: calc(100vh - 32px);
+  height: calc(100dvh - 32px);
   max-width: var(--aside-width);
   min-width: var(--aside-width);
   position: fixed;
@@ -2259,6 +2259,7 @@ aside {
 
 .overlay.mobile > aside {
   padding: 0;
+  padding-bottom: 32px;
   background-color: #0d0e0e;
   max-width: var(--mobile-menu-width);
   min-width: var(--mobile-menu-width);
@@ -2436,7 +2437,7 @@ aside li {
 }
 
 .overlay.mobile > aside {
-  transform: translateX(-200vw);
+  transform: translateX(-225vw);
 }
 
 .overlay > aside {
