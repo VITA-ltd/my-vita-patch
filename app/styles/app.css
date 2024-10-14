@@ -916,7 +916,7 @@
 }
 
 .customer-testimonial-carousel > .swiper-wrapper {
-  transition-timing-function: ease-out;
+  transition-timing-function: ease-out !important;
 }
 
 .customer-testimonial {
@@ -947,7 +947,7 @@
   .home-customer-testimonials {
     width: 100vw;
     padding: 0;
-    height: fit-content;
+    height: 150px;
     flex-direction: column;
     justify-content: center;
     gap: 0;
