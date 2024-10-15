@@ -15,6 +15,7 @@ export function Footer({
   header
 }: FooterProps) {
   const [openInfo, setOpenInfo] = useState<number | null>(null);
+  const [signedUp, setSignedUp] = useState<boolean>(false);
 
   useEffect(() => {
     gsap.timeline()
@@ -69,9 +70,13 @@ export function Footer({
                   <span>Be the first to receive VITA® announcements and product updates.</span>
 
                   <span className='footer-form-label'>Email Address</span>
-                  <form>
+
+                  <form className={`footer-email-form ${signedUp ? 'submitted' : ''}`} onSubmit={(e) => { e.preventDefault(); setSignedUp(true); }}>
                     <input id="email-address" placeholder='Email Address' />
-                    <button>Sign Up</button>
+                    <button>
+                      <span>Sign Up</span>
+                      <span className='thank-you-message'>Thanks for subscribing!</span>
+                    </button>
                   </form>
                 </div>
               </div>
