@@ -1,6 +1,6 @@
 :root {
   --aside-width: 400px;
-  --mobile-menu-width: 361px;
+  --mobile-menu-width: 90vw;
   --cart-aside-summary-height-with-discount: 300px;
   --cart-aside-summary-height: 250px;
   --grid-item-width: 355px;
@@ -1532,7 +1532,7 @@
   line-height: 1.05rem;
   border: none;
   outline: none;
-  background-image: url('/selectArrow.svg');
+  background-image: url("/selectArrow.svg");
   background-repeat: no-repeat;
   background-position: center right;
   cursor: pointer;
@@ -2267,7 +2267,7 @@ aside {
 }
 
 .mobile-menu-main {
-  padding: 49px 0px 49px 0px;
+  padding: 2dvh 0px 2dvh 0px;
 }
 
 .mobile-menu-main > input {
@@ -2482,9 +2482,20 @@ aside li {
   transform: translateX(calc(var(--aside-width) * -1));
 }
 
-@media screen {
+@media only screen and (max-width: 430px) {
   .overlay.mobile {
     display: block;
+  }
+
+  aside {
+    height: calc(100dvh - 32px);
+    max-width: calc(100vw - 32px);
+    min-width: calc(100vw - 32px);
+  }
+
+  .overlay.mobile > aside {
+    max-width: var(--mobile-menu-width);
+    min-width: var(--mobile-menu-width);
   }
 }
 
@@ -3083,7 +3094,7 @@ aside li {
 .cart-line-quantity {
   display: flex;
   align-items: center;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   border-radius: 50px;
   gap: 24px;
   padding: 13px 16px 13px 16px;
