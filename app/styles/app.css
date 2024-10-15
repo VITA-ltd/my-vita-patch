@@ -1465,7 +1465,7 @@
 .main-info > .main-selection {
   width: 100%;
   margin-top: 2rem;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 6px;
 }
 
@@ -1481,7 +1481,7 @@
 }
 
 .main-info > .main-selection > .purchase-option:first-of-type {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .main-info > .main-selection > .purchase-option > input {
@@ -1517,7 +1517,7 @@
   padding: 0 1.5rem 0 1.5rem;
   margin-left: 32px;
   margin-bottom: 1rem;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 1rem;
 }
 
@@ -1788,11 +1788,11 @@
 
   .main-info > .main-selection {
     margin-top: 16px;
-    border-width: 0.5px;
+    border-width: 0.5px !important;
   }
 
   .main-info > .main-selection > .purchase-option:first-of-type {
-    border-width: 0.5px;
+    border-width: 0.5px !important;
   }
 
   .main-info > form > .add-to-cart {
@@ -1855,7 +1855,7 @@
   width: calc(100vw - 64px);
   padding: 32px;
   display: flex;
-  justify-content: stretch;
+  justify-content: space-between;
   background-color: var(--green-background);
 }
 
@@ -1894,6 +1894,11 @@
   display: flex;
   justify-content: space-between;
   gap: 32px;
+}
+
+.shop-ratings > .cutomer-ratings > .rating {
+  /* width: 213px; */
+  width: calc(16.2vw - 32px);
 }
 
 .shop-ratings > .cutomer-ratings > .rating,
