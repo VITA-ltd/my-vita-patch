@@ -47,7 +47,7 @@ export function CartLineItem({
             }}
           >
             <p>
-              <strong>The {product.title} Patch</strong>
+              <strong>{product.title}</strong>
             </p>
           </Link>
           <CartLineRemoveButton lineIds={[id]} disabled={false} />

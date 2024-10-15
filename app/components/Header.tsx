@@ -37,14 +37,14 @@ export function Header({
   })
 
   useEffect(() => {
-    if (window.innerWidth <= 430) {
+    if (window.innerWidth <= 465) {
       setIsMobile(true)
     }
 
     const scrollListener = () => {
       let scrollActivation: number = 60;
 
-      if (window.innerWidth <= 430) {
+      if (window.innerWidth <= 465) {
         scrollActivation = (window.innerHeight / 2) - 60;
       }
 
@@ -156,7 +156,7 @@ function HeaderCtas({
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    if (window.innerWidth <= 430) {
+    if (window.innerWidth <= 465) {
       setIsMobile(true)
     }
   })

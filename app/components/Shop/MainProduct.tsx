@@ -50,7 +50,7 @@ export function MainProduct() {
             <img src={featuredProduct.shopFeaturedImage.reference ? featuredProduct.shopFeaturedImage.reference.image.url : ''} />
             {/* <img src="/shop/featuredProduct.jpeg" /> */}
             <div className="main-info">
-              <h1>The <span className="product-title">{featuredProduct.title}</span> Patch.</h1>
+              <h1><span className="product-title">{featuredProduct.title}</span></h1>
               <strong>24 patches</strong>
               <p>{featuredProduct.description}</p>
 

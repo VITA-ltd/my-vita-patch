@@ -86,7 +86,7 @@ export default function Homepage() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    if (window.innerWidth <= 430) {
+    if (window.innerWidth <= 465) {
       setIsMobile(true)
     }
   })

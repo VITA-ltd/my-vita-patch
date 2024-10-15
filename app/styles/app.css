@@ -526,6 +526,10 @@
     line-height: 24px;
   }
 
+  .ingredients-description > p:last-of-type {
+    font-size: 16px;
+  }
+
   .mobile-discover {
     width: calc(100vw - 32px);
     display: flex;
@@ -916,7 +920,7 @@
 }
 
 .customer-testimonial-carousel > .swiper-wrapper {
-  transition-timing-function: ease-out !important;
+  transition-timing-function: cubic-bezier(1, 0.31, 0, 0.7) !important;
 }
 
 .customer-testimonial {
@@ -1255,6 +1259,10 @@
   height: 94.51px;
 }
 
+.mobile-benefit {
+  display: none;
+}
+
 .featured-info > .details {
   display: flex;
   flex-direction: column;
@@ -1379,7 +1387,7 @@
 
   .home-featured > img {
     width: 100vw;
-    height: 4200px;
+    height: 420px;
     mask: linear-gradient(180deg, #000000 38.52%, rgba(0, 0, 0, 0) 100%);
   }
 
@@ -1402,6 +1410,10 @@
 
   .featured-info > .featured-benefits > img {
     height: 84.59px;
+  }
+
+  .mobile-benefit {
+    display: block;
   }
 
   .featured-info > .details > .main-details {
@@ -2871,20 +2883,25 @@ aside li {
 
 .footer-email-form.submitted > input {
   opacity: 0;
+  transition: none;
 }
 
 .footer-email-form.submitted > button {
   width: 100%;
   margin-left: -100%;
   background-color: transparent;
+  transition: none;
+  cursor: default;
 }
 
 .footer-email-form.submitted > button > span:not(.thank-you-message) {
   opacity: 0;
+  transition: none;
 }
 
 .footer-email-form.submitted > button > .thank-you-message {
   opacity: 1;
+  transition: none;
 }
 
 .mobile-links-container {
@@ -3149,8 +3166,8 @@ aside li {
 }
 
 .cart-line-quantity > form > button {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   background-color: transparent;
   border: none;
   outline: none;
@@ -3158,6 +3175,10 @@ aside li {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: -4px;
+  margin-top: -4px;
 }
 
 .cart-line-quantity > form > button > img {

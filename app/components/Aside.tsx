@@ -78,6 +78,16 @@ Aside.Provider = function AsideProvider({ children }: { children: ReactNode }) {
         close: () => setType('closed'),
       }}
     >
+      {
+        type !== 'closed' &&
+        <style>
+          {`
+            body {
+              overflow: hidden;
+            }
+          `}
+        </style>
+      }
       {children}
     </AsideContext.Provider>
   );

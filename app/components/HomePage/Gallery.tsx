@@ -15,7 +15,7 @@ export function Gallery() {
     <Suspense fallback={<div>Loading...</div>}>
       <Await resolve={data.galleryImages}>
         {(response) => {
-          if (window.innerWidth > 430) {
+          if (window.innerWidth > 465) {
             return <>
               <div className="home-image-gallery-top">
                 {response.metaobjects.nodes.slice(0, 2).map((image: any, i: number) => {

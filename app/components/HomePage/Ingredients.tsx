@@ -7,7 +7,7 @@ export function Ingredients() {
   const [activePhrase, setActivePhrase] = useState<number>(0);
 
   useEffect(() => {
-    if (window.innerWidth <= 430) {
+    if (window.innerWidth <= 465) {
       setIsMobile(true)
     }
 
@@ -35,8 +35,11 @@ export function Ingredients() {
         </h2>
         {isMobile ?
           <>
-            <p>Discover how we developed a transdermal formulation for your drinking, without the need for any synthetics.</p>
-            <p>With products like:</p>
+            <p>
+              Discover how we developed a transdermal formulation for your drinking,<br />
+              <b>without the need for any synthetics.</b>
+            </p>
+            <p><b>WITH INGREDIENTS LIKE:</b></p>
           </>
           :
           <p>
