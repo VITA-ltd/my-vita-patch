@@ -29,9 +29,9 @@ export function CartLineItem({
           alt={title}
           aspectRatio="1/1"
           data={image}
-          height={106}
+          height={168}
           loading="lazy"
-          width={100}
+          width={178}
         />
       )}
 
@@ -50,14 +50,13 @@ export function CartLineItem({
               <strong>{product.title}</strong>
             </p>
           </Link>
-          <CartLineRemoveButton lineIds={[id]} disabled={false} />
+          <ProductPrice price={line?.cost?.totalAmount} />
+          <span className='cart-line-patch-count'>24 patches</span>
         </div>
-
-        <strong className='cart-line-patch-count'>24 patches</strong>
 
         <div className='cart-line-footer'>
           <CartLineQuantity line={line} />
-          <ProductPrice price={line?.cost?.totalAmount} />
+          <CartLineRemoveButton lineIds={[id]} disabled={false} />
         </div>
       </div>
     </li>
@@ -84,7 +83,7 @@ function CartLineQuantity({ line }: { line: OptimisticCartLine }) {
           name="decrease-quantity"
           value={prevQuantity}
         >
-          <img src="/shop/expandMinus.svg"/>
+          <img src="/shop/expandMinus.svg" />
         </button>
       </CartLineUpdateButton>
 
@@ -97,7 +96,7 @@ function CartLineQuantity({ line }: { line: OptimisticCartLine }) {
           value={nextQuantity}
           disabled={!!isOptimistic}
         >
-          <img src="/shop/expandPlus.svg"/>
+          <img src="/shop/expandPlus.svg" />
         </button>
       </CartLineUpdateButton>
     </div>

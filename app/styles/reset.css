@@ -42,6 +42,11 @@ body::-webkit-scrollbar {
     sans-serif;
 }
 
+*::selection {
+  background-color: #2dcb89;
+  color: black;
+}
+
 @media only screen and (max-device-width: 430px) {
   html,
   body {

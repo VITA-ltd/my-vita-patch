@@ -33,7 +33,7 @@ export function Aside({
   return (
     <div
       aria-modal
-      className={`overlay ${type === 'mobile' ? 'mobile' : ''} ${expanded ? 'expanded' : ''}`}
+      className={`overlay${type === 'mobile' ? ' mobile' : ''}${expanded ? ' expanded' : ''}`}
       role="dialog"
     >
       <button className="close-outside" onClick={close} />
@@ -47,7 +47,7 @@ export function Aside({
               </button>
             </header>
             <p>Start shopping to qualify for free shipping<span className='helvetica'>!</span></p>
-            <div className='shipping-progress' />
+            <div className='shipping-progress' style={{ backgroundImage: 'linear-gradient(90deg, white 0%, transparent 0%)' }} />
           </>
           :
           <>
@@ -82,8 +82,8 @@ Aside.Provider = function AsideProvider({ children }: { children: ReactNode }) {
         type !== 'closed' &&
         <style>
           {`
-            body {
-              overflow: hidden;
+            body, html {
+              overflow: hidden !important;
             }
           `}
         </style>

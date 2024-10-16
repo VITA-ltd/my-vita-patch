@@ -8,7 +8,6 @@ export function Ratings() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log(window.innerWidth)
     if (window.innerWidth <= 465) {
       setIsMobile(true)
     }
