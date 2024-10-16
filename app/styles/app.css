@@ -555,18 +555,34 @@
   }
 
   .ingredients-carousel {
-    width: 240vw !important;
+    width: 225vw;
+    margin-left: calc(-60vw - 8px) !important;
     height: 387px;
-    margin-left: -79.5vw !important;
     background-color: black;
   }
 
-  .ingredients-carousel > div > div {
+
+  .ingredients-carousel > .swiper {
+    height: 387px;
+    height: fit-content;
+    background-color: transparent;
+  }
+
+  .ingredients-carousel > .swiper > .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .ingredients-carousel > .swiper > .swiper-wrapper > .swiper-slide {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .ingredients-carousel-slide {
+    width: calc(100% - 8px);
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 8px;
-    margin-right: 8px;
   }
 
   .ingredient-img {
@@ -915,16 +931,17 @@
 
 .customer-testimonial-carousel {
   width: 70%;
-  height: 240px;
+  height: 150px;
   margin: 0 !important;
 }
 
-.customer-testimonial-carousel > .swiper-wrapper {
+.customer-testimonial-carousel > .swiper-wrapper:not(:active) {
   transition-timing-function: cubic-bezier(1, 0.31, 0, 0.7) !important;
+  transition-duration: 0.5s !important;
 }
 
 .customer-testimonial {
-  height: 240px !important;
+  height: 150px !important;
   display: flex !important;
   flex-direction: column;
   justify-content: center;
@@ -2607,7 +2624,9 @@ aside li {
 }
 
 .header-logo > img {
-  height: 100%;
+  --desktop-height: 100%;
+  --mobile-height: 100%;
+  height: var(--desktop-height);
 }
 
 .header-logo:hover > img {
@@ -2656,7 +2675,7 @@ aside li {
   }
 
   .header-logo > img {
-    height: 100%;
+    height: var(--mobile-height);
   }
 
   .mobile-menu {
@@ -2771,8 +2790,8 @@ aside li {
   justify-content: space-between;
   background-image: url("/footerLogo.svg");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: calc(100% - 5em) calc(100% - 5em);
+  background-position: center 0%;
+  background-size: calc(100% - 7em) calc(100% - 7em);
 }
 
 .footer-top-links {
@@ -2862,6 +2881,7 @@ aside li {
     margin 0.3s;
   transition-timing-function: cubic-bezier(0.88, 0, 0.12, 1);
   z-index: 1;
+  perspective: 0;
 }
 
 .footer-email-form.submitted > button > span {
@@ -2974,15 +2994,22 @@ aside li {
     margin-top: 32px;
   }
 
+  .footer-disclaimer-container > p {
+    width: calc(100% - 1.25rem);
+    padding: 0.625rem;
+  }
+  
+
   .footer-payments-container {
     display: none;
   }
 
   .footer-menu {
+    position: relative;
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    padding-bottom: 32px;
+    padding-bottom: 0;
   }
 
   .footer-copywrite {

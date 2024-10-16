@@ -66,7 +66,7 @@ export type HeaderLogo = {
       id: string;
       handle: string;
       fields: {
-        key: 'image' | 'scale',
+        key: 'image' | 'scale' | 'mobile_scale',
         value: string,
         reference: {
           image: {

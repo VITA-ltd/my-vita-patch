@@ -46,7 +46,7 @@ export function Aside({
                 <img src="/shop/expandPlus.svg" />
               </button>
             </header>
-            <p>Start shopping to qualify for free shipping!</p>
+            <p>Start shopping to qualify for free shipping<span className='helvetica'>!</span></p>
             <div className='shipping-progress' />
           </>
           :

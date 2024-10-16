@@ -63,24 +63,32 @@ export function Ingredients() {
             centeredSlides
           >
             <SwiperSlide>
-              <strong className="ingredient-label">Turmeric</strong>
-              <div className="ingredient-gradient" />
-              <img className="ingredient-img" src="/ingredients 1.jpeg" />
-            </SwiperSlide>
-            <SwiperSlide>
+              <div className="ingredients-carousel-slide">
               <strong className="ingredient-label">Acai Berry</strong>
-              <div className="ingredient-gradient" />
-              <img className="ingredient-img" src="/ingredients 2.jpeg" />
+                <div className="ingredient-gradient" />
+                <img className="ingredient-img" src="/ingredients 1.jpeg" />
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <strong className="ingredient-label">Ashwagandha</strong>
-              <div className="ingredient-gradient" />
-              <img className="ingredient-img" src="/ingredients 3.jpeg" />
-            </SwiperSlide>
-            <SwiperSlide>
+              <div className="ingredients-carousel-slide">
               <strong className="ingredient-label">Milk Thistle</strong>
-              <div className="ingredient-gradient" />
-              <img className="ingredient-img" src="/ingredients 4.jpeg" />
+                <div className="ingredient-gradient" />
+                <img className="ingredient-img" src="/ingredients 2.jpeg" />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="ingredients-carousel-slide">
+                <strong className="ingredient-label">Ashwagandha</strong>
+                <div className="ingredient-gradient" />
+                <img className="ingredient-img" src="/ingredients 3.jpeg" />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="ingredients-carousel-slide">
+              <strong className="ingredient-label">Turmeric</strong>
+                <div className="ingredient-gradient" />
+                <img className="ingredient-img" src="/ingredients 4.jpeg" />
+              </div>
             </SwiperSlide>
           </Swiper>
           <div className="mobile-discover">

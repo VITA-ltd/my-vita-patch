@@ -27,12 +27,15 @@ export function Header({
   const [isMobile, setIsMobile] = useState<boolean>(false);
   let headerImage = "";
   let headerScale = 1;
+  let mobileHeaderScale = 1;
 
   headerMenu.metaobjects.nodes[0].fields.map((field: any) => {
     if (field.key === "image") {
       headerImage = field.reference.image.url;
     } else if (field.key === 'scale') {
       headerScale = Number(field.value);
+    } else if (field.key === 'mobile_scale') {
+      mobileHeaderScale = Number(field.value);
     }
   })
 
@@ -85,7 +88,7 @@ export function Header({
         style={activeLinkStyle}
         to="/"
       >
-        <img src={headerImage} style={{ height: `${headerScale * 100}%` }} />
+        <img src={headerImage} style={{ '--desktop-height': `${headerScale * 100}%`, '--mobile-height': `${mobileHeaderScale * 100}%` } as any} />
       </NavLink>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
     </header>
