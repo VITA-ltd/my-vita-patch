@@ -1,5 +1,5 @@
 import { NavLink } from '@remix-run/react';
-import { createContext, type ReactNode, useContext, useState } from 'react';
+import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 
 type AsideType = 'search' | 'cart' | 'mobile' | 'closed';
 type AsideContextValue = {
@@ -52,7 +52,7 @@ export function Aside({
           :
           <>
             <header>
-              <NavLink to="/"><img src='/vita.svg' /></NavLink>
+              <NavLink onClick={close} to="/"><img src='/vita.svg' /></NavLink>
               <button className="close reset" onClick={close}>
                 Close
               </button>

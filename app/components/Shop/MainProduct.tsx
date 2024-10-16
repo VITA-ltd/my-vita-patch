@@ -5,9 +5,11 @@ import { loader } from "~/routes/($locale).shop._index";
 import { AddToCartButton } from "../AddToCartButton";
 import gsap from "gsap";
 import { CustomEase } from 'gsap/all';
+import { useAside } from "../Aside";
 
 export function MainProduct() {
   const data = useLoaderData<typeof loader>();
+  const { open } = useAside();
   const [openInfo, setOpenInfo] = useState<number | null>(null);
   const [subscribe, setSubscribe] = useState<boolean>(true);
   const [selectedPlan, setSelectedPlan] = useState<number>(0);
@@ -56,7 +58,7 @@ export function MainProduct() {
 
               <form className="main-selection">
                 <div className="purchase-option">
-                  <input type="checkbox" checked={!subscribe} onClick={() => { setSubscribe(false) }} />
+                  <input type="checkbox" defaultChecked={false} checked={!subscribe} onClick={() => { setSubscribe(false) }} />
                   <p>
                     Regular Price | <Money data={featuredProduct.priceRange.minVariantPrice} /><br />
                     <span>One-Time Purchase</span>
@@ -64,7 +66,7 @@ export function MainProduct() {
                 </div>
 
                 <div className="purchase-option">
-                  <input type="checkbox" checked={subscribe} onClick={() => { setSubscribe(true) }} />
+                  <input type="checkbox" defaultChecked checked={subscribe} onClick={() => { setSubscribe(true) }} />
                   <p>
                     Subscribe & Save | <Money data={{ amount: subscriptionPrice, currencyCode: featuredProduct.priceRange.minVariantPrice.currencyCode }} /> now<br />
                     <span>(Regular Price = <Money data={featuredProduct.priceRange.minVariantPrice} />)</span>
@@ -93,6 +95,7 @@ export function MainProduct() {
 
               <AddToCartButton
                 className="add-to-cart"
+                // onClick={() => { open('cart') }}
                 lines={
                   [
                     {
