@@ -56,7 +56,7 @@ export function Faq() {
   useEffect(() => {
     gsap.timeline()
       .to(`.question`, {
-        height: '22px',
+        height: '28px',
         color: 'transparent',
         duration: 0.3,
         ease: CustomEase.create("", "0.77, 0, 0, 0.77")
