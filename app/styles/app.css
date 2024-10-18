@@ -2751,7 +2751,6 @@ aside li {
 */
 .footer {
   width: calc(100vw - 4rem);
-  min-height: calc(100vh - var(--header-height) - 32px);
   background: var(--color-dark);
   margin-top: auto;
   padding-left: 32px;
