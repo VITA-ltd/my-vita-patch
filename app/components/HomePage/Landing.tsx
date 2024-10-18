@@ -14,7 +14,11 @@ export function Landing() {
   return (
     <header className="home-landing">
       <div className="home-landing-content">
-        <span className="new-formula">{isMobile ? "Now Available" : "New Formula"}</span>
+        <video autoPlay muted loop playsInline>
+          <source src="/homeBackground.mp4" type="video/mp4" />
+        </video>
+
+        <span className="new-formula">New Formula</span>
         <h1>
           The <br />After-Party <br />Patch.
         </h1>
@@ -34,7 +38,15 @@ export function Landing() {
           <CustomerTestimonials />
         }
       </div>
-      <img src={isMobile ? "/home/mobileHeader.webp" : "/homeLanding2.webp"} />
+      <img src="/homeLanding2.webp" />
+
+      <div className="mobileHeader">
+        <img src="/home/mobileHeader.webp" />
+        <span className="new-formula">Now Available</span>
+        <h1>
+          The After-Party Patch.
+        </h1>
+      </div>
     </header>
   );
 }
