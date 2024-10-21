@@ -3153,6 +3153,11 @@ aside li {
   overflow: hidden;
 }
 
+.cart-line.optimistic {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .cart-line-title {
   width: 100%;
   display: flex;

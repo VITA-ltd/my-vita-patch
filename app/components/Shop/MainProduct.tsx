@@ -95,7 +95,7 @@ export function MainProduct() {
 
               <AddToCartButton
                 className="add-to-cart"
-                // onClick={() => { open('cart') }}
+                onClick={() => { open('cart') }}
                 lines={
                   [
                     {

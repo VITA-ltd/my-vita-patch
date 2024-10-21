@@ -17,13 +17,13 @@ export function CartLineItem({
   layout: CartLayout;
   line: OptimisticCartLine;
 }) {
-  const { id, merchandise } = line;
-  const { product, title, image, selectedOptions } = merchandise;
+  const { id, merchandise, isOptimistic } = line;
+  const { product, title, image } = merchandise;
   const lineItemUrl = useVariantUrl(product.handle, []);
   const { close } = useAside();
 
   return (
-    <li key={id} className="cart-line">
+    <li key={id} className={`cart-line${isOptimistic ? ' optimistic' : ''}`}>
       {image && (
         <Image
           alt={title}
