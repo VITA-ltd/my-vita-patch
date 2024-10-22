@@ -121,11 +121,11 @@ function MobileMenuAside({
       <Aside type="mobile" heading="MENU">
         <div className='mobile-menu-main'>
           <div className='mobile-menu-links'>
-            <NavLink onClick={close} style={activeLinkStyle} to='/products/after-party'>Shop</NavLink>
-            <NavLink onClick={close} to=''>Subscribe & Save</NavLink>
-            <NavLink onClick={close} to=''>About Us</NavLink>
-            <NavLink onClick={close} to=''>Ingredients</NavLink>
-            <NavLink onClick={close} to=''>Reviews</NavLink>
+            <NavLink end prefetch="intent" onClick={() => { close(); document.body.scrollTo({top: 0}) }} style={activeLinkStyle} to='/products/after-party'>Shop</NavLink>
+            <NavLink end prefetch="intent" onClick={() => { close(); document.body.scrollTo({top: 0}) }} to=''>Subscribe & Save</NavLink>
+            <NavLink end prefetch="intent" onClick={() => { close(); document.body.scrollTo({top: 0}) }} to=''>About Us</NavLink>
+            <NavLink end prefetch="intent" onClick={() => { close(); document.body.scrollTo({top: 0}) }} to=''>Ingredients</NavLink>
+            <NavLink end prefetch="intent" onClick={() => { close(); document.body.scrollTo({top: 0}) }} to=''>Reviews</NavLink>
           </div>
           <input placeholder='Search our store' />
         </div>

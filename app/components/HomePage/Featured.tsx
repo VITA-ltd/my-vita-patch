@@ -4,9 +4,11 @@ import { Suspense } from "react";
 import { loader } from "~/routes/($locale)._index";
 import { AddToCartButton } from "../AddToCartButton";
 import { pricePerPatch } from "types";
+import { useAside } from "../Aside";
 
 export function Featured() {
   const data = useLoaderData<typeof loader>();
+  const { open } = useAside();
 
   return (<section className="home-featured">
     <Suspense fallback={<div>Loading...</div>}>
@@ -26,13 +28,14 @@ export function Featured() {
                   <strong>{featuredProduct.title}<Money data={featuredProduct.priceRange.minVariantPrice} /></strong>
                   <div className="patch-details">
                     <strong>24 patches</strong>
-                    <strong><Money data={{amount: pricePerPatch.amount, currencyCode: pricePerPatch.currency_code}} />/patch</strong>
+                    <strong><Money data={{ amount: pricePerPatch.amount, currencyCode: pricePerPatch.currency_code }} />/patch</strong>
                   </div>
                   <p>Hangover relief with a nutrient boost, in a simple patch.</p>
                 </div>
 
                 <AddToCartButton
                   className="add-to-cart"
+                  onClick={() => { open('cart') }}
                   lines={
                     [
                       {

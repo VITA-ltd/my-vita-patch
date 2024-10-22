@@ -52,7 +52,7 @@ export function Aside({
           :
           <>
             <header>
-              <NavLink onClick={close} to="/"><img src='/vita.svg' /></NavLink>
+              <NavLink end prefetch='intent' onClick={() => { close(); document.body.scrollTo({top: 0}) }} to="/"><img src='/vita.svg' /></NavLink>
               <button className="close reset" onClick={close}>
                 Close
               </button>

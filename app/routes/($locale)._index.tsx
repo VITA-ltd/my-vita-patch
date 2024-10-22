@@ -154,6 +154,67 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
     variants(first: 1) {
       nodes {
         id
+        title
+        image {
+          id
+          altText
+          url
+          width
+          height
+        }
+        price {
+          ...MoneyProductItem
+        }
+        product {
+          id
+          handle
+          title
+          totalInventory
+          tags
+          description
+          pricePerPatch: metafield(
+            key: "price_per_patch"
+            namespace: "custom"
+          ) {
+            value
+          }
+          shopFeaturedImage: metafield(
+            key: "shop_featured_image"
+            namespace: "custom"
+          ) {
+            value
+            reference {
+              ... on MediaImage {
+                image {
+                  url
+                }
+              }
+            }
+          }
+          featuredImage {
+            id
+            altText
+            url
+            width
+            height
+          }
+          priceRange {
+            minVariantPrice {
+              ...MoneyProductItem
+            }
+            maxVariantPrice {
+              ...MoneyProductItem
+            }
+          }
+          compareAtPriceRange {
+            minVariantPrice {
+              ...MoneyProductItem
+            }
+            maxVariantPrice {
+              ...MoneyProductItem
+            }
+          }
+        }
         selectedOptions {
           name
           value

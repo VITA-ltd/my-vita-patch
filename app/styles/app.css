@@ -132,6 +132,7 @@
   object-fit: cover;
   position: absolute;
   z-index: -1;
+  background-color: black;
 }
 
 .home-landing-content > .new-formula {
@@ -3295,6 +3296,13 @@ aside li {
   font-weight: 700;
   line-height: 21.6px;
   padding: 20px 0px 20px 0px;
+}
+
+@media only screen and (max-width: 430px) {
+  .cart-line img {
+    width: 126px;
+    height: 132px;
+  }
 }
 
 /*
