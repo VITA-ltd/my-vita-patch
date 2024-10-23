@@ -1,45 +1,52 @@
 import { json, type LoaderFunctionArgs } from '@shopify/remix-oxygen';
 import { Link, useLoaderData, type MetaFunction } from '@remix-run/react';
 import { type Shop } from '@shopify/hydrogen/storefront-api-types';
-import { RichText } from '@shopify/hydrogen';
+import { getSeoMeta, RichText } from '@shopify/hydrogen';
+import { SHOP_QUERY } from '~/lib/fragments';
 
 type SelectedPolicies = keyof Pick<
   Shop,
   'privacyPolicy' | 'shippingPolicy' | 'termsOfService' | 'refundPolicy'
 >;
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  return [{ title: `Hydrogen | ${data?.policy.title ?? ''}` }];
+export const meta: MetaFunction<typeof loader> = ({ data }: any) => {
+  const seo = data.seo.shop;
+
+  return getSeoMeta({
+    title: `${seo.name} | ${data.policy.title}`,
+    description: seo.description,
+    media: seo.logo ? seo.logo.image.url : undefined
+  })
 };
 
-export async function loader({ params, context }: LoaderFunctionArgs) {
-  if (!params.handle) {
+export async function loader(args: LoaderFunctionArgs) {
+  if (!args.params.handle) {
     throw new Response('No handle was passed in', { status: 404 });
   }
 
-  const policyName = params.handle.replace(
+  const policyName = args.params.handle.replace(
     /-([a-z])/g,
     (_: unknown, m1: string) => m1.toUpperCase(),
   ) as SelectedPolicies;
 
-  const data = await context.storefront.query(POLICY_CONTENT_QUERY, {
+  const data = await args.context.storefront.query(POLICY_CONTENT_QUERY, {
     variables: {
       privacyPolicy: false,
       shippingPolicy: false,
       termsOfService: false,
       refundPolicy: false,
       [policyName]: true,
-      language: context.storefront.i18n?.language,
+      language: args.context.storefront.i18n?.language,
     },
   });
 
   const policy = data.shop?.[policyName];
 
   if (!policy) {
-    const data = await context.storefront.query(POLICY_METAOBJECT_QUERY, {
+    const data = await args.context.storefront.query(POLICY_METAOBJECT_QUERY, {
       variables: {
         handle: {
-          handle: params.handle,
+          handle: args.params.handle,
           type: 'additional_policies'
         }
       },
@@ -60,7 +67,17 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
     throw new Response('Could not find the policy', { status: 404 });
   }
 
-  return json({ policy });
+  const seo = await loadShopSeo(args);
+
+  return json({ policy, ...seo });
+}
+
+async function loadShopSeo({ context }: LoaderFunctionArgs) {
+  const seo = await context.storefront.query(SHOP_QUERY)
+
+  return {
+    seo,
+  };
 }
 
 export default function Policy() {
