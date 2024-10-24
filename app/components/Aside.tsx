@@ -1,5 +1,6 @@
-import { NavLink } from '@remix-run/react';
-import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import { Await, NavLink } from '@remix-run/react';
+import { createContext, type ReactNode, Suspense, useContext, useEffect, useState } from 'react';
+import { CartApiQueryFragment } from 'storefrontapi.generated';
 
 type AsideType = 'search' | 'cart' | 'mobile' | 'closed';
 type AsideContextValue = {
@@ -22,10 +23,12 @@ export function Aside({
   children,
   heading,
   type,
+  cart
 }: {
   children?: React.ReactNode;
   type: AsideType;
   heading: React.ReactNode;
+  cart?: Promise<CartApiQueryFragment | null>;
 }) {
   const { type: activeType, close } = useAside();
   const expanded = type === activeType;
@@ -39,25 +42,37 @@ export function Aside({
       <button className="close-outside" onClick={close} />
       <aside>
         {type !== 'mobile' ?
-          <>
-            <header>
-              <h3>{heading}</h3>
-              <button className="close reset" onClick={close}>
-                <img src="/shop/expandPlus.svg" />
-              </button>
-            </header>
-            <p>Start shopping to qualify for free shipping<span className='helvetica'>!</span></p>
-            <div className='shipping-progress' style={{ backgroundImage: 'linear-gradient(90deg, white 0%, transparent 0%)' }} />
-          </>
+          <Suspense fallback={<></>}>
+            <Await resolve={cart}>
+              {(response) => {
+                const totalAmount = Number(response?.cost.totalAmount.amount);
+                const freeShippingProgress = (totalAmount / 20) * 100;
+
+                return (<>
+                  <header>
+                    <h3>{heading}</h3>
+                    <button className="close reset" onClick={close}>
+                      <img src="/shop/expandPlus.svg" />
+                    </button>
+                  </header>
+                  {freeShippingProgress >= 100 ?
+                    <p>Congratulations, you qualify for free shipping<span className='helvetica'>!</span></p>
+                    :
+                    <p>Start shopping to qualify for free shipping<span className='helvetica'>!</span></p>
+                  }
+
+                  <div className='shipping-progress' style={{ backgroundImage: `linear-gradient(90deg, white ${freeShippingProgress}%, transparent ${freeShippingProgress}%)` }} />
+                </>)
+              }}
+            </Await>
+          </Suspense>
           :
-          <>
-            <header>
-              <NavLink end prefetch='intent' onClick={() => { close(); document.body.scrollTo({top: 0}) }} to="/"><img src='/vita.svg' /></NavLink>
-              <button className="close reset" onClick={close}>
-                Close
-              </button>
-            </header>
-          </>
+          <header>
+            <NavLink end prefetch='intent' onClick={() => { close(); document.body.scrollTo({ top: 0 }) }} to="/"><img src='/vita.svg' /></NavLink>
+            <button className="close reset" onClick={close}>
+              Close
+            </button>
+          </header>
         }
         <main>{children}</main>
       </aside>

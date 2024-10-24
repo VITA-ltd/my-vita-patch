@@ -50,7 +50,7 @@ export function CartLineItem({
               <strong>{product.title}</strong>
             </p>
           </Link>
-          <ProductPrice price={line?.cost?.totalAmount} />
+          <ProductPrice price={line?.cost?.amountPerQuantity} />
           <span className='cart-line-patch-count'>24 patches</span>
         </div>
 
