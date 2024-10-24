@@ -2331,6 +2331,10 @@ aside {
   outline: none;
 }
 
+.overlay.mobile {
+  display: none;
+}
+
 .overlay.mobile > aside {
   padding: 0;
   padding-bottom: 32px;
@@ -2510,12 +2514,12 @@ aside li {
   z-index: 10;
 }
 
-.overlay.mobile > aside {
-  transform: translateX(-225vw);
-}
-
 .overlay > aside {
   transform: translateX(30px);
+}
+
+.overlay.mobile > aside {
+  transform: translateX(-225vw) !important;
 }
 
 .overlay .close-outside {
@@ -2553,7 +2557,7 @@ aside li {
 
 /* reveal aside */
 .overlay.mobile.expanded aside {
-  transform: translateX(calc(var(--aside-width) * -1));
+  transform: translateX(calc(var(--aside-width) * -1)) !important;
 }
 
 @media only screen and (max-width: 430px) {
