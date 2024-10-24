@@ -15,7 +15,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }: any) => {
   return getSeoMeta({
     title: `${seo.name} | ${data.policy.title}`,
     description: seo.description,
-    media: seo.logo ? seo.logo.image.url : undefined
+    media: seo.coverImage ? seo.coverImage.image.url : undefined
   })
 };
 

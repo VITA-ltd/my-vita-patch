@@ -15,7 +15,7 @@ export const meta: MetaFunction = ({ data }: any) => {
   return getSeoMeta({
     title: `${seo.name} | ${data.featuredProducts.collection.products.nodes[0].title}`,
     description: data.featuredProducts.collection.products.nodes[0].description,
-    media: seo.logo ? seo.logo.image.url : undefined
+    media: seo.coverImage ? seo.coverImage.image.url : undefined
   })
 };
 

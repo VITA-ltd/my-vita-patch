@@ -225,6 +225,7 @@ export const SHOP_QUERY = `#graphql
         colors {
           primary {
             background
+            __typename
           }
         }
       }

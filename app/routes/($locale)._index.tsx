@@ -15,12 +15,15 @@ import { SHOP_QUERY } from '~/lib/fragments';
 
 export const meta: MetaFunction = ({ data }: any) => {
   const seo = data.seo.shop;
-
-  return getSeoMeta({
+  const metadata = getSeoMeta({
     title: seo.name,
     description: seo.description,
-    media: seo.logo ? seo.logo.image.url : undefined
+    media: seo.coverImage ? seo.coverImage.image.url : undefined,
   })
+
+  metadata?.push({ name: 'theme-color', content: seo.brand.colors.primary[0].background })
+
+  return metadata
 };
 
 export async function loader(args: LoaderFunctionArgs) {
